@@ -5,7 +5,7 @@ export default config({
 		kind: "cloud",
 	},
 	cloud: {
-		project: "rayyan/voumy3",
+		project: "rayyan/voumy4",
 	},
 	collections: {
 		posts: collection({
