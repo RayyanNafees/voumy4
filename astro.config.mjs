@@ -10,10 +10,10 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [markdoc(), keystatic(), tailwind(), alpinejs(), react()],
-	output: "hybrid",
-	prefetch: {
-		prefetchAll: true,
-	},
+	integrations: [react(), markdoc(), keystatic(), tailwind(), alpinejs()],
+	output: "server",
+	// prefetch: {
+	// 	prefetchAll: true,
+	// },
 	adapter: vercel(),
 });
