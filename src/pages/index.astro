@@ -73,7 +73,7 @@ const posts = await getCollection("posts");
 
           <a href="/" class="py-4 md:py-6 lg:py-12">
             <h2 class="text-4xl font-medium md:text-5xl">Voumy</h2>
-            <!-- <Image  format="webp"  src="..//img/logo.png">-->
+            <!-- <Image  format="webp" quality={1}  src="..//img/logo.png">-->
           </a>
 
           <button
@@ -302,6 +302,7 @@ const posts = await getCollection("posts");
             class="absolute inset-x-0 bottom-0 w-full"
             width={100}
             height={100}
+            quality={1}
           />
           <!-- card inside -->
           <div

@@ -79,8 +79,8 @@ export async function getStaticPaths() {
           </button>
 
           <a href="/" class="py-4 md:py-6 lg:py-12">
-            <h2 class="text-4xl md:text-5xl font-medium">NEUTRAL</h2>
-            <!-- <Image  format="webp"  src="..//img/logo.png">-->
+            <h2 class="text-4xl md:text-5xl font-medium">Voumy</h2>
+            <!-- <Image  format="webp" quality={1}  src="..//img/logo.png">-->
           </a>
 
           <button
@@ -310,7 +310,7 @@ export async function getStaticPaths() {
           >
             <!--author-->
             <a href="#" rel="author"
-              ><i class="bi bi-person me-2"></i>by aribudin</a
+              ><i class="bi bi-person me-2"></i>by yasir</a
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
@@ -326,7 +326,7 @@ export async function getStaticPaths() {
           <div class="relative post-content pt-4">
             <!-- <p>Exploring street foods around the world is an adventure for your taste buds. From savory to sweet, spicy to tangy, each bite tells a story of culture, tradition, and culinary creativity. Here's a list of the top 10 must-try street foods that will take you on a delicious journey across continents.</p>
             <div class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8">
-              <Image  format="webp"  src="/img/blogs/2.jpg" alt="Post image" class="w-full" height={100} width={100} /  height={64} width={64} />
+              <Image  format="webp" quality={1}  src="/img/blogs/2.jpg" alt="Post image" class="w-full" height={100} width={100} /  height={64} width={64} />
             </div> -->
 
             <!-- <h2>1. Banh Mi - Vietnam</h2>
@@ -461,7 +461,9 @@ export async function getStaticPaths() {
           >
             <div class="rounded-full overflow-hidden">
               <a href="#">
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/personal/avatar.jpeg"
                   alt="avatar"
                   height={64}
@@ -556,7 +558,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/8.jpg"
                   alt="image"
                   class="size-16"
@@ -569,7 +573,9 @@ export async function getStaticPaths() {
                   <h4 class="capitalize hover:text-black">
                     Embracing A Leisurely Pace In A Fast-Paced ...
                   </h4>
-                  <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                  <span class="text-neutral-500 text-sm"
+                    >{0 || "12 May, 2024"}</span
+                  >
                 </div>
               </a>
               <!-- item -->
@@ -577,7 +583,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/2.jpg"
                   alt="image"
                   class="size-16"
@@ -598,7 +606,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/5.jpg"
                   alt="image"
                   class="size-16"
@@ -627,7 +637,9 @@ export async function getStaticPaths() {
               <li class="relative">
                 <div class="pb-4 border-b border-neutral-200 border-dashed">
                   <footer>
-                    <Image  format="webp" 
+                    <Image
+                      format="webp"
+                      quality={1}
                       class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
                       src="/img/personal/avatar2.jpg"
                       alt="avatar"
@@ -663,7 +675,9 @@ export async function getStaticPaths() {
                   <li class="py-4">
                     <div class="pb-4 border-b border-neutral-200 border-dashed">
                       <footer>
-                        <Image  format="webp" 
+                        <Image
+                          format="webp"
+                          quality={1}
                           class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
                           src="/img/personal/avatar.jpeg"
                           alt="avatar"
@@ -699,7 +713,9 @@ export async function getStaticPaths() {
                           class="pb-4 border-b border-neutral-200 border-dashed"
                         >
                           <footer>
-                            <Image  format="webp" 
+                            <Image
+                              format="webp"
+                              quality={1}
                               class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
                               src="/img/personal/avatar2.jpg"
                               alt="avatar"
@@ -737,7 +753,9 @@ export async function getStaticPaths() {
               <li class="relative">
                 <div class="pb-4 border-b border-neutral-200 border-dashed">
                   <footer>
-                    <Image  format="webp" 
+                    <Image
+                      format="webp"
+                      quality={1}
                       class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
                       src="/img/personal/avatar.jpeg"
                       alt="avatar"
@@ -773,7 +791,9 @@ export async function getStaticPaths() {
                   <li class="py-4">
                     <div class="pb-4 border-b border-neutral-200 border-dashed">
                       <footer>
-                        <Image  format="webp" 
+                        <Image
+                          format="webp"
+                          quality={1}
                           class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
                           src="/img/personal/avatar2.jpg"
                           alt="avatar"
@@ -922,7 +942,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/2.jpg"
                   alt="image"
                   class="size-16"
@@ -943,7 +965,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/8.jpg"
                   alt="image"
                   class="size-16"
@@ -964,7 +988,9 @@ export async function getStaticPaths() {
                 href="#"
                 class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
-                <Image  format="webp" 
+                <Image
+                  format="webp"
+                  quality={1}
                   src="/img/blogs/6.jpg"
                   alt="image"
                   class="size-16"

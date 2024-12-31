@@ -30,6 +30,36 @@ export default config({
 						kind: "today",
 					},
 				}),
+				coverImage: fields.image({
+					label: "Cover Image",
+					directory: "public/img/blogs",
+				}),
+				category: fields.select({
+					label: "Category",
+					options: [
+						{ label: "General", value: "general" },
+						{ label: "Lifestyle", value: "lifestyle" },
+						{ label: "Travel", value: "travel" },
+						{ label: "Food", value: "food" },
+					],
+					defaultValue: "general",
+				}),
+				author: fields.select({
+					label: "Author",
+					options: [
+						{ label: "Yasir", value: "yasir" },
+						{ label: "Rayyan", value: "rayyan" },
+					],
+					defaultValue: "yasir",
+				}),
+				tags: fields.multiselect({
+					label: "Tags",
+					options: [
+						{ label: "Travel", value: "travel" },
+						{ label: "Lifestyle", value: "lifestyle" },
+						{ label: "Food", value: "food" },
+					],
+				})
 			},
 		}),
 	},
