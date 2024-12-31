@@ -654,8 +654,8 @@ const posts = await getCollection("posts");
               posts
                 .sort(
                   (a, b) =>
-                    a.data.dateOfPublishing.getTime() -
-                    b.data.dateOfPublishing.getTime()
+                    b.data.dateOfPublishing.getTime() -
+                    a.data.dateOfPublishing.getTime()
                 )
                 .map((post) => (
                   <article class="grid grid-cols-1 gap-4 py-8 border-b border-dashed md:grid-cols-2 md:gap-6 border-neutral-200 last:border-b-0">
@@ -669,7 +669,6 @@ const posts = await getCollection("posts");
                           width={100}
                           src={`/img/blogs/${post.slug}/coverImage.png`}
                           alt={post.data.title}
-                          
                         />
                       </a>
                     </div>
