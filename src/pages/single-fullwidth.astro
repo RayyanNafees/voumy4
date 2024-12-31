@@ -18,19 +18,19 @@ import {Image} from 'astro:assets'
         <!-- social icon -->
         <div class="flex items-center">
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-facebook"></i>
+            <i class="bi bi-facebook"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-instagram"></i>
+            <i class="bi bi-instagram"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-twitter-x"></i>
+            <i class="bi bi-twitter-x"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-tiktok"></i>
+            <i class="bi bi-tiktok"/>
           </a>
         </div>
       </div>
@@ -41,8 +41,8 @@ import {Image} from 'astro:assets'
       <div class="mob-sticky max-md:z-20 max-md:bg-white">
         <div class="container xl:max-w-6xl mx-auto px-4 flex items-center gap-3 justify-between md:justify-center">
           <button @click="navtoggle = !navtoggle" class="size-10 text-2xl md:hidden">
-            <i :class="{ 'block': navtoggle, 'hidden': !(navtoggle) }" class="bi bi-x-lg"></i>
-            <i :class="{ 'hidden': navtoggle, 'block': !(navtoggle) }" class="bi bi-list"></i>
+            <i :class="{ 'block': navtoggle, 'hidden': !(navtoggle) }" class="bi bi-x-lg"/>
+            <i :class="{ 'hidden': navtoggle, 'block': !(navtoggle) }" class="bi bi-list"/>
           </button>
 
           <a href="/" class="py-4 md:py-6 lg:py-12">
@@ -51,7 +51,7 @@ import {Image} from 'astro:assets'
           </a>
 
           <button @click="searchtoggle = !searchtoggle" class="size-10 text-xl md:hidden">
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search"/>
           </button>
         </div>
       </div>
@@ -67,7 +67,7 @@ import {Image} from 'astro:assets'
           <!-- dropdown -->
           <li x-show="!location.href.includes('voumy')" x-data="\{ dropdown: false \}" class="relative  md:[&_>button]:hover:bg-neutral-100">
             <button @click="dropdown = ! dropdown" :class="! dropdown ? '' : 'bg-neutral-100'" class="uppercase w-full py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100">
-              Comming Soon<i :class="! dropdown ? '' : 'show'" class="[&.show]:-rotate-180 transition duration-400 bi bi-chevron-down"></i>
+              Comming Soon<i :class="! dropdown ? '' : 'show'" class="[&.show]:-rotate-180 transition duration-400 bi bi-chevron-down"/>
             </button>
 
             <ul 
@@ -120,7 +120,7 @@ import {Image} from 'astro:assets'
 
           <li class="relative max-md:hidden">
             <button @click="searchtoggle = !searchtoggle" class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100">
-              <i class="bi bi-search"></i>
+              <i class="bi bi-search"/>
             </button>
           </li>
         </ul>
@@ -168,11 +168,11 @@ import {Image} from 'astro:assets'
           <!-- data -->
           <div class="pb-4 w-full flex items-center md:justify-center gap-4 text-sm text-neutral-500 border-b border-dashed border-neutral-200">
             <!--author-->
-            <a href="#" rel="author"><i class="bi bi-person me-2"></i>by yasir</a>    
+            <a href="#" rel="author"><i class="bi bi-person me-2"/>by yasir</a>    
             <!--date-->
-            <time class="news-date" datetime="2024-06-16"><i class="bi bi-calendar me-2"></i>May 11, 2024</time>
+            <time class="news-date" datetime="2024-06-16"><i class="bi bi-calendar me-2"/>May 11, 2024</time>
              <!--category-->
-            <a href="#" rel="category"><i class="bi bi-bookmark me-2"></i>Lifestyle</a>  
+            <a href="#" rel="category"><i class="bi bi-bookmark me-2"/>Lifestyle</a>  
           </div>
           
           <!-- post -->
@@ -253,7 +253,7 @@ import {Image} from 'astro:assets'
             <!-- tags -->
             <ul class="flex flex-wrap items-center gap-2 text-sm">
               <li>
-                <i class="bi bi-tags"></i> :
+                <i class="bi bi-tags"/> :
               </li>
               <li>
                 <a href="#" class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200">review</a>
@@ -272,19 +272,19 @@ import {Image} from 'astro:assets'
             <!-- share -->
             <div class="flex items-center">
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-facebook"></i>
+                <i class="bi bi-facebook"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-instagram"></i>
+                <i class="bi bi-instagram"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-twitter-x"></i>
+                <i class="bi bi-twitter-x"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-linkedin"></i>
+                <i class="bi bi-linkedin"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-tiktok"></i>
+                <i class="bi bi-tiktok"/>
               </a>
             </div>
           </div>
@@ -309,25 +309,25 @@ import {Image} from 'astro:assets'
                   <!--facebook-->
                   <li class="inline-block">
                     <a target="_blank" class="hover:text-neutral-900" rel="noopener noreferrer" href="https://facebook.com" title="Facebook">
-                     <i class="bi bi-facebook text-xl"></i> 
+                     <i class="bi bi-facebook text-xl"/> 
                     </a>
                   </li>
                   <!--twitter-->
                   <li class="inline-block">
                     <a target="_blank" class="hover:text-neutral-900" rel="noopener noreferrer" href="https://twitter.com" title="Twitter">
-                       <i class="bi bi-twitter text-xl"></i>
+                       <i class="bi bi-twitter text-xl"/>
                     </a>
                   </li>
                   <!--youtube-->
                   <li class="inline-block">
                     <a target="_blank" class="hover:text-neutral-900" rel="noopener noreferrer" href="https://youtube.com" title="Youtube">
-                       <i class="bi bi-linkedin text-xl"></i>
+                       <i class="bi bi-linkedin text-xl"/>
                     </a>
                   </li>
                   <!--instagram-->
                   <li class="inline-block">
                     <a target="_blank" class="hover:text-neutral-900" rel="noopener noreferrer" href="https://instagram.com" title="Instagram">
-                       <i class="bi bi-tiktok text-xl"></i>
+                       <i class="bi bi-tiktok text-xl"/>
                     </a>
                   </li><!--end instagram-->
                 </ul>
@@ -525,12 +525,12 @@ import {Image} from 'astro:assets'
             <h3 class="text-lg font-medium border-b border-dashed border-neutral-200 pb-2">About Us</h3>          
             <p>Neutral is a Tailwind blog template for personal and blog site. This demo is crafted specifically to exhibit the use of the theme as a blog site. Visit our main page for more demos.</p>
             <address>
-              <i class="bi bi-geo-alt me-2"></i>Amphitheatre, Mountain View, San Francisco, CA 9321, United States</address>
+              <i class="bi bi-geo-alt me-2"/>Amphitheatre, Mountain View, San Francisco, CA 9321, United States</address>
             <p class="footer-info">
-              <i class="bi bi-phone me-2"></i>+(123) 456-7890
+              <i class="bi bi-phone me-2"/>+(123) 456-7890
             </p>
             <p class="footer-info">
-              <i class="bi bi-envelope me-2"></i>support@example.com
+              <i class="bi bi-envelope me-2"/><a href="mailto:voumyblog@gmail.com" class="underline pl-1 font-semibold">voumyblog@gmail.com</a>
             </p>
           </div>
 
@@ -627,7 +627,7 @@ import {Image} from 'astro:assets'
 
   <!-- =========={ SCROLL TO TOP }==========  -->
   <a href="#" class="back-top fixed py-2 px-3 rounded bg-neutral-50 border border-dashed border-neutral-200 text-neutral-500 end-4 bottom-4" aria-label="Scroll To Top">
-    <i class="bi bi-arrow-up"></i>
+    <i class="bi bi-arrow-up"/>
   </a>
 
   <!--start::Global javascript (used in all pages)-->

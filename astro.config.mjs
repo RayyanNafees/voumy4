@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 
@@ -19,7 +19,4 @@ export default defineConfig({
 	output: "server",
 
 	adapter: netlify(),
-	image: {
-		service: sharpImageService(),
-	},
 });

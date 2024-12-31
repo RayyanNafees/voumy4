@@ -42,19 +42,19 @@ export async function getStaticPaths() {
         <!-- social icon -->
         <div class="flex items-center">
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-facebook"></i>
+            <i class="bi bi-facebook"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-instagram"></i>
+            <i class="bi bi-instagram"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-twitter-x"></i>
+            <i class="bi bi-twitter-x"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-linkedin"/>
           </a>
           <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-tiktok"></i>
+            <i class="bi bi-tiktok"/>
           </a>
         </div>
       </div>
@@ -72,10 +72,10 @@ export async function getStaticPaths() {
           >
             <i
               :class="{ 'block': navtoggle, 'hidden': !(navtoggle) }"
-              class="bi bi-x-lg"></i>
+              class="bi bi-x-lg"/>
             <i
               :class="{ 'hidden': navtoggle, 'block': !(navtoggle) }"
-              class="bi bi-list"></i>
+              class="bi bi-list"/>
           </button>
 
           <a href="/" class="py-4 md:py-6 lg:py-12">
@@ -87,7 +87,7 @@ export async function getStaticPaths() {
             @click="searchtoggle = !searchtoggle"
             class="size-10 text-xl md:hidden"
           >
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search"/>
           </button>
         </div>
       </div>
@@ -128,7 +128,7 @@ export async function getStaticPaths() {
               Comming Soon<i
                 :class="! dropdown ? '' : 'show'"
                 class="[&.show]:-rotate-180 transition duration-400 bi bi-chevron-down"
-              ></i>
+              />
             </button>
 
             <ul
@@ -220,7 +220,7 @@ export async function getStaticPaths() {
               @click="searchtoggle = !searchtoggle"
               class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
             >
-              <i class="bi bi-search"></i>
+              <i class="bi bi-search"/>
             </button>
           </li>
         </ul>
@@ -310,24 +310,24 @@ export async function getStaticPaths() {
           >
             <!--author-->
             <a href="#" rel="author"
-              ><i class="bi bi-person me-2"></i>by yasir</a
+              ><i class="bi bi-person me-2"/>by yasir</a
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
-              ><i class="bi bi-calendar me-2"></i>May 11, 2024</time
+              ><i class="bi bi-calendar me-2"/>May 11, 2024</time
             >
             <!--category-->
             <a href="#" rel="category"
-              ><i class="bi bi-bookmark me-2"></i>Lifestyle</a
+              ><i class="bi bi-bookmark me-2"/>Lifestyle</a
             >
           </div>
 
           <!-- post -->
           <div class="relative post-content pt-4">
-            <!-- <p>Exploring street foods around the world is an adventure for your taste buds. From savory to sweet, spicy to tangy, each bite tells a story of culture, tradition, and culinary creativity. Here's a list of the top 10 must-try street foods that will take you on a delicious journey across continents.</p>
+            <!-- <p>Exploring street foods around the world is an adventure for your taste buds. From savory to sweet, spicy to tangy, each bite tells a story of culture, tradition, and culinary creativity. Here's a list of the top 10 must-try street foods that will take you on a delicious journey across continents.</p> -->
             <div class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8">
-              <Image  format="webp" quality={1}  src="/img/blogs/2.jpg" alt="Post image" class="w-full" height={100} width={100} /  height={64} width={64} />
-            </div> -->
+              <Image  format="webp" quality={1}  src={`/img/blogs/${slug}/${0}`} alt={slug} class="w-full" height={100} width={100} /  height={64} width={64} />
+            </div>
 
             <!-- <h2>1. Banh Mi - Vietnam</h2>
             <p>Banh Mi is a Vietnamese sandwich consisting of a crusty baguette filled with various ingredients such as grilled pork, pate, pickled vegetables, and fresh herbs. It offers a perfect balance of flavors and textures, making it a beloved street food not only in Vietnam but also around the world.</p>
@@ -392,7 +392,7 @@ export async function getStaticPaths() {
               <li>which of us ever undertakes laborious physical exercise</li>
             </ul>
             <p>Experience the vibrant flavors and rich diversity of street foods as you embark on a culinary adventure around the globe. Whether you're wandering through bustling markets or exploring hidden alleyways, these must-try street foods promise to tantalize your taste buds and leave you craving for more.</p> -->
-            <p><Content /></p>
+            <Content />
           </div>
 
           <!-- navigation -->
@@ -403,7 +403,7 @@ export async function getStaticPaths() {
             <!-- tags -->
             <ul class="flex flex-wrap items-center gap-2 text-sm">
               <li>
-                <i class="bi bi-tags"></i> :
+                <i class="bi bi-tags"/> :
               </li>
               <li>
                 <a
@@ -438,19 +438,19 @@ export async function getStaticPaths() {
             <!-- share -->
             <div class="flex items-center">
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-facebook"></i>
+                <i class="bi bi-facebook"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-instagram"></i>
+                <i class="bi bi-instagram"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-twitter-x"></i>
+                <i class="bi bi-twitter-x"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-linkedin"></i>
+                <i class="bi bi-linkedin"/>
               </a>
               <a href="#" class="p-2 hover:opacity-80">
-                <i class="bi bi-tiktok"></i>
+                <i class="bi bi-tiktok"/>
               </a>
             </div>
           </div>
@@ -504,7 +504,7 @@ export async function getStaticPaths() {
                       href="https://facebook.com"
                       title="Facebook"
                     >
-                      <i class="bi bi-facebook text-xl"></i>
+                      <i class="bi bi-facebook text-xl"/>
                     </a>
                   </li>
                   <!--twitter-->
@@ -516,7 +516,7 @@ export async function getStaticPaths() {
                       href="https://twitter.com"
                       title="Twitter"
                     >
-                      <i class="bi bi-twitter text-xl"></i>
+                      <i class="bi bi-twitter text-xl"/>
                     </a>
                   </li>
                   <!--youtube-->
@@ -528,7 +528,7 @@ export async function getStaticPaths() {
                       href="https://youtube.com"
                       title="Youtube"
                     >
-                      <i class="bi bi-linkedin text-xl"></i>
+                      <i class="bi bi-linkedin text-xl"/>
                     </a>
                   </li>
                   <!--instagram-->
@@ -540,7 +540,7 @@ export async function getStaticPaths() {
                       href="https://instagram.com"
                       title="Instagram"
                     >
-                      <i class="bi bi-tiktok text-xl"></i>
+                      <i class="bi bi-tiktok text-xl"/>
                     </a>
                   </li><!--end instagram-->
                 </ul>
@@ -919,14 +919,14 @@ export async function getStaticPaths() {
               as a blog site. Visit our main page for more demos.
             </p>
             <address>
-              <i class="bi bi-geo-alt me-2"></i>Amphitheatre, Mountain View, San
+              <i class="bi bi-geo-alt me-2"/>Amphitheatre, Mountain View, San
               Francisco, CA 9321, United States
             </address>
             <p class="footer-info">
-              <i class="bi bi-phone me-2"></i>+(123) 456-7890
+              <i class="bi bi-phone me-2"/>+(123) 456-7890
             </p>
             <p class="footer-info">
-              <i class="bi bi-envelope me-2"></i>support@example.com
+              <i class="bi bi-envelope me-2"/><a href="mailto:voumyblog@gmail.com" class="underline pl-1 font-semibold">voumyblog@gmail.com</a>
             </p>
           </div>
 
@@ -1107,7 +1107,7 @@ export async function getStaticPaths() {
     class="back-top fixed py-2 px-3 rounded bg-neutral-50 border border-dashed border-neutral-200 text-neutral-500 end-4 bottom-4"
     aria-label="Scroll To Top"
   >
-    <i class="bi bi-arrow-up"></i>
+    <i class="bi bi-arrow-up"/>
   </a>
 
   <!--start::Global javascript (used in all pages)-->

@@ -33,6 +33,9 @@ export default config({
 				coverImage: fields.image({
 					label: "Cover Image",
 					directory: "public/img/blogs",
+					validation: {
+						isRequired: true,
+					},
 				}),
 				category: fields.select({
 					label: "Category",
@@ -59,7 +62,7 @@ export default config({
 						{ label: "Lifestyle", value: "lifestyle" },
 						{ label: "Food", value: "food" },
 					],
-				})
+				}),
 			},
 		}),
 	},
