@@ -1,0 +1,137 @@
+---
+import { Image } from "astro:assets";
+
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+---
+
+<footer>
+  <!--Footer content-->
+  <div
+    class="bg-neutral-100 text-neutral-700 py-8 md:py-12 border-b border-dashed border-neutral-200"
+  >
+    <div class="container xl:max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <!-- widget -->
+        <div class="relative flex flex-col gap-3">
+          <h3
+            class="text-lg font-medium border-b border-dashed border-neutral-200 pb-2"
+          >
+            About Us
+          </h3>
+          <p>
+            At voumy, we believe in the power of sharing ideas and experiencs.
+            We prioritize quality content crafted by passionate writers,
+            commited to deliver reliable information.
+          </p>
+          <p class="footer-info">
+            <i class="bi bi-envelope me-2"></i><a
+              href="mailto:voumyblog@gmail.com"
+              class="underline pl-1 font-semibold">voumyblog@gmail.com</a
+            >
+          </p>
+        </div>
+
+        <!-- widget -->
+        <div class="relative flex flex-col gap-3">
+          <h3
+            class="text-lg font-medium border-b border-dashed border-neutral-200 pb-2"
+          >
+            Featured Posts
+          </h3>
+          <div class="flex flex-col">
+            {
+              posts.map((post) => (
+                <a
+                  href={post.slug}
+                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
+                >
+                  <Image
+                    format="webp"
+                    quality={1}
+                    src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
+                    alt="image"
+                    class="size-16"
+                    height={64}
+                    width={64}
+                  />
+                  <div class="flex flex-col gap-1">
+                    <h4 class="text-sm capitalize hover:text-black">
+                      {post.data.title}
+                    </h4>
+                    <span class="text-neutral-500 text-sm">
+                      {post.data.dateOfPublishing.toLocaleDateString()}
+                    </span>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- widget -->
+        <div class="relative flex flex-col gap-3">
+          <h3
+            class="text-lg font-medium border-b border-dashed border-neutral-200 pb-2"
+          >
+            Popular Posts
+          </h3>
+          <div class="flex flex-col">
+            {
+              posts.map((post) => (
+                <a
+                  href={post.slug}
+                  class="py-3 border-b border-dashed last:border-b-0 border-neutral-200"
+                >
+                  <div class="flex flex-col gap-1">
+                    <h4 class="text-sm font-medium capitalize hover:text-black">
+                      {post.data.title}
+                    </h4>
+                    <span class="text-neutral-500 text-sm">
+                      {post.data.dateOfPublishing.toLocaleDateString()}
+                    </span>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer copyright menu -->
+  <div class="bg-neutral-100 text-neutral-700 text-sm py-6 sm:py-4">
+    <div class="container xl:max-w-6xl mx-auto px-4">
+      <!--footer menu-->
+      <div class="flex max-sm:flex-col items-center sm:justify-between gap-3">
+        <!--footer left menu-->
+        <ul class="flex max-sm:flex-wrap max-sm:justify-center items-center">
+          <li class="relative">
+            <a href="/" class="first:ps-0 py-2 px-4 hover:text-black">Home</a>
+          </li>
+          <li class="relative">
+            <a href="/about" class="first:ps-0 py-2 px-4 hover:text-black"
+              >About</a
+            >
+          </li>
+          <li class="relative">
+            <a href="/contact" class="first:ps-0 py-2 px-4 hover:text-black"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <!-- footer copyright -->
+        <div class="relative">
+          <p>
+            Copyright Voumy | A Gift by <a
+              href="https://rayyannafees.github.io"
+              target="_blank">Rayyan Nafees</a>
+          </p>
+          <!-- removing credit with small donation really helps us. Get pro version for more features -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

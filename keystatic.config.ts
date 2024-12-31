@@ -1,4 +1,5 @@
 import { config, fields, collection } from "@keystatic/core";
+import { cloudImage } from "@keystatic/core/content-components";
 
 export default config({
 	storage: {
@@ -40,28 +41,28 @@ export default config({
 				category: fields.select({
 					label: "Category",
 					options: [
-						{ label: "General", value: "general" },
+						{ label: "Reality", value: "reality" },
+						{ label: "Journal", value: "journal" },
 						{ label: "Lifestyle", value: "lifestyle" },
 						{ label: "Travel", value: "travel" },
-						{ label: "Food", value: "food" },
 					],
-					defaultValue: "general",
+					defaultValue: "reality",
 				}),
 				author: fields.select({
 					label: "Author",
 					options: [
+						{ label: "Voumy", value: "voumy" },
 						{ label: "Yasir", value: "yasir" },
 						{ label: "Rayyan", value: "rayyan" },
 					],
-					defaultValue: "yasir",
+					defaultValue: "voumy",
 				}),
-				tags: fields.multiselect({
+				tags: fields.text({
 					label: "Tags",
-					options: [
-						{ label: "Travel", value: "travel" },
-						{ label: "Lifestyle", value: "lifestyle" },
-						{ label: "Food", value: "food" },
-					],
+					validation: {
+						isRequired: true,
+					},
+					description: "Space separated tags, eg: travel food lifestyle",
 				}),
 			},
 		}),

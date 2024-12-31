@@ -16,7 +16,11 @@ export default defineConfig({
 	// prefetch: {
 	// 	prefetchAll: true,
 	// },
-	output: "server",
+	output: "hybrid",
 
 	adapter: netlify(),
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: "viewport",
+	},
 });

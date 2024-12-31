@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("astro:after-swap", () => {
 	// Back to top
 	window.addEventListener("scroll", () => {
 		const backToTopButton = document.querySelector(".back-top") as HTMLElement;

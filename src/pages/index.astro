@@ -1,296 +1,21 @@
 ---
+import Header from "@/components/header.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import { getCollection } from "astro:content";
+import TagList from "@/components/tag-list.astro";
+import PopularPosts from "@/components/popular-posts.astro";
 const posts = await getCollection("posts");
+
+const filterCategory = <T extends string>(category: T) =>
+  posts.filter(
+    (post) => post.data.category.toLowerCase() === category.toLowerCase()
+  ).length;
 ---
 
 <Layout>
-  <!-- header -->
-  <header x-data="{ navtoggle: false }" class="flex flex-col">
-    <!-- top -->
-    <div class="border-b border-dashed border-neutral-200">
-      <div
-        class="container flex gap-3 justify-between items-center px-4 mx-auto xl:max-w-6xl"
-      >
-        <ul
-          class="flex items-center text-sm max-sm:grow max-sm:overflow-hidden"
-        >
-          <li class="relative">
-            <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
-          </li>
-          <li class="relative">
-            <a href="#" class="px-3 py-1.5 hover:text-neutral-900">About</a>
-          </li>
-          <li class="relative">
-            <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
-          </li>
-        </ul>
-
-        <!-- social icon -->
-        <div class="flex items-center">
-          <a href="mailto:voumyblog@gmail.com" class="p-2 hover:opacity-80">
-            <i class="bi bi-envelope"/>
-          </a>
-          <a href="https://instagram.com/voumy5" class="p-2 hover:opacity-80">
-            <i class="bi bi-instagram"/>
-          </a>
-          <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-twitter-x"/>
-          </a>
-          <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-linkedin"/>
-          </a>
-          <a href="#" class="p-2 hover:opacity-80">
-            <i class="bi bi-tiktok"/>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div x-data="{ searchtoggle: false }" class="flex flex-col">
-      <!-- logo & Button-->
-      <div class="mob-sticky max-md:z-20 max-md:bg-white">
-        <div
-          class="container flex gap-3 justify-between items-center px-4 mx-auto xl:max-w-6xl md:justify-center"
-        >
-          <button
-            @click="navtoggle = !navtoggle"
-            class="text-2xl size-10 md:hidden"
-          >
-            <i
-              :class="{ 'block': navtoggle, 'hidden': !(navtoggle) }"
-              class="bi bi-x-lg"
-            >
-            </i>
-            <i
-              :class="{ 'hidden': navtoggle, 'block': !(navtoggle) }"
-              class="bi bi-list"
-            >
-            </i>
-          </button>
-
-          <a href="/" class="py-4 md:py-6 lg:py-12">
-            <h2 class="text-4xl font-medium md:text-5xl">Voumy</h2>
-            <!-- <Image  format="webp" quality={1}  src="..//img/logo.png">-->
-          </a>
-
-          <button
-            @click="searchtoggle = !searchtoggle"
-            class="text-xl size-10 md:hidden"
-          >
-            <i class="bi bi-search"/>
-          </button>
-        </div>
-      </div>
-
-      <!-- menu -->
-      <nav
-        id="target-nav"
-        :class="{ 'show': navtoggle, '': !(navtoggle) }"
-        class="nav-sticky max-md:fixed max-md:w-72 max-md:inset-y-0 max-md:left-0 max-md:[&.show]:translate-x-0 bg-white md:border-y border-dashed border-neutral-200 z-50 max-md:-translate-x-full transition-transform duration-300"
-      >
-        <div
-          class="py-2 mb-1.5 text-xs text-center uppercase border-b md:hidden text-neutral-500 border-neutral-100"
-        >
-          Menu
-        </div>
-        <!-- menu -->
-        <ul
-          class="flex relative text-sm uppercase md:items-center md:justify-center max-md:flex-col max-md:h-full max-md:overflow-auto md:text-base"
-        >
-          <li class="relative">
-            <a
-              href="/"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-              >Homepage</a
-            >
-          </li>
-          <!-- dropdown -->
-
-          <li class="relative">
-            <a
-              href="category"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-              >Travel</a
-            >
-          </li>
-          <li class="relative">
-            <a
-              href="category"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-              >Journal</a
-            >
-          </li>
-          <li class="relative">
-            <a
-              href="category"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-              >Reality</a
-            >
-          </li>
-          <li class="relative">
-            <a
-              href="category"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-              >Gadgets</a
-            >
-          </li>
-          <li
-            x-show="!location.href.includes('voumy')"
-            x-data="{ dropdown: false }"
-            class="relative md:[&_>button]:hover:bg-neutral-100"
-          >
-            <button
-              @click="dropdown = ! dropdown"
-              :class="! dropdown ? '' : 'bg-neutral-100'"
-              class="uppercase w-full py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-            >
-              Comming Soon<i
-                :class="! dropdown ? '' : 'show'"
-                class="[&.show]:-rotate-180 transition duration-400 bi bi-chevron-down"
-              >
-              </i>
-            </button>
-
-            <ul
-              x-show="dropdown"
-              x-transition.duration.500ms
-              :class="! dropdown ? '' : 'show'"
-              @click.outside="dropdown = false"
-              class="[&.show]:!opacity-100 [&.show]:!visible max-md:[&.show]:!h-auto max-md:h-0 opacity-0 invisible dropdown-menu md:z-50 relative md:absolute capitalize md:top-full end-0 md:-end-1/4 min-w-40 bg-white border border-dashed border-neutral-200"
-            >
-              <li>
-                <a href="category" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Category</a
-                >
-              </li>
-              <li>
-                <a href="single" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Single Post</a
-                >
-              </li>
-              <li>
-                <a
-                  href="single-fullwidth"
-                  class="flex px-4 py-1.5 hover:bg-neutral-100">Fullwidth</a
-                >
-              </li>
-              <li>
-                <a href="page" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Page</a
-                >
-              </li>
-              <li>
-                <a href="contact" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a href="author" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Author</a
-                >
-              </li>
-              <li>
-                <a href="search" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Search</a
-                >
-              </li>
-              <li>
-                <a href="tags" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >Tags</a
-                >
-              </li>
-              <li>
-                <a href="404" class="flex px-4 py-1.5 hover:bg-neutral-100"
-                  >404</a
-                >
-              </li>
-              <li class="relative">
-                <a
-                  href="docs/free-vs-pro"
-                  class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-                  >Journal</a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <li class="relative max-md:hidden">
-            <button
-              @click="searchtoggle = !searchtoggle"
-              class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-            >
-              <i class="bi bi-search"/>
-            </button>
-          </li>
-        </ul>
-        <!-- credit -->
-        <div
-          class="absolute inset-x-0 bottom-0 py-2 mb-2 text-xs text-center md:hidden text-neutral-500"
-        >
-          Copyright 2024
-        </div>
-      </nav>
-      <!-- bg mobile sidebar -->
-      <button
-        @click="navtoggle = !navtoggle"
-        :class="{ 'show': navtoggle, '': !(navtoggle) }"
-        class="max-md:fixed max-md:bg-black max-md:[&.show]:inset-0 max-md:opacity-0 max-md:[&.show]:opacity-50 max-md:[&.show]:z-30 transform duration-300 lg:hidden"
-      >
-      </button>
-
-      <!-- modal search -->
-      <div
-        x-show="searchtoggle"
-        class="z-[60] overflow-auto inset-0 w-full h-full fixed py-6"
-      >
-        <div
-          @click.away="searchtoggle = false"
-          class="z-[60] relative p-3 mx-auto my-0 max-w-full sm:max-w-[500px] opacity-0 [&.show]:opacity-100"
-          :class="! searchtoggle ? '' : 'show'"
-          x-show="searchtoggle"
-          x-transition.duration.500ms
-        >
-          <div
-            class="flex overflow-hidden flex-col bg-white rounded border border-neutral-200"
-          >
-            <!-- modal content -->
-            <div class="flex flex-col p-6">
-              <div class="flex gap-3 justify-between items-center mb-3">
-                <h3 class="text-lg">Search</h3>
-                <button
-                  @click="searchtoggle = false"
-                  class="text-2xl font-semibold fill-current">×</button
-                >
-              </div>
-              <div class="flex overflow-hidden relative mb-8 w-full max-w-full">
-                <label for="search-form" class="hidden">Search</label>
-                <input
-                  type="text"
-                  class="overflow-x-auto relative px-5 py-3 w-full h-12 leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0 peer"
-                  id="search-form"
-                />
-                <!-- icon -->
-                <button
-                  class="flex absolute top-0 justify-center items-center border size-12 end-0 border-neutral-200 bg-neutral-100 peer-focus:border-neutral-400"
-                >
-                  <span class="text-base leading-none bi bi-search"> </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- bg modal -->
-        <div
-          class="overflow-auto fixed inset-0 z-40 w-full h-full bg-black opacity-50"
-        >
-        </div>
-      </div>
-    </div>
-  </header>
-
+  <Header />
   <!-- content -->
   <main class="relative">
     <!-- container -->
@@ -413,7 +138,7 @@ const posts = await getCollection("posts");
                       class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Travel</span>
-                      <span>(6)</span>
+                      <span>({filterCategory("travel")})</span>
                     </a>
                   </li>
                   <li class="relative">
@@ -422,7 +147,7 @@ const posts = await getCollection("posts");
                       class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Reality</span>
-                      <span>(4)</span>
+                      <span>({filterCategory("reality")})</span>
                     </a>
                   </li>
                   <li class="relative">
@@ -431,7 +156,7 @@ const posts = await getCollection("posts");
                       class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Journal</span>
-                      <span>(2)</span>
+                      <span>({filterCategory("journal")})</span>
                     </a>
                   </li>
                   <!-- <li class="relative">
@@ -445,199 +170,26 @@ const posts = await getCollection("posts");
             </div>
 
             <!-- widget -->
-            <div class="border border-dashed bg-neutral-50 border-neutral-200">
-              <h3
-                class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
-              >
-                Popular Post
-              </h3>
-              <div class="flex flex-col p-6">
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <Image
-                    format="webp"
-                    src="/img/blogs/8.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      Embracing A Leisurely Pace In A Fast-Paced ...
-                    </h4>
-                    <span class="text-sm text-neutral-500">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <Image
-                    format="webp"
-                    src="/img/blogs/2.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      How To Stay Productive While Traveling For ...
-                    </h4>
-                    <span class="text-sm text-neutral-500">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <Image
-                    format="webp"
-                    src="/img/blogs/5.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      Master Photography: Tips For Capturing ...
-                    </h4>
-                    <span class="text-sm text-neutral-500">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <Image
-                    format="webp"
-                    src="/img/blogs/1.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      The Tourist Destination That You Must Visit ...
-                    </h4>
-                    <span class="text-sm text-neutral-500">12 May, 2024</span>
-                  </div>
-                </a>
-              </div>
-            </div>
+            <PopularPosts />
 
             <!-- widget -->
-            <div class="border border-dashed bg-neutral-50 border-neutral-200">
-              <h3
-                class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
-              >
-                Tags
-              </h3>
-              <div class="p-6">
-                <ul class="flex flex-wrap gap-2 items-center text-sm">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >travel</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >food</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >review</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >vlog</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >product</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >lifestyle</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >health</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >tips</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >work</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >hobby</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >DIY</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >tech</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                      >AI</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <TagList
+              tags={[
+                "travel",
+                "food",
+                "journal",
+                "technology",
+                "lifestyle",
+                "entertainment",
+                "travel",
+                "food",
+                "wellness",
+                "business",
+                "education",
+                "culture",
+                "personal development",
+              ]}
+            />
           </div>
         </aside>
 
@@ -657,18 +209,21 @@ const posts = await getCollection("posts");
                     b.data.dateOfPublishing.getTime() -
                     a.data.dateOfPublishing.getTime()
                 )
+                .slice(0, 3)
                 .map((post) => (
                   <article class="grid grid-cols-1 gap-4 py-8 border-b border-dashed md:grid-cols-2 md:gap-6 border-neutral-200 last:border-b-0">
                     {/* <!--thumbnail--> */}
                     <div class="aspect-[2/1] md:aspect-[3/2] overflow-hidden w-full bg-neutral-100">
-                      <a href="#">
+                      <a href={`/posts/${post.slug}`}>
                         <Image
                           format="webp"
                           class="w-full bg-cover bg-center"
                           height={100}
                           width={100}
-                          src={`/img/blogs/${post.slug}/coverImage.png`}
+                          src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
                           alt={post.data.title}
+                          transition:name={post.slug}
+                          data-astro-
                         />
                       </a>
                     </div>
@@ -677,18 +232,19 @@ const posts = await getCollection("posts");
                     <div class="flex flex-col gap-2 justify-start">
                       {/* <!--title--> */}
                       <h3 class="text-xl capitalize">
-                        <a href="#">{post.data.title} </a>
+                        <a href={`/posts/${post.slug}`}>{post.data.title} </a>
                       </h3>
                       <div class="flex gap-3 justify-between items-center pr-10 text-sm text-neutral-400">
-                        {/* <!--author-->
-                  <!--date--> */}
+                        {/* <!--author--> */}
+                        {/* <!--date--> */}
                         <time class="news-date" datetime="2024-06-16">
-                          <i class="bi bi-calendar me-1"/>
+                          <i class="bi bi-calendar me-1" />
                           {post.data.dateOfPublishing.toLocaleDateString()}
                         </time>
-                        <a href="#" rel="author">
-                          <i class="bi bi-clock me-1"/>5m
-                        </a>
+                        {/* <a href="#" rel="author"> */}
+                        <span><i class="bi bi-clock me-1" />
+                        5m</span>
+                        {/* </a> */}
                       </div>
                       {/* <!--description--> */}
                       <p class="mb-2 text-neutral-500">{post.data.title}</p>
@@ -708,227 +264,20 @@ const posts = await getCollection("posts");
           </div>
 
           <!-- navigation -->
-          <div
-            class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200"
-          >
-            <a
-              class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
-              href="#"
-              >Older Posts <i class="bi bi-arrow-right"/>
-            </a>
-          </div>
+          {
+            posts.length > 3 && (
+              <div class="gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200">
+                <a
+                  class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
+                  href="#"
+                >
+                  Older Posts <i class="bi bi-arrow-right" />
+                </a>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
   </main>
-
-  <!-- footer -->
-  <footer>
-    <!--Footer content-->
-    <div
-      class="py-8 border-b border-dashed bg-neutral-100 text-neutral-700 md:py-12 border-neutral-200"
-    >
-      <div class="container px-4 mx-auto xl:max-w-6xl">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-          <!-- widget -->
-          <div class="flex relative flex-col gap-3">
-            <h3
-              class="pb-2 text-lg font-medium border-b border-dashed border-neutral-200"
-            >
-              About Us
-            </h3>
-            <p>
-              Neutral is a Tailwind blog template for personal and blog site.
-              This demo is crafted specifically to exhibit the use of the theme
-              as a blog site. Visit our main page for more demos.
-            </p>
-            <!-- <address>
-              <i class="bi bi-geo-alt me-2"/>Amphitheatre, Mountain View, San Francisco, CA 9321, United States</address> -->
-            <!-- <p class="footer-info">
-              <i class="bi bi-phone me-2"/>+(123) 456-7890
-            </p> -->
-            <p class="footer-info">
-              <a class="block p-2 bi bi-envelope" href="mailto:voumyblog@gmail">
-                <span class="px-1">voumyblog@google.com</span>
-              </a>
-            </p>
-          </div>
-
-          <!-- widget -->
-          <div class="flex relative flex-col gap-3">
-            <h3
-              class="pb-2 text-lg font-medium border-b border-dashed border-neutral-200"
-            >
-              Featured Posts
-            </h3>
-            <div class="flex flex-col">
-              <a
-                href="#"
-                class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <Image
-                  format="webp"
-                  src="/img/blogs/2.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm capitalize hover:text-black">
-                    The Tourist Destination That You Must Visit ...
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <Image
-                  format="webp"
-                  src="/img/blogs/8.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm capitalize hover:text-black">
-                    Embracing A Leisurely Pace In A ...
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <Image
-                  format="webp"
-                  src="/img/blogs/6.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm capitalize hover:text-black">
-                    How To Work And Travel Successfully In The ...
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- widget -->
-          <div class="flex relative flex-col gap-3">
-            <h3
-              class="pb-2 text-lg font-medium border-b border-dashed border-neutral-200"
-            >
-              Popular Posts
-            </h3>
-            <div class="flex flex-col">
-              {
-                posts.map((post) => (
-                  <a
-                    href={`/posts/${post.slug}`}
-                    class="py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                  >
-                    <div class="flex flex-col gap-1">
-                      <h4 class="text-sm font-medium capitalize hover:text-black">
-                        {post.data.title}
-                      </h4>
-                      <span class="text-sm text-neutral-500">{post.data.dateOfPublishing.toLocaleDateString()}</span>
-                    </div>
-                  </a>
-                ))
-              }
-              <!-- <a
-                href="#"
-                class="py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm font-medium capitalize hover:text-black">
-                    Master Photography: Tips For Capturing Stunning Moments
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                class="py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm font-medium capitalize hover:text-black">
-                    The Tourist Destination That You Must Visit While On
-                    Vacation In Bali
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                class="py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <div class="flex flex-col gap-1">
-                  <h4 class="text-sm font-medium capitalize hover:text-black">
-                    Exploring The Virtual Reality: A Technological Revolution In
-                    Travel
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- footer copyright menu -->
-    <div class="py-6 text-sm bg-neutral-100 text-neutral-700 sm:py-4">
-      <div class="container px-4 mx-auto xl:max-w-6xl">
-        <!--footer menu-->
-        <div class="flex gap-3 items-center max-sm:flex-col sm:justify-between">
-          <!--footer left menu-->
-          <ul class="flex items-center max-sm:flex-wrap max-sm:justify-center">
-            <li class="relative">
-              <a href="#" class="px-4 py-2 first:ps-0 hover:text-black">Home</a>
-            </li>
-            <li class="relative">
-              <a href="#" class="px-4 py-2 first:ps-0 hover:text-black">About</a
-              >
-            </li>
-            <li class="relative">
-              <a href="#" class="px-4 py-2 first:ps-0 hover:text-black"
-                >Contact</a
-              >
-            </li>
-            <li class="relative">
-              <a href="#" class="px-4 py-2 first:ps-0 hover:text-black"
-                >Term Of Use</a
-              >
-            </li>
-          </ul>
-
-          <!-- footer copyright -->
-          <div class="relative">
-            <p>
-              Copyright {"{ Name }"} | Theme by <a
-                href="https://tailwindtemplate.net"
-                target="_blank">Tailnet</a
-              >
-            </p>
-            <!-- removing credit with small donation really helps us. Get pro version for more features -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
 </Layout>
