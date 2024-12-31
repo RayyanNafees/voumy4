@@ -624,22 +624,6 @@ import {Image} from 'astro:assets'
       </div>
     </footer>
 
-    <!-- =========={ SCROLL TO TOP }==========  -->
-    <a
-      href="#"
-      class="back-top fixed py-2 px-3 rounded bg-neutral-50 border border-dashed border-neutral-200 text-neutral-500 end-4 bottom-4"
-      aria-label="Scroll To Top"
-    >
-      <i class="bi bi-arrow-up"/>
-    </a>
-
-    <!--start::Global javascript (used in all pages)-->
-
-    <!-- prism js -->
-    <!-- <script src="src/js/prism.js"></script> -->
-
-    <!-- theme js -->
-    <script src="src/scripts/scroll.js"></script>
 
     <script>
       // Function to handle smooth scroll when link is clicked
@@ -664,4 +648,5 @@ import {Image} from 'astro:assets'
         .forEach((anchor) => {
           anchor.addEventListener("click", scrollToTarget);
         });
-    </script></Layout>
+    </script>
+  </Layout>

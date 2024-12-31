@@ -840,9 +840,9 @@ const posts = await getCollection("posts");
                   >
                     <div class="flex flex-col gap-1">
                       <h4 class="text-sm font-medium capitalize hover:text-black">
-                        {post.data.title}{" "}
+                        {post.data.title}
                       </h4>
-                      <span class="text-sm text-neutral-500">12 May, 2024</span>
+                      <span class="text-sm text-neutral-500">{post.data.dateOfPublishing.toLocaleDateString()}</span>
                     </div>
                   </a>
                 ))
@@ -931,17 +931,4 @@ const posts = await getCollection("posts");
     </div>
   </footer>
 
-  <!-- =========={ SCROLL TO TOP }==========  -->
-  <a
-    href="#"
-    class="fixed bottom-4 px-3 py-2 rounded border border-dashed back-top bg-neutral-50 border-neutral-200 text-neutral-500 end-4"
-    aria-label="Scroll To Top"
-  >
-    <i class="bi bi-arrow-up"> </i>
-  </a>
-
-  <!--start::Global javascript (used in all pages)-->
-
-  <!-- theme js -->
-  <script src="src/scripts/scroll.js"></script>
 </Layout>
