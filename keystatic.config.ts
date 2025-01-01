@@ -1,5 +1,4 @@
 import { config, fields, collection } from "@keystatic/core";
-import { cloudImage } from "@keystatic/core/content-components";
 
 export default config({
 	storage: {
@@ -20,8 +19,8 @@ export default config({
 					label: "Content",
 					options: {
 						image: {
-							directory: "src/assets/images/posts",
-							publicPath: "../../assets/images/posts/",
+							directory: "public/img/blogs",
+							publicPath: "/img/blogs",
 						},
 					},
 				}),
