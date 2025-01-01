@@ -18,7 +18,9 @@ export default defineConfig({
 	// },
 	output: "hybrid",
 
-	adapter: netlify(),
+	adapter: netlify({
+		// imageCDN: true,
+	}),
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
