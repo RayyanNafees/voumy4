@@ -46,7 +46,7 @@ const posts = await getCollection("posts");
                   href={post.slug}
                   class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <Image
+                  <img
                     format="webp"
                     quality={1}
                     src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
