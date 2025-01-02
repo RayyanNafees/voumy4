@@ -7,7 +7,7 @@ const categories = [...new Set(posts.map((post) => post.data.category)).keys()];
 import AccountShare from "@/components/accounts/share.astro";
 const searchPosts = posts.map((post) => ({
   title: post.data.title,
-  slug: post.slug,
+  slug:`/posts/${post.slug}`,
 }));
 ---
 
