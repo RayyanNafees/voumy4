@@ -5,8 +5,6 @@ import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-
-
 ---
 
 <Layout>
@@ -51,10 +49,10 @@ import { Image } from "astro:assets";
             </p>
 
             <div class="flex flex-col gap-1 mb-12">
-              <div><i class="bi bi-envelope"/>: voumyblog@gmail.com</div>
+              <div><i class="bi bi-envelope"></i>: voumyblog@gmail.com</div>
               <!-- <div><i class="bi bi-telephone"/>: (+123) 456 7890</div> -->
               <!-- <div><i class="bi bi-whatsapp"/>: (+123) 456 7890</div> -->
-              <div><i class="bi bi-instagram"/>: @voumy5</div>
+              <div><i class="bi bi-instagram"></i>: @voumy5</div>
             </div>
 
             <div id="comment-form">
@@ -64,7 +62,18 @@ import { Image } from "astro:assets";
                 questions are answered thoroughly.
               </p>
               <div>
-                <form id="contact" action="#" novalidate="" >
+                <form
+                  id="contact"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate=""
+                >
+                  <!-- Replace with your Access Key -->
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value={import.meta.env.WEB3_FORMS_ACCESS_KEY}
+                  />
                   <div class="mt-2"></div>
                   <div class="mb-6">
                     <textarea
@@ -72,6 +81,7 @@ import { Image } from "astro:assets";
                       placeholder="Message"
                       aria-label="insert comment"
                       rows="4"
+                      name="message"
                       required=""></textarea>
                   </div>
                   <div class="mb-6">
@@ -80,7 +90,8 @@ import { Image } from "astro:assets";
                       placeholder="Name"
                       aria-label="name"
                       type="text"
-                      required=""
+                      required
+                      name="name"
                     />
                   </div>
                   <div class="mb-6">
@@ -88,8 +99,9 @@ import { Image } from "astro:assets";
                       class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Email"
                       aria-label="email"
-                      type="text"
-                      required=""
+                      type="email"
+                      required
+                      name="email"
                     />
                   </div>
                   <button
@@ -110,5 +122,4 @@ import { Image } from "astro:assets";
       </div>
     </div>
   </main>
-  
 </Layout>

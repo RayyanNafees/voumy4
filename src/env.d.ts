@@ -3,6 +3,7 @@
 
 interface ImportMetaEnv {
   readonly GROQ_API_KEY: string;
+  readonly WEB3_FORMS_ACCESS_KEY: string;
 }
 
 interface ImportMeta {
