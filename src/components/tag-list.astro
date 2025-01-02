@@ -1,9 +1,18 @@
 ---
-export interface Props {
-  tags: string[];
-}
+import { getCollection } from "astro:content";
 
-const tags = Astro.props.tags ?? [];
+const posts = await getCollection("posts");
+
+const tags = new Set(
+  posts
+    .flatMap((post) =>
+      Array.isArray(post.data.tags)
+        ? post.data.tags.flatMap((i) => i.split(" "))
+        : post.data.tags.split(" ")
+    )
+    .filter((i) => i)
+    .map((i) => i.toLowerCase())
+).keys();
 ---
 
 <div class="border border-dashed bg-neutral-50 border-neutral-200">
@@ -11,12 +20,12 @@ const tags = Astro.props.tags ?? [];
     Tags
   </h3>
   <div class="p-6">
-    <ul class="flex flex-wrap gap-2 items-center text-sm">
+    <ul class="flex flex-wrap gap-2 items-center text-sm max-h-60 overflow-y-scroll">
       {
         tags.map((tag) => (
           <li>
             <a
-              href="#"
+              href="/coming-soon"
               class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200 lowercase"
             >
               {tag}

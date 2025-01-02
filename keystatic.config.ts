@@ -15,6 +15,7 @@ export default config({
 			format: { contentField: "content" },
 			schema: {
 				title: fields.slug({ name: { label: "Title" } }),
+				excerpt: fields.text({ label: "Short Description" }),
 				content: fields.markdoc({
 					label: "Content",
 					options: {
@@ -63,6 +64,22 @@ export default config({
 					},
 					description: "Space separated tags, eg: travel food lifestyle",
 				}),
+				// additionalCategory : fields.relationship({
+				// 	label: "Additional Category",
+				// 	validation: {
+				// 		isRequired: true,
+				// 	},
+				// 	relationship: {},
+				// })
+			},
+		}),
+		categories: collection({
+			label: "Categories",
+			slugField: "title",
+			path: "src/content/categories/*",
+			schema: {
+				title: fields.slug({ name: { label: "Category Name" } }),
+				description: fields.text({ label: "Description" }),
 			},
 		}),
 	},

@@ -1,0 +1,152 @@
+---
+import type { GetStaticPaths } from "astro";
+import Header from "@/components/header/index.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import CategoryWidget from "@/components/category-widget.astro";
+import PopularPosts from "@/components/popular-posts.astro";
+import TagList from "@/components/tag-list.astro";
+
+const { category } = Astro.params;
+if (!category) return Astro.redirect("/coming-soon");
+
+const categoryPosts = await getCollection(
+  "posts",
+  (post) => post.data.category.toLowerCase() === category.toLowerCase()
+);
+
+// const categoryDescription = await getCollection('category')
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("posts");
+  const categories = posts.map((post) => post.data.category.toLowerCase());
+  return categories.map((category) => ({
+    params: {
+      category,
+    },
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<Layout>
+  <Header />
+
+  <!-- content -->
+  <main class="relative">
+    <!-- Hero -->
+    <div class="text-center border-b border-dashed border-neutral-200">
+      <div class="px-6 py-12 mx-auto max-w-2xl">
+        <h2 class="mb-6 text-2xl font-medium capitalize lg:text-3xl">
+          {category}
+        </h2>
+        <div class="relative max-w-[150px] mx-auto mb-6">
+          <div class="w-full h-1 border-b-2 border-dashed border-neutral-200">
+          </div>
+          <div
+            class="absolute -top-2.5 rounded-full border-2 border-dashed translate-x-2.5 end-1/2 size-6 bg-neutral-100 border-neutral-200"
+          >
+          </div>
+        </div>
+        <p class="text-lg text-neutral-500">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry’s standard dummy text ever
+          since
+        </p>
+      </div>
+    </div>
+
+    <!-- container -->
+    <div
+      class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
+    >
+      <!-- layout -->
+      <div class="grid grid-cols-1 gap-4 py-6 lg:grid-cols-3 lg:gap-6 lg:py-12">
+        <!-- sidebar -->
+        <aside class="max-lg:order-2 lg:col-span-1 lg:pe-6">
+          <div class="flex flex-col gap-4 lg:gap-6 hc-sticky">
+            <CategoryWidget />
+
+            <PopularPosts />
+
+            <TagList />
+          </div>
+        </aside>
+
+        <div class="max-lg:order-1 max-lg:mb-12 lg:col-span-2">
+          <h2
+            class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
+          >
+            Latest from {category}
+          </h2>
+          <!-- loop post -->
+          <div class="flex flex-col">
+            {
+              categoryPosts.map((post) => (
+                /// <!-- post item -->
+                <article class="grid grid-cols-1 gap-4 py-8 border-b border-dashed md:grid-cols-2 md:gap-6 border-neutral-200 last:border-b-0">
+                  {/* <!--thumbnail--> */}
+                  <div class="aspect-[2/1] md:aspect-[3/2] overflow-hidden w-full bg-neutral-100">
+                    <a href={`/posts/${post.slug}`}>
+                      <img
+                        loading="lazy"
+                        class="w-full"
+                        src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
+                        alt={post.slug}
+                      />
+                    </a>
+                  </div>
+
+                  {/* <!--content--> */}
+                  <div class="flex flex-col gap-2 justify-start">
+                    {/* <!--title--> */}
+                    <h3 class="text-xl capitalize">
+                      <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+                    </h3>
+                    <div class="flex gap-3 items-center text-sm text-neutral-500">
+                      {/* <!--author--> */}
+                      <a href="/coming-soon" rel="author">
+                        <i class="bi bi-person me-1" />
+                        yasir
+                      </a>
+                      {/* <!--date--> */}
+                      <time class="news-date" datetime="2024-06-16">
+                        <i class="bi bi-calendar me-1" />
+                        {post.data.dateOfPublishing.toLocaleDateString()}
+                      </time>
+                    </div>
+                    {/* <!--description--> */}
+                    <p class="mb-2 text-neutral-500">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry’s
+                      standard dummy text ever since...
+                    </p>
+
+                    <div class="relative">
+                      <a
+                        href={`/posts/${post.slug}`}
+                        class="inline-flex px-4 py-2 border border-dashed bg-neutral-100 hover:bg-neutral-200/80 border-neutral-200"
+                      >
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+
+          <!-- navigation -->
+          <div
+            class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200"
+          >
+            <a
+              class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
+              href="/coming-soon">Older Posts <i class="bi bi-arrow-right"></i></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

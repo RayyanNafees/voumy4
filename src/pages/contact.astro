@@ -1,273 +1,43 @@
 ---
 import Header from "@/components/header/index.astro";
+import CategoryWidget from "@/components/category-widget.astro";
+import PopularPosts from "@/components/popular-posts.astro";
+import TagList from "@/components/tag-list.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+
+
 ---
 
 <Layout>
   <Header />
-
   <!-- content -->
   <main class="relative">
     <!-- container -->
     <div
-      class="container xl:max-w-6xl mx-auto px-4 flex flex-col gap-4 lg:gap-6"
+      class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
     >
       <!-- layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 py-6">
+      <div class="grid grid-cols-1 gap-4 py-6 lg:grid-cols-3 lg:gap-6">
         <!-- sidebar -->
         <aside class="max-lg:order-2 lg:col-span-1 lg:pe-6">
           <div class="flex flex-col gap-4 lg:gap-6 hc-sticky">
-            <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
-              <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
-              >
-                Category
-              </h3>
-              <div class="py-3 px-6">
-                <ul class="flex flex-col">
-                  <li class="relative">
-                    <a
-                      href="#"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
-                    >
-                      <span>Travel</span>
-                      <span>(6)</span>
-                    </a>
-                  </li>
-                  <li class="relative">
-                    <a
-                      href="#"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
-                    >
-                      <span>Gadgets</span>
-                      <span>(4)</span>
-                    </a>
-                  </li>
-                  <li class="relative">
-                    <a
-                      href="#"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
-                    >
-                      <span>Daily Vlog</span>
-                      <span>(2)</span>
-                    </a>
-                  </li>
-                  <li class="relative">
-                    <a
-                      href="#"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
-                    >
-                      <span>Foods</span>
-                      <span>(7)</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <CategoryWidget />
 
-            <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
-              <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
-              >
-                Popular Post
-              </h3>
-              <div class="p-6 flex flex-col">
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <img loading="lazy"   
-                    src="/img/blogs/8.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      Embracing A Leisurely Pace In A Fast-Paced ...
-                    </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <img loading="lazy"   
-                    src="/img/blogs/2.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      How To Stay Productive While Traveling For ...
-                    </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <img loading="lazy"   
-                    src="/img/blogs/5.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      Master Photography: Tips For Capturing ...
-                    </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
-                  </div>
-                </a>
-                <!-- item -->
-                <a
-                  href="#"
-                  class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-                >
-                  <img loading="lazy"   
-                    src="/img/blogs/1.jpg"
-                    alt="image"
-                    class="size-16"
-                    height={64}
-                    width={64}
-                  />
-                  <div class="flex flex-col gap-1">
-                    <h4 class="text-sm capitalize hover:text-black">
-                      The Tourist Destination That You Must Visit ...
-                    </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
-                  </div>
-                </a>
-              </div>
-            </div>
+            <PopularPosts />
 
-            <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
-              <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
-              >
-                Tags
-              </h3>
-              <div class="p-6">
-                <ul class="flex flex-wrap items-center gap-2 text-sm">
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >travel</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >food</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >review</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >vlog</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >product</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >lifestyle</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >health</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >tips</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >work</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >hobby</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >DIY</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >tech</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
-                      >AI</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <TagList />
           </div>
         </aside>
 
-        <div class="max-lg:order-1 max-lg:mb-12 lg:col-span-2 py-4">
+        <div class="py-4 max-lg:order-1 max-lg:mb-12 lg:col-span-2">
           <h1
-            class="text-2xl md:text-3xl font-medium border-b border-dashed border-neutral-200 pb-3"
+            class="pb-3 text-2xl font-medium border-b border-dashed md:text-3xl border-neutral-200"
           >
             Contact Us
           </h1>
           <!-- post -->
-          <div class="relative post-content pt-4">
+          <div class="relative pt-4 post-content">
             <p>
               Thank you for your interest in reaching out to us! At [Company
               Name], we value your feedback, inquiries, and any other
@@ -281,14 +51,14 @@ import { Image } from "astro:assets";
             </p>
 
             <div class="flex flex-col gap-1 mb-12">
-              <div><i class="bi bi-envelope"/>: Support@mail.com</div>
-              <div><i class="bi bi-telephone"/>: (+123) 456 7890</div>
-              <div><i class="bi bi-whatsapp"/>: (+123) 456 7890</div>
-              <div><i class="bi bi-skype"/>: Support@mail.com</div>
+              <div><i class="bi bi-envelope"/>: voumyblog@gmail.com</div>
+              <!-- <div><i class="bi bi-telephone"/>: (+123) 456 7890</div> -->
+              <!-- <div><i class="bi bi-whatsapp"/>: (+123) 456 7890</div> -->
+              <div><i class="bi bi-instagram"/>: @voumy5</div>
             </div>
 
             <div id="comment-form">
-              <h4 class="text-xl leading-normal mb-2">Send Message</h4>
+              <h4 class="mb-2 text-xl leading-normal">Send Message</h4>
               <p class="mb-6">
                 We strive to respond to all emails promptly and ensure that your
                 questions are answered thoroughly.
@@ -298,7 +68,7 @@ import { Image } from "astro:assets";
                   <div class="mt-2"></div>
                   <div class="mb-6">
                     <textarea
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Message"
                       aria-label="insert comment"
                       rows="4"
@@ -306,7 +76,7 @@ import { Image } from "astro:assets";
                   </div>
                   <div class="mb-6">
                     <input
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Name"
                       aria-label="name"
                       type="text"
@@ -315,7 +85,7 @@ import { Image } from "astro:assets";
                   </div>
                   <div class="mb-6">
                     <input
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Email"
                       aria-label="email"
                       type="text"
@@ -324,7 +94,7 @@ import { Image } from "astro:assets";
                   </div>
                   <button
                     type="submit"
-                    class="flex items-center py-3 px-5 leading-5 text-neutral-100 bg-black hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
+                    class="flex items-center px-5 py-3 leading-5 bg-black text-neutral-100 hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
                     >Send Message</button
                   >
                 </form>
@@ -333,7 +103,7 @@ import { Image } from "astro:assets";
           </div>
           <!-- navigation -->
           <div
-            class="flex items-center justify-end gap-3 py-4 border-t border-dashed border-neutral-200"
+            class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200"
           >
           </div>
         </div>

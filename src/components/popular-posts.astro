@@ -9,12 +9,12 @@ const posts = await getCollection("posts");
   <h3 class="px-6 py-3 w-full border-b border-dashed border-neutral-200">
     Popular Post
   </h3>
-  <div class="flex flex-col p-6">
+  <div class="flex flex-col p-6 max-h-80 overflow-y-scroll">
     <!-- item -->
     {
       posts.map((post) => (
         <a
-          href="#"
+          href="/coming-soon"
           class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
         >
           <img

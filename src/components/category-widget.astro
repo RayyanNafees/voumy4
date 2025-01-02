@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+
+const filterCategory = <T extends string>(category: T) =>
+	posts.filter(
+		(post) => post.data.category.toLowerCase() === category.toLowerCase(),
+	).length;
+
+const categories = ["travel", "reality", "journal"];
+
+const categoryMap = Object.fromEntries(
+	categories
+		.map((category) => [category, filterCategory(category)])
+		.filter(([_, count]) => count), // categories with 0 count don't need to be displayed
+);
+---
+
+<!-- widget -->
+<div class="border border-dashed bg-neutral-50 border-neutral-200">
+  <h3 class="px-6 py-3 w-full border-b border-dashed border-neutral-200">
+    Category
+  </h3>
+  <div class="px-6 py-3">
+    <ul class="flex flex-col">
+      {
+        Object.entries(categoryMap).map(([category, count]) => (
+          <li class="relative">
+            <a
+              href={`/categories/${category}`}
+              class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
+            >
+              <span class="capitalize">{category}</span>
+              <span>({count})</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
