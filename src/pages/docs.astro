@@ -14,35 +14,35 @@ import {Image} from 'astro:assets'
     <main class="relative">
       <!-- hero -->
       <div class="text-center border-b border-dashed border-neutral-200">
-        <div class="max-w-2xl mx-auto py-12 px-6">
-          <h2 class="text-2xl lg:text-3xl font-medium">Documentation</h2>
+        <div class="px-6 py-12 mx-auto max-w-2xl">
+          <h2 class="text-2xl font-medium lg:text-3xl">Documentation</h2>
         </div>
       </div>
 
       <!-- container -->
       <div
-        class="container xl:max-w-6xl mx-auto px-4 flex flex-col gap-4 lg:gap-6"
+        class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
       >
         <!-- layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 py-6">
+        <div class="grid grid-cols-1 gap-4 py-6 lg:grid-cols-3 lg:gap-6">
           <!-- sidebar -->
           <aside class="max-lg:mb-10 lg:col-span-1 lg:pe-6">
             <div class="flex flex-col gap-4 lg:gap-6 hc-sticky">
               <!-- widget -->
               <div
-                class="bg-neutral-50 border border-dashed border-neutral-200"
+                class="border border-dashed bg-neutral-50 border-neutral-200"
               >
                 <h3
-                  class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
+                  class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
                 >
                   Menu
                 </h3>
-                <div class="py-3 px-6">
+                <div class="px-6 py-3">
                   <ul class="flex flex-col">
                     <li class="relative">
                       <a
                         href="#docs1"
-                        class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                        class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                       >
                         <span>Introcluding</span>
                       </a>
@@ -50,7 +50,7 @@ import {Image} from 'astro:assets'
                     <li class="relative">
                       <a
                         href="#docs2"
-                        class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                        class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                       >
                         <span>How to start?</span>
                       </a>
@@ -58,7 +58,7 @@ import {Image} from 'astro:assets'
                     <li class="relative">
                       <a
                         href="#docs3"
-                        class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                        class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                       >
                         <span>Customize Css</span>
                       </a>
@@ -66,7 +66,7 @@ import {Image} from 'astro:assets'
                     <li class="relative">
                       <a
                         href="#docs4"
-                        class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                        class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                       >
                         <span>Customize Js</span>
                       </a>
@@ -80,18 +80,18 @@ import {Image} from 'astro:assets'
           <div class="max-lg:mb-12 lg:col-span-2">
             <div id="docs1" class="relative mb-12">
               <h2
-                class="text-lg uppercase font-medium border-b border-dashed border-neutral-200 pb-2"
+                class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
               >
                 Introcluding
               </h2>
               <!-- relative -->
               <div class="relative py-6">
-                <h2 class="text-xl font-semibold mb-3">
-                  Neutral - Tailwind CSS Blog Template
+                <h2 class="mb-3 text-xl font-semibold">
+                  neutral - Tailwind CSS Blog Template
                 </h2>
 
                 <p class="mb-4">
-                  Minimalism meets elegance in the "Neutral" blog template,
+                  Minimalism meets elegance in the "neutral" blog template,
                   meticulously crafted with Tailwind CSS and Alpine.js. Designed
                   to streamline your development process while offering a
                   visually appealing and functional starting point for your
@@ -101,7 +101,7 @@ import {Image} from 'astro:assets'
                   <span class="font-semibold">Starting a Simple Blog Site:</span
                   > Whether you're a beginner exploring the world of web development
                   or an experienced developer looking for a quick and efficient solution,
-                  "Neutral" offers the perfect foundation for launching your blog
+                  "neutral" offers the perfect foundation for launching your blog
                   site with style and sophistication.
                 </p>
               </div>
@@ -109,15 +109,15 @@ import {Image} from 'astro:assets'
 
             <div id="docs2" class="relative mb-12">
               <h2
-                class="text-lg uppercase font-medium border-b border-dashed border-neutral-200 pb-2"
+                class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
               >
                 How to start?
               </h2>
               <!-- relative -->
               <div class="relative py-6">
-                <h2 class="text-xl font-semibold mb-3">Tools & Setup</h2>
+                <h2 class="mb-3 text-xl font-semibold">Tools & Setup</h2>
                 <p class="mb-4">
-                  Neutral uses NPM scripts for its build system. Our <code
+                  neutral uses NPM scripts for its build system. Our <code
                     class="text-pink-700">package.json</code
                   > includes convenient methods for working with the framework, including
                   compiling code, running tests, and more.
@@ -127,7 +127,7 @@ import {Image} from 'astro:assets'
                   you'll need a copy of theme's source files and Node. Follow
                   these steps and you should be ready to rock:
                 </p>
-                <ul class="list-decimal list-inside pl-8 my-4">
+                <ul class="pl-8 my-4 list-decimal list-inside">
                   <li class="mb-2">
                     <a class="text-pink-700" href="https://nodejs.org/download/"
                       >Download and install Node.js</a
@@ -143,12 +143,12 @@ import {Image} from 'astro:assets'
                     Navigate to the root <code class="text-pink-700"
                       >neutral/</code
                     > directory and run <code
-                      class="text-white p-2 bg-black rounded">npm install</code
+                      class="p-2 text-white bg-black rounded">npm install</code
                     >.
                   </li>
                   <li class="mb-2">
                     After Npm install complete, run <code
-                      class="text-white p-2 bg-black rounded">npm run dev</code
+                      class="p-2 text-white bg-black rounded">npm run dev</code
                     > to start development.
                   </li>
                 </ul>
@@ -158,13 +158,13 @@ import {Image} from 'astro:assets'
 
             <div id="docs3" class="relative mb-12">
               <h2
-                class="text-lg uppercase font-medium border-b border-dashed border-neutral-200 pb-2"
+                class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
               >
                 Customize Css
               </h2>
               <!-- relative -->
               <div class="relative py-6">
-                <h2 class="text-xl font-semibold mb-3">
+                <h2 class="mb-3 text-xl font-semibold">
                   How to create a new style?
                 </h2>
                 <p class="mb-4">
@@ -191,13 +191,13 @@ import {Image} from 'astro:assets'
 
             <div id="docs4" class="relative mb-12">
               <h2
-                class="text-lg uppercase font-medium border-b border-dashed border-neutral-200 pb-2"
+                class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
               >
                 Customize Js
               </h2>
               <!-- relative -->
               <div class="relative py-6">
-                <h2 class="text-xl font-semibold mb-3">
+                <h2 class="mb-3 text-xl font-semibold">
                   How to create a new Javascript?
                 </h2>
                 <p class="mb-4">
@@ -223,11 +223,11 @@ import {Image} from 'astro:assets'
 
             <!-- navigation -->
             <div
-              class="flex items-center justify-end gap-3 py-4 border-t border-dashed border-neutral-200"
+              class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200"
             >
               <a
-                class="uppercase text-neutral-500 hover:text-black flex items-center text-sm gap-2"
-                href="/coming-soon">Older Posts <i class="bi bi-arrow-right"/></a
+                class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
+                href="#">Older Posts <i class="bi bi-arrow-right"/></a
               >
             </div>
           </div>

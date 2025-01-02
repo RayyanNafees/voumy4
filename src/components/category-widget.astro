@@ -2,19 +2,13 @@
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
+const categoryMap: Record<string, number> = {};
 
-const filterCategory = <T extends string>(category: T) =>
-	posts.filter(
-		(post) => post.data.category.toLowerCase() === category.toLowerCase(),
-	).length;
-
-const categories = ["travel", "reality", "journal"];
-
-const categoryMap = Object.fromEntries(
-	categories
-		.map((category) => [category, filterCategory(category)])
-		.filter(([_, count]) => count), // categories with 0 count don't need to be displayed
-);
+for (const post of posts) {
+  const category = post.data.category;
+  if (category in categoryMap) categoryMap[category] += 1;
+  else categoryMap[category] = 1;
+}
 ---
 
 <!-- widget -->
@@ -23,7 +17,7 @@ const categoryMap = Object.fromEntries(
     Category
   </h3>
   <div class="px-6 py-3">
-    <ul class="flex flex-col">
+    <ul class="flex overflow-y-scroll flex-col max-h-60">
       {
         Object.entries(categoryMap).map(([category, count]) => (
           <li class="relative">
@@ -32,7 +26,7 @@ const categoryMap = Object.fromEntries(
               class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
             >
               <span class="capitalize">{category}</span>
-              <span>({count})</span>
+              <span class="px-4 py-px rounded-2xl bg-neutral-200/50">{count}</span>
             </a>
           </li>
         ))

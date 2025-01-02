@@ -2,6 +2,7 @@
 import Footer from "@/components/footer.astro";
 import ScrollToTop from "@/components/scroll-to-top.astro";
 import "../styles.css";
+import '@fontsource-variable/playpen-sans'
 import "@fontsource/inter";
 import { ViewTransitions } from "astro:transitions";
 export interface Props {
@@ -29,7 +30,7 @@ const { title = "Voumy - Where Words Come Alive" } = Astro.props;
     <title>{title}</title>
     <ViewTransitions  />
   </head>
-  <body class="text-neutral-700 font-sans">
+  <body class="font-sans text-neutral-700">
     <slot />
     <Footer />
 

@@ -9,7 +9,7 @@ import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
 
 const { category } = Astro.params;
-if (!category) return Astro.redirect("/coming-soon");
+if (!category) return Astro.redirect("#");
 
 const categoryPosts = await getCollection(
   "posts",
@@ -37,7 +37,7 @@ export const getStaticPaths = (async () => {
     <!-- Hero -->
     <div class="text-center border-b border-dashed border-neutral-200">
       <div class="px-6 py-12 mx-auto max-w-2xl">
-        <h2 class="mb-6 text-2xl font-medium capitalize lg:text-3xl">
+        <h2 class="mb-6 text-3xl font-medium capitalize lg:text-3xl font-handwriting">
           {category}
         </h2>
         <div class="relative max-w-[150px] mx-auto mb-6">
@@ -48,11 +48,11 @@ export const getStaticPaths = (async () => {
           >
           </div>
         </div>
-        <p class="text-lg text-neutral-500">
+        <!-- <p class="text-lg text-neutral-500">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry’s standard dummy text ever
           since
-        </p>
+        </p> -->
       </div>
     </div>
 
@@ -105,7 +105,7 @@ export const getStaticPaths = (async () => {
                     </h3>
                     <div class="flex gap-3 items-center text-sm text-neutral-500">
                       {/* <!--author--> */}
-                      <a href="/coming-soon" rel="author">
+                      <a href="#" rel="author">
                         <i class="bi bi-person me-1" />
                         yasir
                       </a>
@@ -142,7 +142,7 @@ export const getStaticPaths = (async () => {
           >
             <a
               class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
-              href="/coming-soon">Older Posts <i class="bi bi-arrow-right"></i></a
+              href="#">Older Posts <i class="bi bi-arrow-right"></i></a
             >
           </div>
         </div>

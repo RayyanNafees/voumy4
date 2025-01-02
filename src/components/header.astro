@@ -1,12 +1,14 @@
 ---
-import PagesDropdown from './pages-dropdown.astro';
+import PagesDropdown from "./pages-dropdown.astro";
 import { getCollection } from "astro:content";
 
-const categories = [...new Set((await getCollection("posts")).map(
-  (post) => post.data.category
-)).keys()];
+const categories = [
+  ...new Set(
+    (await getCollection("posts")).map((post) => post.data.category)
+  ).keys(),
+];
 
-import AccountShare from '@/components/accounts/share.astro'
+import AccountShare from "@/components/accounts/share.astro";
 ---
 
 <!-- header -->
@@ -21,7 +23,7 @@ import AccountShare from '@/components/accounts/share.astro'
           <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
         </li>
         <li class="relative">
-          <a href="/coming-soon" class="px-3 py-1.5 hover:text-neutral-900"
+          <a href="#" class="px-3 py-1.5 hover:text-neutral-900"
             >About</a
           >
         </li>
@@ -57,10 +59,11 @@ import AccountShare from '@/components/accounts/share.astro'
         </button>
 
         <a href="/" class="py-4 md:py-6 lg:py-12">
-          <h2 class="text-4xl font-medium md:text-5xl">Voumy</h2>
-          <!-- <img loading="lazy"    src="..//img/logo.png">-->
+          <h2 class="text-4xl font-medium md:text-5xl font-voumy">Voumy</h2>
+          <h3 class="text-sm md:text-lg font-slogan">Where words become alive</h2>
+          <!-- <img loading="lazy"    src="..//img/logo.png"> -->
         </a>
-
+        <!-- <img src="logo.svg" class="max-h-60"/> -->
         <button
           @click="searchtoggle = !searchtoggle"
           class="text-xl size-10 md:hidden"
@@ -98,7 +101,7 @@ import AccountShare from '@/components/accounts/share.astro'
           categories.map((category) => (
             <li class="relative">
               <a
-                href="category"
+                href={"/categories/" + category}
                 class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
               >
                 {category}

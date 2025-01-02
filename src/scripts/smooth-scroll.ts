@@ -1,4 +1,4 @@
-document.addEventListener("astro:after-swap", () => {
+document.addEventListener("astro:page-load", () => {
 	// Add smooth scroll functionality to all links with hash
 	const links = document.querySelectorAll<HTMLAnchorElement>(
 		'a[href^="#"]',
