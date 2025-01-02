@@ -2,8 +2,8 @@
 import Header from "@/components/header.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import AccountShare from '@/components/accounts/share.astro'
-import AccountSocials from '@/components/accounts/socials.astro'
+import AccountShare from "@/components/accounts/share.astro";
+import AccountSocials from "@/components/accounts/socials.astro";
 import { getCollection, getEntry } from "astro:content";
 
 const { slug } = Astro.params;
@@ -44,89 +44,35 @@ export async function getStaticPaths() {
           >
             <!--author-->
             <a href="#" rel="author"
-              ><i class="bi bi-person me-2"/>by yasir</a
+              ><i class="bi bi-person me-2"></i>by yasir</a
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
-              ><i class="bi bi-calendar me-2"/>May 11, 2024</time
+              ><i class="bi bi-calendar me-2"></i>May 11, 2024</time
             >
             <!--category-->
             <a href="#" rel="category"
-              ><i class="bi bi-bookmark me-2"/>Lifestyle</a
+              ><i class="bi bi-bookmark me-2"></i>Lifestyle</a
             >
           </div>
 
           <!-- post -->
           <div class="relative pt-4 post-content">
             <!-- <p>Exploring street foods around the world is an adventure for your taste buds. From savory to sweet, spicy to tangy, each bite tells a story of culture, tradition, and culinary creativity. Here's a list of the top 10 must-try street foods that will take you on a delicious journey across continents.</p> -->
-            <div class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8">
-              <img loading="lazy"    src={`/img/blogs/${slug}/${post.data.coverImage}`} alt={slug} class="w-full" transition:name={slug}/>
+            <div
+              class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8"
+            >
+              <img
+                loading="lazy"
+                src={`/img/blogs/${slug}/${post.data.coverImage}`}
+                alt={slug}
+                class="w-full"
+                transition:name={slug}
+              />
             </div>
-
-            <!-- <h2>1. Banh Mi - Vietnam</h2>
-            <p>Banh Mi is a Vietnamese sandwich consisting of a crusty baguette filled with various ingredients such as grilled pork, pate, pickled vegetables, and fresh herbs. It offers a perfect balance of flavors and textures, making it a beloved street food not only in Vietnam but also around the world.</p>
-            <p>It's a must-try for any food enthusiast visiting Vietnam, offering a delightful culinary experience that captures the essence of Vietnamese cuisine.</p>
-            <p>Where to try: Streets of Ho Chi Minh City or Hanoi.</p>
-
-            <h2>2. Tacos al Pastor - Mexico</h2>
-            <p>Tacos al Pastor is a quintessential Mexican street food made with thinly sliced pork marinated in a combination of spices and chilies, then cooked on a vertical rotisserie. The tender, flavorful meat is typically served on small corn tortillas and topped with pineapple, onions, cilantro, and salsa.</p>
-            <p>These mouthwatering tacos are a staple of Mexican street food culture, offering a delicious taste of Mexico's rich culinary heritage.</p>
-
-            <h2>3. Pad Thai - Thailand</h2>
-            <p>Pad Thai is a popular Thai street food dish consisting of stir-fried rice noodles with eggs, tofu, shrimp or chicken, bean sprouts, and peanuts, seasoned with a tangy tamarind sauce. It's a flavorful and satisfying dish that perfectly embodies the balance of sweet, sour, salty, and spicy flavors that Thai cuisine is known for.</p>
-            <p>Where to try: Streets of Bangkok or night markets throughout Thailand.</p>
-
-            <h2>4. Poutine - Canada</h2>
-            <p>Poutine is a beloved Canadian dish originating from Quebec, consisting of crispy french fries topped with cheese curds and smothered in rich gravy. The combination of crispy, creamy, and savory flavors makes it a comforting and indulgent street food favorite, especially during cold winter months.</p>
-            <p>Where to try: Poutineries across Canada, especially in Quebec.</p>
-
-            <h2>5. Churros - Spain</h2>
-            <p>Churros are a classic Spanish street food made from deep-fried dough, often dusted with cinnamon sugar. They are crispy on the outside, soft and fluffy on the inside, and best enjoyed dipped in thick chocolate sauce or dulce de leche.</p>
-            <p>Where to try: Churrerias in cities across Spain, especially in Madrid and Barcelona.</p>
-
-            <h2>6. Bánh Xèo - Vietnam</h2>
-            <p>Bánh Xèo, also known as Vietnamese sizzling crepes, are crispy pancakes filled with shrimp, pork, bean sprouts, and herbs, served with fresh lettuce leaves and dipping sauce. The name "Bánh Xèo" comes from the sizzling sound the batter makes when poured into the hot skillet.</p>
-            <p>Where to try: Streets of Ho Chi Minh City or Hoi An.</p>
-
-            <h2>7. Falafel - Middle East</h2>
-            <p>Falafel is a popular Middle Eastern street food made from ground chickpeas or fava beans, mixed with herbs and spices, then deep-fried until crispy. It is often served in pita bread with tahini sauce, salad, and pickled vegetables.</p>
-            <p>Where to try: Falafel stands in cities throughout the Middle East, such as Jerusalem, Cairo, and Beirut.</p>
-
-            <h2>8. Sushi - Japan</h2>
-            <p>Sushi is a Japanese staple consisting of vinegared rice topped or rolled with various ingredients such as raw fish, seafood, vegetables, and sometimes tropical fruits. It is often served as a quick and convenient street food option in Japan.</p>
-            <p>Where to try: Sushi stalls in bustling marketplaces like Tsukiji Fish Market in Tokyo or Nishiki Market in Kyoto.</p>
-
-            <h2>9. Arepas - Colombia</h2>
-            <p>Arepas are traditional Colombian street food made from cornmeal dough, which is formed into patties and grilled, baked, or fried until crispy on the outside and soft on the inside. They are often split open and filled with various ingredients such as cheese, meat, avocado, or eggs.</p>
-            <p>Where to try: Areperas in cities across Colombia, especially in Bogotá and Medellín.</p>
-
-            <h2>10. Currywurst - Germany</h2>
-            <p>Currywurst is a popular German street food consisting of sliced, grilled pork sausage topped with curry ketchup and sprinkled with curry powder. It is typically served with fries or bread rolls and enjoyed as a hearty snack or quick meal.</p>
-            <p>Where to try: Imbiss stalls and food stands in cities throughout Germany, especially in Berlin.</p>
-
-            <blockquote>
-              <span class="absolute w-8 h-8 opacity-80">
-                <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500" viewBox="0 0 270.000000 270.000000"><g transform="translate(0.000000,270.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M920 2182 c-290 -124 -482 -341 -540 -610 -30 -140 -40 -296 -40 -644 l0 -328 370 0 370 0 0 370 0 370 -181 0 -181 0 7 63 c26 243 129 387 342 477 35 15 66 29 69 32 7 7 -132 298 -143 298 -4 0 -37 -13 -73 -28z"></path><path d="M2179 2186 c-249 -103 -442 -295 -520 -516 -50 -142 -61 -247 -66 -677 l-5 -393 371 0 371 0 0 370 0 370 -181 0 -181 0 7 53 c21 170 67 281 150 363 51 49 143 107 215 134 19 7 39 17 44 21 10 9 -124 298 -139 298 -5 0 -35 -10 -66 -23z"></path></g></svg>
-              </span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <footer>
-                Quote by <cite title="Source Title">Jesicca</cite>
-              </footer>
-            </blockquote>
-
-            <ul>
-              <li>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                <ol>
-                  <li>Itaque earum rerum hic tenetur a sapiente delectus</li>
-                  <li>which of us ever undertakes laborious physical exercise</li>
-                </ol>
-              </li>
-              <li>Et harum quidem rerum facilis est et expedita distinctio</li>
-              <li>Itaque earum rerum hic tenetur a sapiente delectus</li>
-              <li>which of us ever undertakes laborious physical exercise</li>
-            </ul>
-            <p>Experience the vibrant flavors and rich diversity of street foods as you embark on a culinary adventure around the globe. Whether you're wandering through bustling markets or exploring hidden alleyways, these must-try street foods promise to tantalize your taste buds and leave you craving for more.</p> -->
-            <Content />
+            <div class="prose lg:prose-xl text-black-500">
+              <Content />
+            </div>
           </div>
 
           <!-- navigation -->
@@ -136,7 +82,7 @@ export async function getStaticPaths() {
             <!-- tags -->
             <ul class="flex flex-wrap gap-2 items-center text-sm">
               <li>
-                <i class="bi bi-tags"/> :
+                <i class="bi bi-tags"></i> :
               </li>
               <li>
                 <a
@@ -178,8 +124,6 @@ export async function getStaticPaths() {
             <div class="overflow-hidden rounded-full">
               <a href="#">
                 <img
-                  
-                  
                   src="/img/personal/avatar.jpeg"
                   alt="avatar"
                   height={64}
@@ -220,8 +164,6 @@ export async function getStaticPaths() {
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
                 <img
-                  
-                  
                   src="/img/blogs/8.jpg"
                   alt="image"
                   class="size-16"
@@ -245,8 +187,6 @@ export async function getStaticPaths() {
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
                 <img
-                  
-                  
                   src="/img/blogs/2.jpg"
                   alt="image"
                   class="size-16"
@@ -268,8 +208,6 @@ export async function getStaticPaths() {
                 class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
               >
                 <img
-                  
-                  
                   src="/img/blogs/5.jpg"
                   alt="image"
                   class="size-16"
@@ -299,8 +237,6 @@ export async function getStaticPaths() {
                 <div class="pb-4 border-b border-dashed border-neutral-200">
                   <footer>
                     <img
-                      
-                      
                       class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                       src="/img/personal/avatar2.jpg"
                       alt="avatar"
@@ -337,8 +273,6 @@ export async function getStaticPaths() {
                     <div class="pb-4 border-b border-dashed border-neutral-200">
                       <footer>
                         <img
-                          
-                          
                           class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                           src="/img/personal/avatar.jpeg"
                           alt="avatar"
@@ -375,8 +309,6 @@ export async function getStaticPaths() {
                         >
                           <footer>
                             <img
-                              
-                              
                               class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                               src="/img/personal/avatar2.jpg"
                               alt="avatar"
@@ -415,8 +347,6 @@ export async function getStaticPaths() {
                 <div class="pb-4 border-b border-dashed border-neutral-200">
                   <footer>
                     <img
-                      
-                      
                       class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                       src="/img/personal/avatar.jpeg"
                       alt="avatar"
@@ -453,8 +383,6 @@ export async function getStaticPaths() {
                     <div class="pb-4 border-b border-dashed border-neutral-200">
                       <footer>
                         <img
-                          
-                          
                           class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                           src="/img/personal/avatar2.jpg"
                           alt="avatar"
@@ -558,6 +486,4 @@ export async function getStaticPaths() {
       </div>
     </div>
   </main>
-
-
 </Layout>
