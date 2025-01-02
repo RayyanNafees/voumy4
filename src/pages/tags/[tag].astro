@@ -7,23 +7,24 @@ import { getCollection } from "astro:content";
 import CategoryWidget from "@/components/category-widget.astro";
 import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
+import { getTags } from "@/scripts/getTags";
 import Post from '@/components/post.astro';
-const { category } = Astro.params;
-if (!category) return Astro.redirect("/404")
 
-const categoryPosts = await getCollection(
-  "posts",
-  (post) => post.data.category.toLowerCase() === category.toLowerCase()
+const { tag } = Astro.params;
+if (!tag) return Astro.redirect("/404");
+
+const tagPosts = await getCollection("posts", (post) =>
+  getTags(post.data.tags).includes(tag)
 );
 
 // const categoryDescription = await getCollection('category')
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
-  const categories = posts.map((post) => post.data.category.toLowerCase());
-  return categories.map((category) => ({
+  const tags = posts.flatMap((post) => getTags(post.data.tags));
+  return tags.map((tag) => ({
     params: {
-      category,
+      tag,
     },
   }));
 }) satisfies GetStaticPaths;
@@ -37,8 +38,10 @@ export const getStaticPaths = (async () => {
     <!-- Hero -->
     <div class="text-center border-b border-dashed border-neutral-200">
       <div class="px-6 py-12 mx-auto max-w-2xl">
-        <h2 class="mb-6 text-3xl font-medium capitalize lg:text-3xl font-handwriting">
-          {category}
+        <h2
+          class="mb-6 text-3xl font-medium capitalize lg:text-3xl font-handwriting"
+        >
+          <span class="py-2 px-5 rounded-md bg-neutral-100"> #{tag}</span>
         </h2>
         <div class="relative max-w-[150px] mx-auto mb-6">
           <div class="w-full h-1 border-b-2 border-dashed border-neutral-200">
@@ -77,14 +80,15 @@ export const getStaticPaths = (async () => {
           <h2
             class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
           >
-            Latest from {category}
+            Latest from <span class="px-2 py-1 rounded-md bg-neutral-200 font-semibold"
+              >#{tag}</span
+            >
           </h2>
           <!-- loop post -->
           <div class="flex flex-col">
             {
-              categoryPosts.map((post) => (
+              tagPosts.map((post) => (
                 /// <!-- post item -->
-                <Post {post} />
                 // <article class="grid grid-cols-1 gap-4 py-8 border-b border-dashed md:grid-cols-2 md:gap-6 border-neutral-200 last:border-b-0">
                 //   {/* <!--thumbnail--> */}
                 //   <div class="aspect-[2/1] md:aspect-[3/2] overflow-hidden w-full bg-neutral-100">
@@ -133,6 +137,7 @@ export const getStaticPaths = (async () => {
                 //     </div>
                 //   </div>
                 // </article>
+                <Post {post} />
               ))
             }
           </div>

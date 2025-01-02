@@ -3,16 +3,18 @@ import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
 
-const tags =[...new Set(
-  posts
-    .flatMap((post) =>
-      Array.isArray(post.data.tags)
-        ? post.data.tags.flatMap((i) => i.split(" "))
-        : post.data.tags.split(" ")
-    )
-    .filter((i) => i)
-    .map((i) => i.toLowerCase())
-).keys()];
+const tags = [
+  ...new Set(
+    posts
+      .flatMap((post) =>
+        Array.isArray(post.data.tags)
+          ? post.data.tags.flatMap((i) => i.split(" "))
+          : post.data.tags.split(" ")
+      )
+      .filter((i) => i)
+      .map((i) => i.toLowerCase())
+  ).keys(),
+];
 ---
 
 <div class="border border-dashed bg-neutral-50 border-neutral-200">
@@ -20,12 +22,14 @@ const tags =[...new Set(
     Tags
   </h3>
   <div class="p-6">
-    <ul class="flex overflow-y-scroll flex-wrap gap-2 items-center max-h-60 text-sm">
+    <ul
+      class="flex overflow-y-scroll flex-wrap gap-2 items-center max-h-60 text-sm"
+    >
       {
         tags?.map?.((tag) => (
           <li>
             <a
-              href="#"
+              href={"/tags/" + tag}
               class="flex px-3 py-1 lowercase bg-white border hover:bg-neutral-100 border-neutral-200"
             >
               {tag}

@@ -8,7 +8,7 @@ import { getRelatedSlugs } from "@/scripts/related-articles";
 import type { Post } from "@/content/config";
 
 const { slug } = Astro.params;
-if (!slug) throw new Error("Slug not found");
+if (!slug) return Astro.redirect('/404')
 const post = await getEntry("posts", slug);
 
 if (!post) throw new Error("No post found for this slug");

@@ -180,7 +180,7 @@ const searchPosts = posts.map((post) => ({
                   <a
                     x-bind:href="searchPost.slug"
                     class="block py-2 px-4 text-sm text-neutral-800 hover:bg-neutral-100 hover:text-black"
-                    x-html="searchPost.title.replace(new RegExp('(searchTerm)', 'i'), `<span class='font-bold text-black bg-yellow-300'>$1</span>`) "
+                    x-html="searchPost.title.replace(new RegExp('(searchTerm)', 'i'), `<span class='font-bold text-black bg-yellow-300'>$1</span>)`) "
                   ></a>
                 </li></template
               >
