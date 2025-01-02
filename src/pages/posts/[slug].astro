@@ -2,6 +2,8 @@
 import Header from "@/components/header.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import AccountShare from '@/components/accounts/share.astro'
+import AccountSocials from '@/components/accounts/socials.astro'
 import { getCollection, getEntry } from "astro:content";
 
 const { slug } = Astro.params;
@@ -25,20 +27,20 @@ export async function getStaticPaths() {
   <main class="relative">
     <!-- container -->
     <div
-      class="container xl:max-w-6xl mx-auto px-4 flex flex-col gap-4 lg:gap-6"
+      class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
     >
       <!-- layout -->
       <div class="grid grid-cols-1 py-6">
         <div class="relative">
           <h1
-            class="text-2xl md:text-3xl lg:text-4xl md:text-center font-medium py-4"
+            class="py-4 text-2xl font-medium md:text-3xl lg:text-4xl md:text-center"
           >
             {post.data.title}
           </h1>
 
           <!-- data -->
           <div
-            class="pb-4 w-full flex items-center md:justify-center gap-4 text-sm text-neutral-500 border-b border-dashed border-neutral-200"
+            class="flex gap-4 items-center pb-4 w-full text-sm border-b border-dashed md:justify-center text-neutral-500 border-neutral-200"
           >
             <!--author-->
             <a href="/coming-soon" rel="author"
@@ -55,7 +57,7 @@ export async function getStaticPaths() {
           </div>
 
           <!-- post -->
-          <div class="relative post-content pt-4">
+          <div class="relative pt-4 post-content">
             <!-- <p>Exploring street foods around the world is an adventure for your taste buds. From savory to sweet, spicy to tangy, each bite tells a story of culture, tradition, and culinary creativity. Here's a list of the top 10 must-try street foods that will take you on a delicious journey across continents.</p> -->
             <div class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8">
               <img loading="lazy"    src={`/img/blogs/${slug}/${post.data.coverImage}`} alt={slug} class="w-full" transition:name={slug}/>
@@ -103,7 +105,7 @@ export async function getStaticPaths() {
             <p>Where to try: Imbiss stalls and food stands in cities throughout Germany, especially in Berlin.</p>
 
             <blockquote>
-              <span class="absolute opacity-80 w-8 h-8">
+              <span class="absolute w-8 h-8 opacity-80">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-neutral-500" viewBox="0 0 270.000000 270.000000"><g transform="translate(0.000000,270.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M920 2182 c-290 -124 -482 -341 -540 -610 -30 -140 -40 -296 -40 -644 l0 -328 370 0 370 0 0 370 0 370 -181 0 -181 0 7 63 c26 243 129 387 342 477 35 15 66 29 69 32 7 7 -132 298 -143 298 -4 0 -37 -13 -73 -28z"></path><path d="M2179 2186 c-249 -103 -442 -295 -520 -516 -50 -142 -61 -247 -66 -677 l-5 -393 371 0 371 0 0 370 0 370 -181 0 -181 0 7 53 c21 170 67 281 150 363 51 49 143 107 215 134 19 7 39 17 44 21 10 9 -124 298 -139 298 -5 0 -35 -10 -66 -23z"></path></g></svg>
               </span>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -129,69 +131,51 @@ export async function getStaticPaths() {
 
           <!-- navigation -->
           <div
-            class="flex flex-col sm:flex-row items-center justify-between
-           gap-3 py-4 border-y border-dashed border-neutral-200"
+            class="flex flex-col gap-3 justify-between items-center py-4 border-dashed sm:flex-row border-y border-neutral-200"
           >
             <!-- tags -->
-            <ul class="flex flex-wrap items-center gap-2 text-sm">
+            <ul class="flex flex-wrap gap-2 items-center text-sm">
               <li>
                 <i class="bi bi-tags"/> :
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >review</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >vlog</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >product</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >lifestyle</a
                 >
               </li>
             </ul>
 
-            <!-- share -->
-            <div class="flex items-center">
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-facebook"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-instagram"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-twitter-x"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-linkedin"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-tiktok"/>
-              </a>
-            </div>
+            <AccountShare />
           </div>
 
           <!-- profile -->
           <div
-            class="flex flex-row items-center py-6 md:py-8 border-b border-dashed border-neutral-200"
+            class="flex flex-row items-center py-6 border-b border-dashed md:py-8 border-neutral-200"
           >
-            <div class="rounded-full overflow-hidden">
+            <div class="overflow-hidden rounded-full">
               <a href="/coming-soon">
                 <img
                   
@@ -200,7 +184,7 @@ export async function getStaticPaths() {
                   alt="avatar"
                   height={64}
                   width={64}
-                  class="size-20 rounded-full mb-2"
+                  class="mb-2 rounded-full size-20"
                 />
               </a>
             </div>
@@ -222,67 +206,14 @@ export async function getStaticPaths() {
                 Programmer, Developer, I design and develop Tailwind template,
                 founder of Tailnet
               </p>
-              <!--social-->
-              <div class="mt-2">
-                <ul class="space-x-3">
-                  <!--facebook-->
-                  <li class="inline-block">
-                    <a
-                      target="_blank"
-                      class="hover:text-neutral-900"
-                      rel="noopener noreferrer"
-                      href="https://facebook.com"
-                      title="Facebook"
-                    >
-                      <i class="bi bi-facebook text-xl"/>
-                    </a>
-                  </li>
-                  <!--twitter-->
-                  <li class="inline-block">
-                    <a
-                      target="_blank"
-                      class="hover:text-neutral-900"
-                      rel="noopener noreferrer"
-                      href="https://twitter.com"
-                      title="Twitter"
-                    >
-                      <i class="bi bi-twitter text-xl"/>
-                    </a>
-                  </li>
-                  <!--youtube-->
-                  <li class="inline-block">
-                    <a
-                      target="_blank"
-                      class="hover:text-neutral-900"
-                      rel="noopener noreferrer"
-                      href="https://youtube.com"
-                      title="Youtube"
-                    >
-                      <i class="bi bi-linkedin text-xl"/>
-                    </a>
-                  </li>
-                  <!--instagram-->
-                  <li class="inline-block">
-                    <a
-                      target="_blank"
-                      class="hover:text-neutral-900"
-                      rel="noopener noreferrer"
-                      href="https://instagram.com"
-                      title="Instagram"
-                    >
-                      <i class="bi bi-tiktok text-xl"/>
-                    </a>
-                  </li><!--end instagram-->
-                </ul>
-              </div>
-              <!--end social-->
+              <AccountSocials />
             </div>
           </div>
 
           <!-- related -->
-          <div class="py-6 md:py-8 border-b border-dashed border-neutral-200">
-            <h3 class="text-xl w-full">Related Article</h3>
-            <div class="pt-2 flex flex-col">
+          <div class="py-6 border-b border-dashed md:py-8 border-neutral-200">
+            <h3 class="w-full text-xl">Related Article</h3>
+            <div class="flex flex-col pt-2">
               <!-- item -->
               <a
                 href="/coming-soon"
@@ -303,7 +234,7 @@ export async function getStaticPaths() {
                   <h4 class="capitalize hover:text-black">
                     Embracing A Leisurely Pace In A Fast-Paced ...
                   </h4>
-                  <span class="text-neutral-500 text-sm"
+                  <span class="text-sm text-neutral-500"
                     >{0 || "12 May, 2024"}</span
                   >
                 </div>
@@ -328,7 +259,7 @@ export async function getStaticPaths() {
                   <h4 class="capitalize hover:text-black">
                     How To Stay Productive While Traveling For ...
                   </h4>
-                  <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                  <span class="text-sm text-neutral-500">12 May, 2024</span>
                 </div>
               </a>
               <!-- item -->
@@ -351,7 +282,7 @@ export async function getStaticPaths() {
                   <h4 class="capitalize hover:text-black">
                     Master Photography: Tips For Capturing ...
                   </h4>
-                  <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                  <span class="text-sm text-neutral-500">12 May, 2024</span>
                 </div>
               </a>
             </div>
@@ -360,17 +291,17 @@ export async function getStaticPaths() {
           <!-- comments -->
           <div id="comments" class="py-6 md:py-8">
             <!--title-->
-            <h3 class="text-xl w-full mb-6">5 Comments</h3>
+            <h3 class="mb-6 w-full text-xl">5 Comments</h3>
 
             <!--comment list-->
             <ol class="mb-6">
               <li class="relative">
-                <div class="pb-4 border-b border-neutral-200 border-dashed">
+                <div class="pb-4 border-b border-dashed border-neutral-200">
                   <footer>
                     <img
                       
                       
-                      class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                      class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                       src="/img/personal/avatar2.jpg"
                       alt="avatar"
                       height={64}
@@ -380,11 +311,11 @@ export async function getStaticPaths() {
                     />
                     <div>
                       <a
-                        class="text-lg leading-normal font-medium mb-2"
+                        class="mb-2 text-lg font-medium leading-normal"
                         href="/coming-soon"
                         target="_blank">Robert Villa</a
                       >
-                      <span class="md:float-right text-sm">
+                      <span class="text-sm md:float-right">
                         <time datetime="2020-10-27">May 27, 2024</time>
                       </span>
                     </div>
@@ -403,12 +334,12 @@ export async function getStaticPaths() {
                 </div>
                 <ul class="ms-12 md:ms-24">
                   <li class="py-4">
-                    <div class="pb-4 border-b border-neutral-200 border-dashed">
+                    <div class="pb-4 border-b border-dashed border-neutral-200">
                       <footer>
                         <img
                           
                           
-                          class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                          class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                           src="/img/personal/avatar.jpeg"
                           alt="avatar"
                           height={64}
@@ -418,11 +349,11 @@ export async function getStaticPaths() {
                         />
                         <div>
                           <a
-                            class="text-lg leading-normal font-medium mb-2"
+                            class="mb-2 text-lg font-medium leading-normal"
                             href="/coming-soon"
                             target="_blank">Jesicca Thomson</a
                           >
-                          <span class="md:float-right text-sm">
+                          <span class="text-sm md:float-right">
                             <time datetime="2020-10-27">May 27, 2024</time>
                           </span>
                         </div>
@@ -440,13 +371,13 @@ export async function getStaticPaths() {
                     <ul class="md:ms-24">
                       <li class="py-4" id="comment-5">
                         <div
-                          class="pb-4 border-b border-neutral-200 border-dashed"
+                          class="pb-4 border-b border-dashed border-neutral-200"
                         >
                           <footer>
                             <img
                               
                               
-                              class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                              class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                               src="/img/personal/avatar2.jpg"
                               alt="avatar"
                               height={64}
@@ -456,11 +387,11 @@ export async function getStaticPaths() {
                             />
                             <div>
                               <a
-                                class="text-lg leading-normal font-medium mb-2"
+                                class="mb-2 text-lg font-medium leading-normal"
                                 href="/coming-soon"
                                 target="_blank">Robert Villa</a
                               >
-                              <span class="md:float-right text-sm">
+                              <span class="text-sm md:float-right">
                                 <time datetime="2020-10-27">May 27, 2024</time>
                               </span>
                             </div>
@@ -481,12 +412,12 @@ export async function getStaticPaths() {
                 </ul>
               </li>
               <li class="relative">
-                <div class="pb-4 border-b border-neutral-200 border-dashed">
+                <div class="pb-4 border-b border-dashed border-neutral-200">
                   <footer>
                     <img
                       
                       
-                      class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                      class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                       src="/img/personal/avatar.jpeg"
                       alt="avatar"
                       height={64}
@@ -496,11 +427,11 @@ export async function getStaticPaths() {
                     />
                     <div>
                       <a
-                        class="text-lg leading-normal font-medium mb-2"
+                        class="mb-2 text-lg font-medium leading-normal"
                         href="/coming-soon"
                         target="_blank">Jesicca Thomson</a
                       >
-                      <span class="md:float-right text-sm">
+                      <span class="text-sm md:float-right">
                         <time datetime="2020-10-27">May 27, 2024</time>
                       </span>
                     </div>
@@ -519,12 +450,12 @@ export async function getStaticPaths() {
                 </div>
                 <ul class="ms-12 md:ms-24">
                   <li class="py-4">
-                    <div class="pb-4 border-b border-neutral-200 border-dashed">
+                    <div class="pb-4 border-b border-dashed border-neutral-200">
                       <footer>
                         <img
                           
                           
-                          class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                          class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                           src="/img/personal/avatar2.jpg"
                           alt="avatar"
                           height={64}
@@ -534,11 +465,11 @@ export async function getStaticPaths() {
                         />
                         <div>
                           <a
-                            class="text-lg leading-normal font-medium mb-2"
+                            class="mb-2 text-lg font-medium leading-normal"
                             href="/coming-soon"
                             target="_blank">Robert Villa</a
                           >
-                          <span class="md:float-right text-sm">
+                          <span class="text-sm md:float-right">
                             <time datetime="2020-10-27">May 27, 2024</time>
                           </span>
                         </div>
@@ -560,14 +491,14 @@ export async function getStaticPaths() {
 
             <!--comment form-->
             <div id="comment-form">
-              <h4 class="text-xl leading-normal mb-2">LEAVE A REPLY</h4>
+              <h4 class="mb-2 text-xl leading-normal">LEAVE A REPLY</h4>
               <p class="mb-6">Your email address will not be published</p>
               <div>
                 <form action="#" novalidate="">
                   <div class="mt-2"></div>
                   <div class="mb-6">
                     <textarea
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Comment"
                       aria-label="insert comment"
                       rows="4"
@@ -575,7 +506,7 @@ export async function getStaticPaths() {
                   </div>
                   <div class="mb-6">
                     <input
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Name"
                       aria-label="name"
                       type="text"
@@ -584,7 +515,7 @@ export async function getStaticPaths() {
                   </div>
                   <div class="mb-6">
                     <input
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Email"
                       aria-label="email"
                       type="text"
@@ -593,7 +524,7 @@ export async function getStaticPaths() {
                   </div>
                   <div class="mb-6">
                     <input
-                      class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
+                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
                       placeholder="Website:"
                       aria-label="website"
                       type="text"
@@ -602,7 +533,7 @@ export async function getStaticPaths() {
                   <div class="mb-6">
                     <div>
                       <input
-                        class="form-checkbox h-5 w-5 text-orange-500 border border-neutral-100 focus:outline-none accent-orange-500"
+                        class="w-5 h-5 text-orange-500 border form-checkbox border-neutral-100 focus:outline-none accent-orange-500"
                         id="comment-cookies"
                         name="comment-cookies"
                         type="checkbox"
@@ -616,7 +547,7 @@ export async function getStaticPaths() {
                   </div>
                   <button
                     type="submit"
-                    class="flex items-center py-3 px-5 leading-5 text-neutral-100 bg-black hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
+                    class="flex items-center px-5 py-3 leading-5 bg-black text-neutral-100 hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
                     >Post Comment</button
                   >
                 </form>

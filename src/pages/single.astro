@@ -2,6 +2,9 @@
 import Header from "@/components/header.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+
+import AccountShare from "@/components/accounts/share.astro";
+import AccountSocials from "@/components/accounts/socials.astro";
 ---
 
 <Layout>
@@ -11,26 +14,26 @@ import { Image } from "astro:assets";
   <main class="relative">
     <!-- container -->
     <div
-      class="container xl:max-w-6xl mx-auto px-4 flex flex-col gap-4 lg:gap-6"
+      class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
     >
       <!-- layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 py-6">
+      <div class="grid grid-cols-1 gap-4 py-6 lg:grid-cols-3 lg:gap-6">
         <!-- sidebar -->
         <aside class="max-lg:order-2 lg:col-span-1 lg:pe-6">
           <div class="flex flex-col gap-4 lg:gap-6 hc-sticky">
             <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
+            <div class="border border-dashed bg-neutral-50 border-neutral-200">
               <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
+                class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
               >
                 Category
               </h3>
-              <div class="py-3 px-6">
+              <div class="px-6 py-3">
                 <ul class="flex flex-col">
                   <li class="relative">
                     <a
                       href="/coming-soon"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                      class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Travel</span>
                       <span>(6)</span>
@@ -39,7 +42,7 @@ import { Image } from "astro:assets";
                   <li class="relative">
                     <a
                       href="/coming-soon"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                      class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Gadgets</span>
                       <span>(4)</span>
@@ -48,7 +51,7 @@ import { Image } from "astro:assets";
                   <li class="relative">
                     <a
                       href="/coming-soon"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                      class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Daily Vlog</span>
                       <span>(2)</span>
@@ -57,7 +60,7 @@ import { Image } from "astro:assets";
                   <li class="relative">
                     <a
                       href="/coming-soon"
-                      class="flex items-center gap-3 justify-between py-1.5 hover:text-black"
+                      class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
                     >
                       <span>Foods</span>
                       <span>(7)</span>
@@ -68,19 +71,20 @@ import { Image } from "astro:assets";
             </div>
 
             <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
+            <div class="border border-dashed bg-neutral-50 border-neutral-200">
               <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
+                class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
               >
                 Popular Post
               </h3>
-              <div class="p-6 flex flex-col">
+              <div class="flex flex-col p-6">
                 <!-- item -->
                 <a
                   href="/coming-soon"
                   class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/8.jpg"
                     alt="image"
                     class="size-16"
@@ -91,7 +95,7 @@ import { Image } from "astro:assets";
                     <h4 class="text-sm capitalize hover:text-black">
                       Embracing A Leisurely Pace In A Fast-Paced ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
                 <!-- item -->
@@ -99,7 +103,8 @@ import { Image } from "astro:assets";
                   href="/coming-soon"
                   class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/2.jpg"
                     alt="image"
                     class="size-16"
@@ -110,7 +115,7 @@ import { Image } from "astro:assets";
                     <h4 class="text-sm capitalize hover:text-black">
                       How To Stay Productive While Traveling For ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
                 <!-- item -->
@@ -118,7 +123,8 @@ import { Image } from "astro:assets";
                   href="/coming-soon"
                   class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/5.jpg"
                     alt="image"
                     class="size-16"
@@ -129,7 +135,7 @@ import { Image } from "astro:assets";
                     <h4 class="text-sm capitalize hover:text-black">
                       Master Photography: Tips For Capturing ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
                 <!-- item -->
@@ -137,7 +143,8 @@ import { Image } from "astro:assets";
                   href="/coming-soon"
                   class="flex gap-2 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/1.jpg"
                     alt="image"
                     class="size-16"
@@ -148,109 +155,109 @@ import { Image } from "astro:assets";
                     <h4 class="text-sm capitalize hover:text-black">
                       The Tourist Destination That You Must Visit ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
               </div>
             </div>
 
             <!-- widget -->
-            <div class="bg-neutral-50 border border-dashed border-neutral-200">
+            <div class="border border-dashed bg-neutral-50 border-neutral-200">
               <h3
-                class="w-full px-6 py-3 border-b border-dashed border-neutral-200"
+                class="px-6 py-3 w-full border-b border-dashed border-neutral-200"
               >
                 Tags
               </h3>
               <div class="p-6">
-                <ul class="flex flex-wrap items-center gap-2 text-sm">
+                <ul class="flex flex-wrap gap-2 items-center text-sm">
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >travel</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >food</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >review</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >vlog</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >product</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >lifestyle</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >health</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >tips</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >work</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >hobby</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >DIY</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >tech</a
                     >
                   </li>
                   <li>
                     <a
                       href="/coming-soon"
-                      class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                       >AI</a
                     >
                   </li>
@@ -260,30 +267,30 @@ import { Image } from "astro:assets";
           </div>
         </aside>
 
-        <div class="max-lg:order-1 lg:col-span-2 py-4">
-          <h1 class="text-2xl md:text-3xl font-medium py-4">
+        <div class="py-4 max-lg:order-1 lg:col-span-2">
+          <h1 class="py-4 text-2xl font-medium md:text-3xl">
             Top 10 Must-Try Street Foods Around The World
           </h1>
           <!-- data -->
           <div
-            class="pb-4 w-full flex items-center gap-4 text-sm text-neutral-500 border-b border-dashed border-neutral-200"
+            class="flex gap-4 items-center pb-4 w-full text-sm border-b border-dashed text-neutral-500 border-neutral-200"
           >
             <!--author-->
             <a href="/coming-soon" rel="author"
-              ><i class="bi bi-person me-2"/>by yasir</a
+              ><i class="bi bi-person me-2"></i>by yasir</a
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
-              ><i class="bi bi-calendar me-2"/>May 11, 2024</time
+              ><i class="bi bi-calendar me-2"></i>May 11, 2024</time
             >
             <!--category-->
             <a href="/coming-soon" rel="category"
-              ><i class="bi bi-bookmark me-2"/>Lifestyle</a
+              ><i class="bi bi-bookmark me-2"></i>Lifestyle</a
             >
           </div>
 
           <!-- post -->
-          <div class="relative post-content pt-4">
+          <div class="relative pt-4 post-content">
             <p>
               Exploring street foods around the world is an adventure for your
               taste buds. From savory to sweet, spicy to tangy, each bite tells
@@ -294,12 +301,11 @@ import { Image } from "astro:assets";
             <div
               class="aspect-[2/1] overflow-hidden w-full bg-neutral-100 mb-8"
             >
-              <img loading="lazy"   
+              <img
+                loading="lazy"
                 src="/img/blogs/2.jpg"
                 alt="Post image"
                 class="w-full"
-                
-                
               />
             </div>
 
@@ -430,7 +436,7 @@ import { Image } from "astro:assets";
             </p>
 
             <blockquote>
-              <span class="absolute opacity-80 w-8 h-8">
+              <span class="absolute w-8 h-8 opacity-80">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="text-neutral-500"
@@ -482,76 +488,59 @@ import { Image } from "astro:assets";
 
           <!-- navigation -->
           <div
-            class="flex flex-col sm:flex-row items-center justify-between
-           gap-3 py-4 border-y border-dashed border-neutral-200"
+            class="flex flex-col gap-3 justify-between items-center py-4 border-dashed sm:flex-row border-y border-neutral-200"
           >
             <!-- tags -->
-            <ul class="flex flex-wrap items-center gap-2 text-sm">
+            <ul class="flex flex-wrap gap-2 items-center text-sm">
               <li>
-                <i class="bi bi-tags"/> :
+                <i class="bi bi-tags"></i> :
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >review</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >vlog</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >product</a
                 >
               </li>
               <li>
                 <a
                   href="/coming-soon"
-                  class="flex py-1 px-3 bg-white hover:bg-neutral-100 border border-neutral-200"
+                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
                   >lifestyle</a
                 >
               </li>
             </ul>
 
-            <!-- share -->
-            <div class="flex items-center">
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-facebook"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-instagram"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-twitter-x"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-linkedin"/>
-              </a>
-              <a href="/coming-soon" class="p-2 hover:opacity-80">
-                <i class="bi bi-tiktok"/>
-              </a>
-            </div>
+            <AccountShare />
           </div>
 
           <!-- profile -->
           <div
-            class="flex flex-row items-center py-6 md:py-8 border-b border-dashed border-neutral-200"
+            class="flex flex-row items-center py-6 border-b border-dashed md:py-8 border-neutral-200"
           >
-            <div class="rounded-full overflow-hidden">
+            <div class="overflow-hidden rounded-full">
               <a href="/coming-soon">
-                <img loading="lazy"   
+                <img
+                  loading="lazy"
                   src="/img/personal/avatar.jpeg"
                   alt="avatar"
                   height={64}
                   width={64}
-                  class="size-20 rounded-full mb-2"
+                  class="mb-2 rounded-full size-20"
                 />
               </a>
               <div class="ms-6">
@@ -564,80 +553,29 @@ import { Image } from "astro:assets";
                     class="hover:text-black"
                     rel="noopener"
                     href="https://tailwindtemplate.net"
-                    >https://tailwindtemplate.net</a>
+                    >https://tailwindtemplate.net</a
+                  >
                 </p>
                 <!--description-->
                 <p class="hidden sm:block">
                   Programmer, Developer, I design and develop Tailwind template,
                   founder of Tailnet
                 </p>
-                <!--social-->
-                <div class="mt-2">
-                  <ul class="space-x-3">
-                    <!--facebook-->
-                    <li class="inline-block">
-                      <a
-                        target="_blank"
-                        class="hover:text-neutral-900"
-                        rel="noopener noreferrer"
-                        href="https://facebook.com"
-                        title="Facebook"
-                      >
-                        <i class="bi bi-facebook text-xl"/>
-                      </a>
-                    </li>
-                    <!--twitter-->
-                    <li class="inline-block">
-                      <a
-                        target="_blank"
-                        class="hover:text-neutral-900"
-                        rel="noopener noreferrer"
-                        href="https://twitter.com"
-                        title="Twitter"
-                      >
-                        <i class="bi bi-twitter text-xl"/>
-                      </a>
-                    </li>
-                    <!--youtube-->
-                    <li class="inline-block">
-                      <a
-                        target="_blank"
-                        class="hover:text-neutral-900"
-                        rel="noopener noreferrer"
-                        href="https://youtube.com"
-                        title="Youtube"
-                      >
-                        <i class="bi bi-linkedin text-xl"/>
-                      </a>
-                    </li>
-                    <!--instagram-->
-                    <li class="inline-block">
-                      <a
-                        target="_blank"
-                        class="hover:text-neutral-900"
-                        rel="noopener noreferrer"
-                        href="https://instagram.com"
-                        title="Instagram"
-                      >
-                        <i class="bi bi-tiktok text-xl"/>
-                      </a>
-                    </li><!--end instagram-->
-                  </ul>
-                </div>
-                <!--end social-->
+                <AccountSocials />
               </div>
             </div>
 
             <!-- related -->
-            <div class="py-6 md:py-8 border-b border-dashed border-neutral-200">
-              <h3 class="text-xl w-full">Related Article</h3>
-              <div class="pt-2 flex flex-col">
+            <div class="py-6 border-b border-dashed md:py-8 border-neutral-200">
+              <h3 class="w-full text-xl">Related Article</h3>
+              <div class="flex flex-col pt-2">
                 <!-- item -->
                 <a
                   href="/coming-soon"
                   class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/8.jpg"
                     alt="image"
                     class="size-16"
@@ -648,7 +586,7 @@ import { Image } from "astro:assets";
                     <h4 class="capitalize hover:text-black">
                       Embracing A Leisurely Pace In A Fast-Paced ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
                 <!-- item -->
@@ -656,7 +594,8 @@ import { Image } from "astro:assets";
                   href="/coming-soon"
                   class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/2.jpg"
                     alt="image"
                     class="size-16"
@@ -667,7 +606,7 @@ import { Image } from "astro:assets";
                     <h4 class="capitalize hover:text-black">
                       How To Stay Productive While Traveling For ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
                 <!-- item -->
@@ -675,7 +614,8 @@ import { Image } from "astro:assets";
                   href="/coming-soon"
                   class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                 >
-                  <img loading="lazy"   
+                  <img
+                    loading="lazy"
                     src="/img/blogs/5.jpg"
                     alt="image"
                     class="size-16"
@@ -686,7 +626,7 @@ import { Image } from "astro:assets";
                     <h4 class="capitalize hover:text-black">
                       Master Photography: Tips For Capturing ...
                     </h4>
-                    <span class="text-neutral-500 text-sm">12 May, 2024</span>
+                    <span class="text-sm text-neutral-500">12 May, 2024</span>
                   </div>
                 </a>
               </div>
@@ -695,15 +635,16 @@ import { Image } from "astro:assets";
             <!-- comments -->
             <div id="comments" class="py-6 md:py-8">
               <!--title-->
-              <h3 class="text-xl w-full mb-6">5 Comments</h3>
+              <h3 class="mb-6 w-full text-xl">5 Comments</h3>
 
               <!--comment list-->
               <ol class="mb-6">
                 <li class="relative">
-                  <div class="pb-4 border-b border-neutral-200 border-dashed">
+                  <div class="pb-4 border-b border-dashed border-neutral-200">
                     <footer>
-                      <img loading="lazy"   
-                        class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                      <img
+                        loading="lazy"
+                        class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                         src="/img/personal/avatar2.jpg"
                         alt="avatar"
                         height={64}
@@ -711,11 +652,11 @@ import { Image } from "astro:assets";
                       />
                       <div>
                         <a
-                          class="text-lg leading-normal font-medium mb-2"
+                          class="mb-2 text-lg font-medium leading-normal"
                           href="/coming-soon"
                           target="_blank">Robert Villa</a
                         >
-                        <span class="md:float-right text-sm">
+                        <span class="text-sm md:float-right">
                           <time datetime="2020-10-27">May 27, 2024</time>
                         </span>
                       </div>
@@ -735,11 +676,12 @@ import { Image } from "astro:assets";
                   <ul class="ms-12 md:ms-24">
                     <li class="py-4">
                       <div
-                        class="pb-4 border-b border-neutral-200 border-dashed"
+                        class="pb-4 border-b border-dashed border-neutral-200"
                       >
                         <footer>
-                          <img loading="lazy"   
-                            class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                          <img
+                            loading="lazy"
+                            class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                             src="/img/personal/avatar.jpeg"
                             alt="avatar"
                             height={64}
@@ -747,11 +689,11 @@ import { Image } from "astro:assets";
                           />
                           <div>
                             <a
-                              class="text-lg leading-normal font-medium mb-2"
+                              class="mb-2 text-lg font-medium leading-normal"
                               href="/coming-soon"
                               target="_blank">Jesicca Thomson</a
                             >
-                            <span class="md:float-right text-sm">
+                            <span class="text-sm md:float-right">
                               <time datetime="2020-10-27">May 27, 2024</time>
                             </span>
                           </div>
@@ -769,11 +711,12 @@ import { Image } from "astro:assets";
                       <ul class="md:ms-24">
                         <li class="py-4" id="comment-5">
                           <div
-                            class="pb-4 border-b border-neutral-200 border-dashed"
+                            class="pb-4 border-b border-dashed border-neutral-200"
                           >
                             <footer>
-                              <img loading="lazy"   
-                                class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                              <img
+                                loading="lazy"
+                                class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                                 src="/img/personal/avatar2.jpg"
                                 alt="avatar"
                                 height={64}
@@ -781,11 +724,11 @@ import { Image } from "astro:assets";
                               />
                               <div>
                                 <a
-                                  class="text-lg leading-normal font-medium mb-2"
+                                  class="mb-2 text-lg font-medium leading-normal"
                                   href="/coming-soon"
                                   target="_blank">Robert Villa</a
                                 >
-                                <span class="md:float-right text-sm">
+                                <span class="text-sm md:float-right">
                                   <time datetime="2020-10-27">May 27, 2024</time
                                   >
                                 </span>
@@ -807,149 +750,147 @@ import { Image } from "astro:assets";
                   </ul>
                 </li>
                 <li class="relative">
-                  <div class="pb-4 border-b border-neutral-200 border-dashed">
+                  <div class="pb-4 border-b border-dashed border-neutral-200">
                     <footer>
-                      <img loading="lazy"   
-                        class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
+                      <img
+                        loading="lazy"
+                        class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
                         src="/img/personal/avatar.jpeg"
                         alt="avatar"
                         height={64}
                         width={64}
-                      >
-                        <div>
-                          <a
-                            class="text-lg leading-normal font-medium mb-2"
-                            href="/coming-soon"
-                            target="_blank">Jesicca Thomson</a
-                          >
-                          <span class="md:float-right text-sm">
-                            <time datetime="2020-10-27">May 27, 2024</time>
-                          </span>
-                        </div>
-                      </Image>
-                      <div>
-                        <p class="text-neutral-500">
-                          Please support me with give positive rating!
-                        </p>
-                      </div>
+                      />
                       <div>
                         <a
-                          class="text-orange-700 hover:text-orange-800"
-                          href="#comment-form">Reply</a
+                          class="mb-2 text-lg font-medium leading-normal"
+                          href="/coming-soon"
+                          target="_blank">Jesicca Thomson</a
                         >
+                        <span class="text-sm md:float-right">
+                          <time datetime="2020-10-27">May 27, 2024</time>
+                        </span>
                       </div>
                     </footer>
-                    <ul class="ms-12 md:ms-24">
-                      <li class="py-4">
-                        <div
-                          class="pb-4 border-b border-neutral-200 border-dashed"
-                        >
-                          <footer>
-                            <img loading="lazy"   
-                              class="size-16 border border-dashed border-neutral-200 max-w-full float-left mr-4"
-                              src="/img/personal/avatar2.jpg"
-                              alt="avatar"
-                              height={64}
-                              width={64}
-                            />
-                            <div>
-                              <a
-                                class="text-lg leading-normal font-medium mb-2"
-                                href="/coming-soon"
-                                target="_blank">Robert Villa</a
-                              >
-                              <span class="md:float-right text-sm">
-                                <time datetime="2020-10-27">May 27, 2024</time>
-                              </span>
-                            </div>
-                          </footer>
-                          <div>
-                            <p class="text-neutral-500">Yes Sure!</p>
-                          </div>
+                    <div>
+                      <p class="text-neutral-500">
+                        Please support me with give positive rating!
+                      </p>
+                    </div>
+                    <div>
+                      <a
+                        class="text-orange-700 hover:text-orange-800"
+                        href="#comment-form">Reply</a
+                      >
+                    </div>
+                  </div>
+                  <ul class="ms-12 md:ms-24">
+                    <li class="py-4">
+                      <div
+                        class="pb-4 border-b border-dashed border-neutral-200"
+                      >
+                        <footer>
+                          <img
+                            loading="lazy"
+                            class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
+                            src="/img/personal/avatar2.jpg"
+                            alt="avatar"
+                            height={64}
+                            width={64}
+                          />
                           <div>
                             <a
-                              class="text-orange-700 hover:text-orange-800"
-                              href="#comment-form">Reply</a
+                              class="mb-2 text-lg font-medium leading-normal"
+                              href="/coming-soon"
+                              target="_blank">Robert Villa</a
                             >
+                            <span class="text-sm md:float-right">
+                              <time datetime="2020-10-27">May 27, 2024</time>
+                            </span>
                           </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-
-                <!--comment form-->
-                <div id="comment-form">
-                  <h4 class="text-xl leading-normal mb-2">LEAVE A REPLY</h4>
-                  <p class="mb-6">Your email address will not be published</p>
-                  <div>
-                    <form action="#" novalidate="">
-                      <div class="mt-2"></div>
-                      <div class="mb-6">
-                        <textarea
-                          class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
-                          placeholder="Comment"
-                          aria-label="insert comment"
-                          rows="4"
-                          required=""></textarea>
-                      </div>
-                      <div class="mb-6">
-                        <input
-                          class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
-                          placeholder="Name"
-                          aria-label="name"
-                          type="text"
-                          required=""
-                        />
-                      </div>
-                      <div class="mb-6">
-                        <input
-                          class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
-                          placeholder="Email"
-                          aria-label="email"
-                          type="text"
-                          required=""
-                        />
-                      </div>
-                      <div class="mb-6">
-                        <input
-                          class="w-full leading-5 relative py-3 px-5 text-neutral-800 bg-white border border-neutral-200 overflow-x-auto focus:outline-none focus:border-neutral-400 focus:ring-0"
-                          placeholder="Website:"
-                          aria-label="website"
-                          type="text"
-                        />
-                      </div>
-                      <div class="mb-6">
+                        </footer>
                         <div>
-                          <input
-                            class="form-checkbox h-5 w-5 text-orange-500 border border-neutral-100 focus:outline-none accent-orange-500"
-                            id="comment-cookies"
-                            name="comment-cookies"
-                            type="checkbox"
-                            value="yes"
-                          />
-                          <label class="ms-2" for="comment-cookies">
-                            Save my name, email, and website in this browser for
-                            the next time I comment.
-                          </label>
+                          <p class="text-neutral-500">Yes Sure!</p>
+                        </div>
+                        <div>
+                          <a
+                            class="text-orange-700 hover:text-orange-800"
+                            href="#comment-form">Reply</a
+                          >
                         </div>
                       </div>
-                      <button
-                        type="submit"
-                        class="flex items-center py-3 px-5 leading-5 text-neutral-100 bg-black hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
-                        >Post Comment</button
-                      >
-                    </form>
-                  </div>
-                </div>
+                    </li>
+                  </ul>
+                </li>
               </ol>
+
+              <!--comment form-->
+              <div id="comment-form">
+                <h4 class="mb-2 text-xl leading-normal">LEAVE A REPLY</h4>
+                <p class="mb-6">Your email address will not be published</p>
+                <div>
+                  <form action="#" novalidate="">
+                    <div class="mt-2"></div>
+                    <div class="mb-6">
+                      <textarea
+                        class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
+                        placeholder="Comment"
+                        aria-label="insert comment"
+                        rows="4"
+                        required=""></textarea>
+                    </div>
+                    <div class="mb-6">
+                      <input
+                        class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
+                        placeholder="Name"
+                        aria-label="name"
+                        type="text"
+                        required=""
+                      />
+                    </div>
+                    <div class="mb-6">
+                      <input
+                        class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
+                        placeholder="Email"
+                        aria-label="email"
+                        type="text"
+                        required=""
+                      />
+                    </div>
+                    <div class="mb-6">
+                      <input
+                        class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
+                        placeholder="Website:"
+                        aria-label="website"
+                        type="text"
+                      />
+                    </div>
+                    <div class="mb-6">
+                      <div>
+                        <input
+                          class="w-5 h-5 text-orange-500 border form-checkbox border-neutral-100 focus:outline-none accent-orange-500"
+                          id="comment-cookies"
+                          name="comment-cookies"
+                          type="checkbox"
+                          value="yes"
+                        />
+                        <label class="ms-2" for="comment-cookies">
+                          Save my name, email, and website in this browser for
+                          the next time I comment.
+                        </label>
+                      </div>
+                    </div>
+                    <button
+                      type="submit"
+                      class="flex items-center px-5 py-3 leading-5 bg-black text-neutral-100 hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
+                      >Post Comment</button
+                    >
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      
-
     </div>
-  </main></Layout
->
+  </main>
+</Layout>

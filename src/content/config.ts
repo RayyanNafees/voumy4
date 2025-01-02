@@ -14,16 +14,6 @@ const posts = defineCollection({
 	}),
 });
 
-const settings = defineCollection({
-	type: "data",
-	schema: z.object({
-		instagram: z.string(),
-		pinterest: z.string(),
-		facebook: z.string(),
-		twitter: z.string(),
-		youtube: z.string(),
-	}),
-});
 
-export const collections = { posts, settings };
+export const collections = { posts };
 export type Post = CollectionEntry<"posts">;

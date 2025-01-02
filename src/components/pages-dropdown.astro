@@ -1,0 +1,78 @@
+<li
+          x-show="!location.href.includes('voumy')"
+          x-data="{ dropdown: false }"
+          class="relative md:[&_>button]:hover:bg-neutral-100"
+        >
+          <button
+            @click="dropdown = ! dropdown"
+            :class="! dropdown ? '' : 'bg-neutral-100'"
+            class="uppercase w-full py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+          >
+            Comming Soon<i
+              :class="! dropdown ? '' : 'show'"
+              class="[&.show]:-rotate-180 transition duration-400 bi bi-chevron-down"
+            >
+            </i>
+          </button>
+
+          <ul
+            x-show="dropdown"
+            x-transition.duration.500ms
+            :class="! dropdown ? '' : 'show'"
+            @click.outside="dropdown = false"
+            class="[&.show]:!opacity-100 [&.show]:!visible max-md:[&.show]:!h-auto max-md:h-0 opacity-0 invisible dropdown-menu md:z-50 relative md:absolute capitalize md:top-full end-0 md:-end-1/4 min-w-40 bg-white border border-dashed border-neutral-200"
+          >
+            <li>
+              <a href="category" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Category</a
+              >
+            </li>
+            <li>
+              <a href="single" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Single Post</a
+              >
+            </li>
+            <li>
+              <a
+                href="single-fullwidth"
+                class="flex px-4 py-1.5 hover:bg-neutral-100">Fullwidth</a
+              >
+            </li>
+            <li>
+              <a href="page" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Page</a
+              >
+            </li>
+            <li>
+              <a href="contact" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a href="author" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Author</a
+              >
+            </li>
+            <li>
+              <a href="search" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Search</a
+              >
+            </li>
+            <li>
+              <a href="tags" class="flex px-4 py-1.5 hover:bg-neutral-100"
+                >Tags</a
+              >
+            </li>
+            <li>
+              <a href="404" class="flex px-4 py-1.5 hover:bg-neutral-100">404</a
+              >
+            </li>
+            <li class="relative">
+              <a
+                href="docs/free-vs-pro"
+                class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+                >Journal</a
+              >
+            </li>
+          </ul>
+        </li>

@@ -84,9 +84,9 @@ export default config({
 		}),
 	},
 	singletons: {
-		accounts: singleton({
-			label: "Accounts",
-			path: "src/content/settings/accounts",
+		socials: singleton({
+			label: "Social Links",
+			path: "src/components/accounts/accounts",
 			format: { data: "json" },
 			schema: {
 				instagram: fields.url({
