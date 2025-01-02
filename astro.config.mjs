@@ -9,9 +9,18 @@ import react from "@astrojs/react";
 
 import netlify from "@astrojs/netlify";
 
+import keystaticAdmin from "./src/integrations/keystatic-admin";
+
 // https://astro.build/config
 export default defineConfig({
-	integrations: [react(), markdoc(), keystatic(), tailwind(), alpinejs()],
+	integrations: [
+		react(),
+		markdoc(),
+		keystatic(),
+		tailwind(),
+		alpinejs(),
+		keystaticAdmin(),
+	],
 
 	// prefetch: {
 	// 	prefetchAll: true,
