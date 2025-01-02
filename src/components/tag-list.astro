@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
 
-const tags = new Set(
+const tags =[...new Set(
   posts
     .flatMap((post) =>
       Array.isArray(post.data.tags)
@@ -12,7 +12,7 @@ const tags = new Set(
     )
     .filter((i) => i)
     .map((i) => i.toLowerCase())
-).keys();
+).keys()];
 ---
 
 <div class="border border-dashed bg-neutral-50 border-neutral-200">
