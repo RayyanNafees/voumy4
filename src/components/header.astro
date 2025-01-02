@@ -1,18 +1,21 @@
 ---
 import PagesDropdown from "./pages-dropdown.astro";
 import { getCollection } from "astro:content";
-
-const categories = [
-  ...new Set(
-    (await getCollection("posts")).map((post) => post.data.category)
-  ).keys(),
-];
+const posts = await getCollection("posts");
+const categories = [...new Set(posts.map((post) => post.data.category)).keys()];
 
 import AccountShare from "@/components/accounts/share.astro";
+const searchPosts = posts.map((post) => ({
+  title: post.data.title,
+  slug: post.slug,
+}));
 ---
 
 <!-- header -->
-<header x-data="{ navtoggle: false }" class="flex flex-col">
+<header
+  x-data={`{ navtoggle: false, searchTerm: '', searchPosts: ${JSON.stringify(searchPosts)}}`}
+  class="flex flex-col"
+>
   <!-- top -->
   <div class="border-b border-dashed border-neutral-200">
     <div
@@ -23,9 +26,7 @@ import AccountShare from "@/components/accounts/share.astro";
           <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
         </li>
         <li class="relative">
-          <a href="#" class="px-3 py-1.5 hover:text-neutral-900"
-            >About</a
-          >
+          <a href="#" class="px-3 py-1.5 hover:text-neutral-900">About</a>
         </li>
         <!-- <li class="relative">
           <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
@@ -60,7 +61,9 @@ import AccountShare from "@/components/accounts/share.astro";
 
         <a href="/" class="py-4 md:py-6 lg:py-12">
           <h2 class="text-4xl font-medium md:text-5xl font-voumy">Voumy</h2>
-          <h3 class="text-sm md:text-lg font-slogan">Where words become alive</h2>
+          <h3 class="text-sm md:text-lg font-slogan">
+            Where words become alive
+          </h3>
           <!-- <img loading="lazy"    src="..//img/logo.png"> -->
         </a>
         <!-- <img src="logo.svg" class="max-h-60"/> -->
@@ -88,13 +91,6 @@ import AccountShare from "@/components/accounts/share.astro";
       <ul
         class="flex relative text-sm uppercase md:items-center md:justify-center max-md:flex-col max-md:h-full max-md:overflow-auto md:text-base"
       >
-        <li class="relative">
-          <a
-            href="/"
-            class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
-            >Homepage</a
-          >
-        </li>
         <!-- dropdown -->
 
         {
@@ -166,6 +162,7 @@ import AccountShare from "@/components/accounts/share.astro";
                 type="text"
                 class="overflow-x-auto relative px-5 py-3 w-full h-12 leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0 peer"
                 id="search-form"
+                x-model="searchTerm"
               />
               <!-- icon -->
               <button
@@ -174,6 +171,20 @@ import AccountShare from "@/components/accounts/share.astro";
                 <span class="text-base leading-none bi bi-search"> </span>
               </button>
             </div>
+            <ul class="max-h-80 overflow-y-scroll">
+              <template x-for="searchPost in searchPosts">
+                <li
+                  class="relative"
+                  x-show="searchPost.title.toLowerCase().includes(searchTerm.toLowerCase())"
+                >
+                  <a
+                    x-bind:href="searchPost.slug"
+                    class="block py-2 px-4 text-sm text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                    x-html="searchPost.title.replace(new RegExp('(searchTerm)', 'i'), `<span class='font-bold text-black bg-yellow-300'>$1</span>`) "
+                  ></a>
+                </li></template
+              >
+            </ul>
           </div>
         </div>
       </div>
