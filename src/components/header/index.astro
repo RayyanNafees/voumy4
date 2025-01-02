@@ -1,0 +1,130 @@
+---
+import Menu from "./menu.astro";
+---
+
+<!-- header -->
+<header x-data="{ navtoggle: false }" class="flex flex-col">
+  <!-- top -->
+  <div class="border-b border-dashed border-neutral-200">
+    <div
+      class="container flex gap-3 justify-between items-center px-4 mx-auto xl:max-w-6xl"
+    >
+      <ul class="flex items-center text-sm max-sm:grow max-sm:overflow-hidden">
+        <li class="relative">
+          <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
+        </li>
+        <li class="relative">
+          <a href="#" class="px-3 py-1.5 hover:text-neutral-900">About</a>
+        </li>
+        <li class="relative">
+          <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
+        </li>
+      </ul>
+
+      <!-- social icon -->
+      <div class="flex items-center">
+        <a href="mailto:voumyblog@gmail.com" class="p-2 hover:opacity-80">
+          <i class="bi bi-envelope"></i>
+        </a>
+        <a href="https://instagram.com/voumy5" class="p-2 hover:opacity-80">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="p-2 hover:opacity-80">
+          <i class="bi bi-twitter-x"></i>
+        </a>
+        <a href="#" class="p-2 hover:opacity-80">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="#" class="p-2 hover:opacity-80">
+          <i class="bi bi-tiktok"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div x-data="{ searchtoggle: false }" class="flex flex-col">
+    <!-- logo & Button-->
+    <div class="mob-sticky max-md:z-20 max-md:bg-white">
+      <div
+        class="container flex gap-3 justify-between items-center px-4 mx-auto xl:max-w-6xl md:justify-center"
+      >
+        <button
+          @click="navtoggle = !navtoggle"
+          class="text-2xl size-10 md:hidden"
+        >
+          <i
+            :class="{ 'block': navtoggle, 'hidden': !(navtoggle) }"
+            class="bi bi-x-lg"
+          >
+          </i>
+          <i
+            :class="{ 'hidden': navtoggle, 'block': !(navtoggle) }"
+            class="bi bi-list"
+          >
+          </i>
+        </button>
+
+        <a href="/" class="py-4 md:py-6 lg:py-12">
+          <h2 class="text-4xl font-medium md:text-5xl">Voumy</h2>
+          <!-- <img loading="lazy"    src="..//img/logo.png">-->
+        </a>
+
+        <button
+          @click="searchtoggle = !searchtoggle"
+          class="text-xl size-10 md:hidden"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+    <Menu />
+
+    <!-- modal search -->
+    <div
+      x-show="searchtoggle"
+      class="z-[60] overflow-auto inset-0 w-full h-full fixed py-6"
+    >
+      <div
+        @click.away="searchtoggle = false"
+        class="z-[60] relative p-3 mx-auto my-0 max-w-full sm:max-w-[500px] opacity-0 [&.show]:opacity-100"
+        :class="! searchtoggle ? '' : 'show'"
+        x-show="searchtoggle"
+        x-transition.duration.500ms
+      >
+        <div
+          class="flex overflow-hidden flex-col bg-white rounded border border-neutral-200"
+        >
+          <!-- modal content -->
+          <div class="flex flex-col p-6">
+            <div class="flex gap-3 justify-between items-center mb-3">
+              <h3 class="text-lg">Search</h3>
+              <button
+                @click="searchtoggle = false"
+                class="text-2xl font-semibold fill-current">×</button
+              >
+            </div>
+            <div class="flex overflow-hidden relative mb-8 w-full max-w-full">
+              <label for="search-form" class="hidden">Search</label>
+              <input
+                type="text"
+                class="overflow-x-auto relative px-5 py-3 w-full h-12 leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0 peer"
+                id="search-form"
+              />
+              <!-- icon -->
+              <button
+                class="flex absolute top-0 justify-center items-center border size-12 end-0 border-neutral-200 bg-neutral-100 peer-focus:border-neutral-400"
+              >
+                <span class="text-base leading-none bi bi-search"> </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- bg modal -->
+      <div
+        class="overflow-auto fixed inset-0 z-40 w-full h-full bg-black opacity-50"
+      >
+      </div>
+    </div>
+  </div>
+</header>
