@@ -1,3 +1,9 @@
+---
+import { getCollection } from "astro:content"
+
+const categories = (await getCollection("posts")).map(post=> post.data.category)
+---
+
 <!-- header -->
 <header x-data="{ navtoggle: false }" class="flex flex-col">
   <!-- top -->
@@ -14,9 +20,9 @@
             >About</a
           >
         </li>
-        <li class="relative">
+        <!-- <li class="relative">
           <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
-        </li>
+        </li> -->
       </ul>
 
       <!-- social icon -->

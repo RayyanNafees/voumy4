@@ -1,4 +1,4 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
 	storage: {
@@ -80,6 +80,45 @@ export default config({
 			schema: {
 				title: fields.slug({ name: { label: "Category Name" } }),
 				description: fields.text({ label: "Description" }),
+			},
+		}),
+	},
+	singletons: {
+		accounts: singleton({
+			label: "Accounts",
+			path: "src/content/accounts.json",
+			format: { data: "json" },
+			schema: {
+				instagram: fields.url({
+					label: "Instagram",
+					description: "https://instagram.com/voumy5",
+					defaultValue: "https://instagram.com/voumy5",
+				}),
+				pinterest: fields.url({
+					label: "Pinterest",
+					defaultValue: "https://pinterest.com/voumy7",
+					description: "https://pinterest.com/voumy7",
+				}),
+				facebook: fields.url({
+					label: "Facebook",
+					description: "https://facebook.com/61571416023706",
+					defaultValue: "https://facebook.com/61571416023706",
+				}),
+				twitter: fields.url({
+					label: "Twitter",
+					defaultValue: "https://twitter.com/voumyblogs",
+					description: "https://twitter.com/voumyblogs",
+				}),
+				youtube: fields.url({
+					label: "Youtube",
+					description: "https://youtube.com/@voumy",
+					defaultValue: "https://youtube.com/@voumy",
+				}),
+				gmail: fields.url({
+					label: "Gmail",
+					defaultValue: "mailto:voumyblog@gmail.com",
+					description: "mailto:voumyblog@gmail.com",
+				}),
 			},
 		}),
 	},
