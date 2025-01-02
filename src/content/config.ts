@@ -14,7 +14,7 @@ const posts = defineCollection({
 	}),
 });
 
-const accounts = defineCollection({
+const settings = defineCollection({
 	type: "data",
 	schema: z.object({
 		instagram: z.string(),
@@ -25,5 +25,5 @@ const accounts = defineCollection({
 	}),
 });
 
-export const collections = { posts, accounts };
+export const collections = { posts, settings };
 export type Post = CollectionEntry<"posts">;
