@@ -2,9 +2,9 @@
 import PagesDropdown from './pages-dropdown.astro';
 import { getCollection } from "astro:content";
 
-const categories = (await getCollection("posts")).map(
+const categories = [...new Set((await getCollection("posts")).map(
   (post) => post.data.category
-);
+)).keys()];
 
 import AccountShare from '@/components/accounts/share.astro'
 ---
@@ -99,7 +99,7 @@ import AccountShare from '@/components/accounts/share.astro'
             <li class="relative">
               <a
                 href="category"
-                class="py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+                class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
               >
                 {category}
               </a>
