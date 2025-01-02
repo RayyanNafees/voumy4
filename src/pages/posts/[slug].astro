@@ -3,8 +3,9 @@ import Header from "@/components/header.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import AccountShare from "@/components/accounts/share.astro";
-import AccountSocials from "@/components/accounts/socials.astro";
 import { getCollection, getEntry } from "astro:content";
+import { getRelatedSlugs } from "@/scripts/related-articles";
+import type { Post } from "@/content/config";
 
 const { slug } = Astro.params;
 if (!slug) throw new Error("Slug not found");
@@ -14,10 +15,25 @@ if (!post) throw new Error("No post found for this slug");
 const { Content } = await post.render();
 
 // Generate static pages
+const posts = await getCollection("posts");
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({ params: { slug: post.slug } }));
 }
+
+const tags: string[] = Array.isArray(post.data.tags)
+  ? post.data.tags
+  : post.data.tags.split(" ");
+
+const allSlugs = posts.map((post) => post.slug);
+
+const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
+const relatedArticles = await Promise.all(
+  relatedSlugs.map(async (slug) => {
+    return await getEntry("posts", slug);
+  })
+);
 ---
 
 <Layout title={post.data.title}>
@@ -84,404 +100,65 @@ export async function getStaticPaths() {
               <li>
                 <i class="bi bi-tags"></i> :
               </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                  >review</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                  >vlog</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                  >product</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
-                  >lifestyle</a
-                >
-              </li>
+              {
+                tags.map((tag) => (
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
+                    >
+                      {tag}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
-
             <AccountShare />
           </div>
 
-          <!-- profile -->
-          <div
-            class="flex flex-row items-center py-6 border-b border-dashed md:py-8 border-neutral-200"
-          >
-            <div class="overflow-hidden rounded-full">
-              <a href="#">
-                <img
-                  src="/img/personal/avatar.jpeg"
-                  alt="avatar"
-                  height={64}
-                  width={64}
-                  class="mb-2 rounded-full size-20"
-                />
-              </a>
-            </div>
-            <div class="ms-6">
-              <!--name-->
-              <h4 class="text-xl">Jesicca</h4>
-              <!-- website -->
-              <p>
-                <a
-                  target="_blank"
-                  class="hover:text-black"
-                  rel="noopener"
-                  href="https://tailwindtemplate.net"
-                  >https://tailwindtemplate.net</a
-                >
-              </p>
-              <!--description-->
-              <p class="hidden sm:block">
-                Programmer, Developer, I design and develop Tailwind template,
-                founder of Tailnet
-              </p>
-              <AccountSocials />
-            </div>
-          </div>
+          <!-- <Profile /> -->
 
           <!-- related -->
-          <div class="py-6 border-b border-dashed md:py-8 border-neutral-200">
+          <div
+            class="py-6 border-b border-dashed md:py-8 border-neutral-200"
+            hidden={!relatedSlugs.length}
+          >
             <h3 class="w-full text-xl">Related Article</h3>
             <div class="flex flex-col pt-2">
               <!-- item -->
-              <a
-                href="#"
-                class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <img
-                  src="/img/blogs/8.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="capitalize hover:text-black">
-                    Embracing A Leisurely Pace In A Fast-Paced ...
-                  </h4>
-                  <span class="text-sm text-neutral-500"
-                    >{0 || "12 May, 2024"}</span
-                  >
-                </div>
-              </a>
-              <!-- item -->
-              <a
-                href="#"
-                class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <img
-                  src="/img/blogs/2.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="capitalize hover:text-black">
-                    How To Stay Productive While Traveling For ...
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-              <!-- item -->
-              <a
-                href="#"
-                class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
-              >
-                <img
-                  src="/img/blogs/5.jpg"
-                  alt="image"
-                  class="size-16"
-                  height={64}
-                  width={64}
-                  height={64}
-                  width={64}
-                />
-                <div class="flex flex-col gap-1">
-                  <h4 class="capitalize hover:text-black">
-                    Master Photography: Tips For Capturing ...
-                  </h4>
-                  <span class="text-sm text-neutral-500">12 May, 2024</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <!-- comments -->
-          <div id="comments" class="py-6 md:py-8">
-            <!--title-->
-            <h3 class="mb-6 w-full text-xl">5 Comments</h3>
-
-            <!--comment list-->
-            <ol class="mb-6">
-              <li class="relative">
-                <div class="pb-4 border-b border-dashed border-neutral-200">
-                  <footer>
-                    <img
-                      class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
-                      src="/img/personal/avatar2.jpg"
-                      alt="avatar"
-                      height={64}
-                      width={64}
-                      height={64}
-                      width={64}
-                    />
-                    <div>
-                      <a
-                        class="mb-2 text-lg font-medium leading-normal"
-                        href="#"
-                        target="_blank">Robert Villa</a
-                      >
-                      <span class="text-sm md:float-right">
-                        <time datetime="2020-10-27">May 27, 2024</time>
-                      </span>
-                    </div>
-                  </footer>
-                  <div>
-                    <p class="text-neutral-500">
-                      I like this themes, fast loading and look profesional
-                    </p>
-                  </div>
-                  <div>
+              {
+                relatedArticles
+                  .filter((i) => i !== undefined)
+                  .slice(0, 3)
+                  .map((post) => (
                     <a
-                      class="text-orange-700 hover:text-orange-800"
-                      href="#comment-form">Reply</a
+                      href={`/posts/${post.slug}`}
+                      class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
                     >
-                  </div>
-                </div>
-                <ul class="ms-12 md:ms-24">
-                  <li class="py-4">
-                    <div class="pb-4 border-b border-dashed border-neutral-200">
-                      <footer>
-                        <img
-                          class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
-                          src="/img/personal/avatar.jpeg"
-                          alt="avatar"
-                          height={64}
-                          width={64}
-                          height={64}
-                          width={64}
-                        />
-                        <div>
-                          <a
-                            class="mb-2 text-lg font-medium leading-normal"
-                            href="#"
-                            target="_blank">Jesicca Thomson</a
-                          >
-                          <span class="text-sm md:float-right">
-                            <time datetime="2020-10-27">May 27, 2024</time>
-                          </span>
-                        </div>
-                      </footer>
-                      <div>
-                        <p class="text-neutral-500">Thank you Robert!</p>
-                      </div>
-                      <div>
-                        <a
-                          class="text-orange-700 hover:text-orange-800"
-                          href="#comment-form">Reply</a
-                        >
-                      </div>
-                    </div>
-                    <ul class="md:ms-24">
-                      <li class="py-4" id="comment-5">
-                        <div
-                          class="pb-4 border-b border-dashed border-neutral-200"
-                        >
-                          <footer>
-                            <img
-                              class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
-                              src="/img/personal/avatar2.jpg"
-                              alt="avatar"
-                              height={64}
-                              width={64}
-                              height={64}
-                              width={64}
-                            />
-                            <div>
-                              <a
-                                class="mb-2 text-lg font-medium leading-normal"
-                                href="#"
-                                target="_blank">Robert Villa</a
-                              >
-                              <span class="text-sm md:float-right">
-                                <time datetime="2020-10-27">May 27, 2024</time>
-                              </span>
-                            </div>
-                          </footer>
-                          <div>
-                            <p class="text-neutral-500">You're welcome!</p>
-                          </div>
-                          <div>
-                            <a
-                              class="text-orange-700 hover:text-orange-800"
-                              href="#comment-form">Reply</a
-                            >
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="relative">
-                <div class="pb-4 border-b border-dashed border-neutral-200">
-                  <footer>
-                    <img
-                      class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
-                      src="/img/personal/avatar.jpeg"
-                      alt="avatar"
-                      height={64}
-                      width={64}
-                      height={64}
-                      width={64}
-                    />
-                    <div>
-                      <a
-                        class="mb-2 text-lg font-medium leading-normal"
-                        href="#"
-                        target="_blank">Jesicca Thomson</a
-                      >
-                      <span class="text-sm md:float-right">
-                        <time datetime="2020-10-27">May 27, 2024</time>
-                      </span>
-                    </div>
-                  </footer>
-                  <div>
-                    <p class="text-neutral-500">
-                      Please support me with give positive rating!
-                    </p>
-                  </div>
-                  <div>
-                    <a
-                      class="text-orange-700 hover:text-orange-800"
-                      href="#comment-form">Reply</a
-                    >
-                  </div>
-                </div>
-                <ul class="ms-12 md:ms-24">
-                  <li class="py-4">
-                    <div class="pb-4 border-b border-dashed border-neutral-200">
-                      <footer>
-                        <img
-                          class="float-left mr-4 max-w-full border border-dashed size-16 border-neutral-200"
-                          src="/img/personal/avatar2.jpg"
-                          alt="avatar"
-                          height={64}
-                          width={64}
-                          height={64}
-                          width={64}
-                        />
-                        <div>
-                          <a
-                            class="mb-2 text-lg font-medium leading-normal"
-                            href="#"
-                            target="_blank">Robert Villa</a
-                          >
-                          <span class="text-sm md:float-right">
-                            <time datetime="2020-10-27">May 27, 2024</time>
-                          </span>
-                        </div>
-                      </footer>
-                      <div>
-                        <p class="text-neutral-500">Yes Sure!</p>
-                      </div>
-                      <div>
-                        <a
-                          class="text-orange-700 hover:text-orange-800"
-                          href="#comment-form">Reply</a
-                        >
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ol>
-
-            <!--comment form-->
-            <div id="comment-form">
-              <h4 class="mb-2 text-xl leading-normal">LEAVE A REPLY</h4>
-              <p class="mb-6">Your email address will not be published</p>
-              <div>
-                <form action="#" novalidate="">
-                  <div class="mt-2"></div>
-                  <div class="mb-6">
-                    <textarea
-                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
-                      placeholder="Comment"
-                      aria-label="insert comment"
-                      rows="4"
-                      required=""></textarea>
-                  </div>
-                  <div class="mb-6">
-                    <input
-                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
-                      placeholder="Name"
-                      aria-label="name"
-                      type="text"
-                      required=""
-                    />
-                  </div>
-                  <div class="mb-6">
-                    <input
-                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
-                      placeholder="Email"
-                      aria-label="email"
-                      type="text"
-                      required=""
-                    />
-                  </div>
-                  <div class="mb-6">
-                    <input
-                      class="overflow-x-auto relative px-5 py-3 w-full leading-5 bg-white border text-neutral-800 border-neutral-200 focus:outline-none focus:border-neutral-400 focus:ring-0"
-                      placeholder="Website:"
-                      aria-label="website"
-                      type="text"
-                    />
-                  </div>
-                  <div class="mb-6">
-                    <div>
-                      <input
-                        class="w-5 h-5 text-orange-500 border form-checkbox border-neutral-100 focus:outline-none accent-orange-500"
-                        id="comment-cookies"
-                        name="comment-cookies"
-                        type="checkbox"
-                        value="yes"
+                      <img
+                        src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
+                        alt={post.slug}
+                        class="size-16"
+                        height={64}
+                        width={64}
+                        height={64}
+                        width={64}
                       />
-                      <label class="ms-2" for="comment-cookies">
-                        Save my name, email, and website in this browser for the
-                        next time I comment.
-                      </label>
-                    </div>
-                  </div>
-                  <button
-                    type="submit"
-                    class="flex items-center px-5 py-3 leading-5 bg-black text-neutral-100 hover:text-white hover:bg-neutral-900 hover:ring-0 focus:outline-none focus:ring-0"
-                    >Post Comment</button
-                  >
-                </form>
-              </div>
+                      <div class="flex flex-col gap-1">
+                        <h4 class="capitalize hover:text-black">
+                          {post.data.title}
+                        </h4>
+                        <span class="text-sm text-neutral-500">
+                          {post.data.dateOfPublishing || "12 May, 2024"}
+                        </span>
+                      </div>
+                    </a>
+                  ))
+              }
             </div>
           </div>
+
+          <!-- <CommentSection /> -->
         </div>
       </div>
     </div>

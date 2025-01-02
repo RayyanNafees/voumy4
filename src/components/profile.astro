@@ -1,0 +1,40 @@
+---
+import AccountSocials from './accounts/socials.astro'
+---
+
+<!-- profile -->
+ <div
+ class="flex flex-row items-center py-6 border-b border-dashed md:py-8 border-neutral-200"
+>
+ <div class="overflow-hidden rounded-full">
+   <a href="#">
+     <img
+       src="/img/personal/avatar.jpeg"
+       alt="avatar"
+       height={64}
+       width={64}
+       class="mb-2 rounded-full size-20"
+     />
+   </a>
+ </div>
+ <div class="ms-6">
+   <!--name-->
+   <h4 class="text-xl">Jesicca</h4>
+   <!-- website -->
+   <p>
+     <a
+       target="_blank"
+       class="hover:text-black"
+       rel="noopener"
+       href="https://tailwindtemplate.net"
+       >https://tailwindtemplate.net</a
+     >
+   </p>
+   <!--description-->
+   <p class="hidden sm:block">
+     Programmer, Developer, I design and develop Tailwind template,
+     founder of Tailnet
+   </p>
+   <AccountSocials />
+ </div>
+</div>

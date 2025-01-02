@@ -15,7 +15,10 @@ import keystaticAdmin from "./src/integrations/keystatic-admin";
 export default defineConfig({
 	integrations: [
 		react(),
-		markdoc(),
+		markdoc({
+			allowHTML:true,
+			// ignoreIndentation:
+		}),
 		keystatic(),
 		tailwind(),
 		alpinejs(),
@@ -32,6 +35,6 @@ export default defineConfig({
 	}),
 	prefetch: {
 		prefetchAll: true,
-		defaultStrategy: "viewport",
+		defaultStrategy: "hover",
 	},
 });

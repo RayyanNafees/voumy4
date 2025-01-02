@@ -1,11 +1,33 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
-
+import React from "react";
 export default config({
 	storage: {
 		kind: "cloud",
 	},
 	cloud: {
 		project: "rayyan/voumy4",
+	},
+	ui: {
+		brand: {
+			name: "Voumy",
+			mark: ({ colorScheme }) => {
+				const path =
+					colorScheme === "dark" ? "/voumy-gold.png" : "/favicon.png";
+
+				return React.createElement("img", {
+					src: path,
+					height: 30,
+					width: 30,
+					style: {
+						borderRadius: 10,
+					},
+				});
+			},
+		},
+		navigation: {
+			Content: ["posts", "categories"],
+			Settings: ["socials"],
+		},
 	},
 	collections: {
 		posts: collection({

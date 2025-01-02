@@ -15,6 +15,7 @@
     "@keystatic/core": "^0.5.42",
     "alpinejs": "^3.14.8",
     "astro": "^4.0.3",
+    "groq-sdk": "^0.9.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.33.5"
