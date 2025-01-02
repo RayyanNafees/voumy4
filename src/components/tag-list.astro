@@ -20,13 +20,13 @@ const tags = new Set(
     Tags
   </h3>
   <div class="p-6">
-    <ul class="flex flex-wrap gap-2 items-center text-sm max-h-60 overflow-y-scroll">
+    <ul class="flex overflow-y-scroll flex-wrap gap-2 items-center max-h-60 text-sm">
       {
-        tags.map((tag) => (
+        tags?.map?.((tag) => (
           <li>
             <a
               href="/coming-soon"
-              class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200 lowercase"
+              class="flex px-3 py-1 lowercase bg-white border hover:bg-neutral-100 border-neutral-200"
             >
               {tag}
             </a>
