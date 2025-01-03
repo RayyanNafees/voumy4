@@ -7,9 +7,9 @@ import { getCollection } from "astro:content";
 import CategoryWidget from "@/components/category-widget.astro";
 import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
-import Post from '@/components/post.astro';
+import Post from "@/components/post.astro";
 const { category } = Astro.params;
-if (!category) return Astro.redirect("/404")
+if (!category) return Astro.redirect("/404");
 
 const categoryPosts = await getCollection(
   "posts",
@@ -37,7 +37,9 @@ export const getStaticPaths = (async () => {
     <!-- Hero -->
     <div class="text-center border-b border-dashed border-neutral-200">
       <div class="px-6 py-12 mx-auto max-w-2xl">
-        <h2 class="mb-6 text-3xl font-medium capitalize lg:text-3xl font-handwriting">
+        <h2
+          class="mb-6 text-3xl font-medium capitalize lg:text-3xl font-handwriting"
+        >
           {category}
         </h2>
         <div class="relative max-w-[150px] mx-auto mb-6">
@@ -74,11 +76,22 @@ export const getStaticPaths = (async () => {
         </aside>
 
         <div class="max-lg:order-1 max-lg:mb-12 lg:col-span-2">
-          <h2
-            class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
-          >
-            Latest from {category}
-          </h2>
+          <div class="flex justify-between items-center">
+            <h2
+              class="pb-2 text-lg font-medium border-b border-dashed border-neutral-200"
+            >
+              <!-- Latest from {category} -->
+            </h2>
+            <ul
+            x-data='{sort: 1}'
+              class="flex gap-2 [&>li]:bg-neutral-100 [&>li]:px-2 [&>li]:py-1 [&>li]:border-2 [&>li]:border-neutral-300 [&>li]:rounded"
+            >
+              <li class="bi bi-arrow-up" @click="sort = -1" x-show="sort === 1"></li>
+              <li class="bi bi-arrow-down" @click="sort = 1" x-show="sort === -1"></li>
+              <li class="bi bi-shuffle"></li>
+            </ul>
+          </div>
+
           <!-- loop post -->
           <div class="flex flex-col">
             {

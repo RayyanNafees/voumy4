@@ -8,7 +8,7 @@ import { getRelatedSlugs } from "@/scripts/related-articles";
 import type { Post } from "@/content/config";
 
 const { slug } = Astro.params;
-if (!slug) return Astro.redirect('/404')
+if (!slug) return Astro.redirect("/404");
 const post = await getEntry("posts", slug);
 
 if (!post) throw new Error("No post found for this slug");
@@ -23,8 +23,8 @@ export async function getStaticPaths() {
 }
 
 const tags: string[] = Array.isArray(post.data.tags)
-  ? post.data.tags
-  : post.data.tags.split(" ");
+  ? post.data.tags.filter((i) => i)
+  : post.data.tags.split(" ").filter((i) => i);
 
 const allSlugs = posts.map((post) => post.slug);
 
@@ -64,7 +64,9 @@ const relatedArticles = await Promise.all(
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
-              ><i class="bi bi-calendar me-2"></i>{post.data.dateOfPublishing.toLocaleDateString()}</time
+              ><i class="bi bi-calendar me-2"></i>{
+                post.data.dateOfPublishing.toLocaleDateString()
+              }</time
             >
             <!--category-->
             <a href="#" rel="category"
@@ -105,7 +107,7 @@ const relatedArticles = await Promise.all(
                   <li>
                     <a
                       href="javascript:void(0)"
-                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200"
+                      class="flex px-3 py-1 bg-white border hover:bg-neutral-100 border-neutral-200 lowercase"
                     >
                       {tag}
                     </a>
@@ -134,6 +136,7 @@ const relatedArticles = await Promise.all(
                     <a
                       href={`/posts/${post.slug}`}
                       class="flex gap-3 py-3 border-b border-dashed last:border-b-0 border-neutral-200"
+                      data-astro-prefetch="hover"
                     >
                       <img
                         src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
@@ -149,7 +152,8 @@ const relatedArticles = await Promise.all(
                           {post.data.title}
                         </h4>
                         <span class="text-sm text-neutral-500">
-                          {post.data.dateOfPublishing.toLocaleDateString() || "12 May, 2024"}
+                          {post.data.dateOfPublishing.toLocaleDateString() ||
+                            "12 May, 2024"}
                         </span>
                       </div>
                     </a>

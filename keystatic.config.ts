@@ -46,6 +46,7 @@ export default config({
 							directory: "public/img/blogs",
 							publicPath: "/img/blogs",
 						},
+
 					},
 				}),
 				dateOfPublishing: fields.date({
@@ -60,6 +61,7 @@ export default config({
 					validation: {
 						isRequired: true,
 					},
+					publicPath: "/img/blogs",
 				}),
 				category: fields.select({
 					label: "Category",
@@ -87,13 +89,6 @@ export default config({
 					},
 					description: "Space separated tags, eg: travel food lifestyle",
 				}),
-				// additionalCategory : fields.relationship({
-				// 	label: "Additional Category",
-				// 	validation: {
-				// 		isRequired: true,
-				// 	},
-				// 	relationship: {},
-				// })
 			},
 		}),
 		categories: collection({

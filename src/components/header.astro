@@ -7,7 +7,7 @@ const categories = [...new Set(posts.map((post) => post.data.category)).keys()];
 import AccountShare from "@/components/accounts/share.astro";
 const searchPosts = posts.map((post) => ({
   title: post.data.title,
-  slug:`/posts/${post.slug}`,
+  slug: `/posts/${post.slug}`,
 }));
 ---
 
@@ -26,7 +26,8 @@ const searchPosts = posts.map((post) => ({
           <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
         </li>
         <li class="relative">
-          <a href="/contact" class="px-3 py-1.5 hover:text-neutral-900">About</a>
+          <a href="/contact" class="px-3 py-1.5 hover:text-neutral-900">About</a
+          >
         </li>
         <!-- <li class="relative">
           <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
@@ -60,10 +61,8 @@ const searchPosts = posts.map((post) => ({
         </button>
 
         <a href="/" class="py-4 md:py-6 lg:py-12">
-          <h2 class="text-4xl font-medium md:text-5xl font-voumy">Voumy</h2>
-          <h3 class="text-sm md:text-lg font-slogan">
-            Where words become alive
-          </h3>
+          <h2 class="text-4xl font-medium md:text-5xl font-voumy text-center">Voumy!</h2>
+          <h3 class="text-sm font-slogan italic text-center text-neutral-500">Where words become alive</h3>
           <!-- <img loading="lazy"    src="..//img/logo.png"> -->
         </a>
         <!-- <img src="logo.svg" class="max-h-60"/> -->
@@ -179,6 +178,7 @@ const searchPosts = posts.map((post) => ({
                 >
                   <a
                     x-bind:href="searchPost.slug"
+                    data-astro-prefetch="hover"
                     class="block py-2 px-4 text-sm text-neutral-800 hover:bg-neutral-100 hover:text-black"
                     x-html="searchPost.title.replace(new RegExp('(searchTerm)', 'i'), `<span class='font-bold text-black bg-yellow-300'>$1</span>)`) "
                   ></a>
