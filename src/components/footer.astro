@@ -1,18 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-
+import {src} from '@/utils/img'
 const posts = await getCollection("posts");
 
 // Sort posts by date and get top 3 for featured and popular posts
 const sortedPosts = posts.sort(
   (a, b) => b.data.dateOfPublishing.getTime() - a.data.dateOfPublishing.getTime()
 );
-const featuredPosts = sortedPosts.filter(post => post.data.featured).slice(0, 3);
-const popularPosts = sortedPosts.filter(post=> post.data.popular).slice(3, 6);
+const featuredPosts = sortedPosts.filter(post => post.data.featured)
+const popularPosts = sortedPosts.filter(post=> post.data.popular) 
 ---
-
-<footer class="bg-gradient-to-br from-indigo-50 to-purple-50">
+<div class="bg-gradient-to-br from-indigo-50 to-purple-50">
   <!--Footer content-->
   <div
     class="py-12 border-b border-dashed border-indigo-200 text-gray-800"
@@ -57,7 +56,7 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular).slice(3, 6);
                   class="flex gap-4 group transition-all duration-300 hover:bg-white/50 rounded-lg p-3 -mx-3"
                 >
                   <img
-                    src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
+                    src={src(post)}
                     alt={post.data.title}
                     class="size-16 rounded-md object-cover group-hover:scale-105 transition-transform"
                     height={64}
@@ -143,7 +142,7 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular).slice(3, 6);
         <!-- Footer Copyright -->
         <div class="text-gray-600">
           <p>
-            Copyright © {new Date().getFullYear()} Voumy | 
+            Copyright {new Date().getFullYear()} Voumy | 
             A Gift by <a
               href="https://rayyannafees.github.io"
               target="_blank"
@@ -156,7 +155,7 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular).slice(3, 6);
       </div>
     </div>
   </div>
-</footer>
+</div>
 
 <style>
   /* Custom scrollbar for post lists */

@@ -4,8 +4,9 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import AccountShare from "@/components/accounts/share.astro";
 import { getCollection, getEntry } from "astro:content";
-import { getRelatedSlugs } from "@/scripts/related-articles";
+import { getRelatedSlugs } from "@/utils/related-articles";
 import type { Post } from "@/content/config";
+import {src} from '@/utils/img'
 
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/404");
@@ -87,7 +88,7 @@ const relatedArticles = await Promise.all(
           >
             <img
               loading="lazy"
-              src={`/img/blogs/${slug}/${post.data.coverImage}`}
+              src={src(post)}
               alt={slug}
               class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               transition:name={slug}
@@ -146,7 +147,7 @@ const relatedArticles = await Promise.all(
                 >
                   <div class="relative aspect-video overflow-hidden">
                     <img
-                      src={`/img/blogs/${post.slug}/${post.data.coverImage}`}
+                      src={src(post)}
                       alt={post.slug}
                       class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
