@@ -60,15 +60,15 @@ const relatedArticles = await Promise.all(
           >
             <!--author-->
             <a href="#" rel="author"
-              ><i class="bi bi-person me-2"></i>by yasir</a
+              ><i class="bi bi-person me-2"></i>by {post.data.author}</a
             >
             <!--date-->
             <time class="news-date" datetime="2024-06-16"
-              ><i class="bi bi-calendar me-2"></i>May 11, 2024</time
+              ><i class="bi bi-calendar me-2"></i>{post.data.dateOfPublishing.toLocaleDateString()}</time
             >
             <!--category-->
             <a href="#" rel="category"
-              ><i class="bi bi-bookmark me-2"></i>Lifestyle</a
+              ><i class="bi bi-bookmark me-2"></i>{post.data.category}</a
             >
           </div>
 
@@ -149,7 +149,7 @@ const relatedArticles = await Promise.all(
                           {post.data.title}
                         </h4>
                         <span class="text-sm text-neutral-500">
-                          {post.data.dateOfPublishing || "12 May, 2024"}
+                          {post.data.dateOfPublishing.toLocaleDateString() || "12 May, 2024"}
                         </span>
                       </div>
                     </a>
