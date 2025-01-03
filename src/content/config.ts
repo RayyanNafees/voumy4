@@ -6,16 +6,18 @@ const posts = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		dateOfPublishing: z.date(),
-		coverImage: z.union([
-			z.string(),
-			z.object({ src: z.string() }).transform((s) => s.src),
-		]),
+		coverImage: z.object({
+			src: z.string(),
+			alt: z.string(),
+			height: z.number(),
+			width: z.number(),
+		}),
 		category: z.string(),
 		author: z.string(),
 		tags: z.union([z.array(z.string()), z.string()]), // or array of stringsz.string(),
-		excerpt: z.string().optional(),
-		popular: z.boolean().optional(),
-		featured: z.boolean().optional(),
+		excerpt: z.string(),
+		popular: z.boolean(),
+		featured: z.boolean(),
 	}),
 });
 

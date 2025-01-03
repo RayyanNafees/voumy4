@@ -1,6 +1,6 @@
 ---
 import type { Post } from "@/content/config";
-import {src} from '@/utils/img'
+import { src } from "@/utils/img";
 
 export interface Props {
   post: Post;
@@ -20,12 +20,15 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
   <div class="relative overflow-hidden rounded-lg aspect-[3/2]">
     <a href={`/posts/${post.slug}`} class="block">
       <img
-      src={src(post)}
-      alt={post.data.title}
-      class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-      transition:name={post.slug}
-    />
-      <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        loading="lazy"
+        class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        transition:name={post.slug}
+        {...post.data.coverImage}
+      />
+      <div
+        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+      </div>
     </a>
   </div>
 
@@ -33,23 +36,27 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
   <div class="flex flex-col justify-between space-y-4">
     {/* Title and Metadata */}
     <div>
-      <h3 class="text-2xl font-semibold mb-3 text-neutral-800 group-hover:text-black transition-colors">
-        <a 
-          href={`/posts/${post.slug}`} 
+      <h3
+        class="text-2xl font-semibold mb-3 text-neutral-800 group-hover:text-black transition-colors"
+      >
+        <a
+          href={`/posts/${post.slug}`}
           class="hover:underline decoration-neutral-300 underline-offset-4"
         >
           {post.data.title}
         </a>
       </h3>
-      
+
       <div class="flex items-center gap-3 text-sm text-neutral-500 mb-4">
         <time datetime={post.data.dateOfPublishing.toISOString()}>
           <i class="bi bi-calendar me-1"></i>
-          {post.data.dateOfPublishing.toLocaleDateString('en-US', { 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric' 
-          })}
+          {
+            post.data.dateOfPublishing.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })
+          }
         </time>
         <span>
           <i class="bi bi-clock me-1"></i>
@@ -67,13 +74,15 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
     <div>
       <a
         href={`/posts/${post.slug}`}
-        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium 
-               text-neutral-800 bg-neutral-100 border border-neutral-200 
-               rounded-lg hover:bg-neutral-200/80 hover:border-neutral-300 
+        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium
+               text-neutral-800 bg-neutral-100 border border-neutral-200
+               rounded-lg hover:bg-neutral-200/80 hover:border-neutral-300
                transition-all duration-300 group/cta"
       >
         Read More
-        <i class="bi bi-arrow-right ml-2 transition-transform group-hover/cta:translate-x-1"></i>
+        <i
+          class="bi bi-arrow-right ml-2 transition-transform group-hover/cta:translate-x-1"
+        ></i>
       </a>
     </div>
   </div>

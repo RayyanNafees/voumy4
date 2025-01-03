@@ -6,7 +6,7 @@ import AccountShare from "@/components/accounts/share.astro";
 import { getCollection, getEntry } from "astro:content";
 import { getRelatedSlugs } from "@/utils/related-articles";
 import type { Post } from "@/content/config";
-import {src} from '@/utils/img'
+import { src } from "@/utils/img";
 
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/404");
@@ -33,7 +33,7 @@ const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
 const relatedArticles = await Promise.all(
   relatedSlugs.map(async (slug) => {
     return await getEntry("posts", slug);
-  })
+  }),
 );
 ---
 
@@ -41,13 +41,17 @@ const relatedArticles = await Promise.all(
   <Header />
 
   <!-- content -->
-  <main class="relative bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen">
+  <main
+    class="relative bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen"
+  >
     <!-- container -->
     <div
       class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6 py-12"
     >
       <!-- layout -->
-      <div class="grid grid-cols-1 bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div
+        class="grid grid-cols-1 bg-white rounded-2xl shadow-xl overflow-hidden"
+      >
         <div class="relative p-8 md:p-12">
           <!-- Post Header -->
           <div class="text-center mb-8">
@@ -68,11 +72,13 @@ const relatedArticles = await Promise.all(
               <div class="flex items-center gap-2">
                 <i class="bi bi-calendar text-purple-600"></i>
                 <time datetime={post.data.dateOfPublishing.toISOString()}>
-                  {post.data.dateOfPublishing.toLocaleDateString('en-US', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric'
-                  })}
+                  {
+                    post.data.dateOfPublishing.toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })
+                  }
                 </time>
               </div>
               <div class="flex items-center gap-2">
@@ -88,10 +94,9 @@ const relatedArticles = await Promise.all(
           >
             <img
               loading="lazy"
-              src={src(post)}
-              alt={slug}
+              {...post.data.coverImage}
+              transition:name={post.slug}
               class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              transition:name={slug}
             />
           </div>
 
@@ -127,11 +132,13 @@ const relatedArticles = await Promise.all(
       </div>
 
       <!-- Related Articles -->
-      <div 
-        class="bg-white rounded-2xl shadow-xl overflow-hidden p-8" 
+      <div
+        class="bg-white rounded-2xl shadow-xl overflow-hidden p-8"
         hidden={!relatedSlugs.length}
       >
-        <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-300 pb-2">
+        <h3
+          class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-300 pb-2"
+        >
           Related Articles
         </h3>
         <div class="grid md:grid-cols-3 gap-6">
@@ -147,8 +154,9 @@ const relatedArticles = await Promise.all(
                 >
                   <div class="relative aspect-video overflow-hidden">
                     <img
-                      src={src(post)}
-                      alt={post.slug}
+                      loading="lazy"
+                      {...post.data.coverImage}
+                      transition:name={post.slug}
                       class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
@@ -157,10 +165,10 @@ const relatedArticles = await Promise.all(
                       {post.data.title}
                     </h4>
                     <span class="text-sm text-gray-500 mt-2">
-                      {post.data.dateOfPublishing.toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
+                      {post.data.dateOfPublishing.toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </span>
                   </div>
@@ -180,10 +188,11 @@ const relatedArticles = await Promise.all(
     line-height: 1.8;
   }
 
-  .prose h2, .prose h3 {
+  .prose h2,
+  .prose h3 {
     margin-top: 1.5rem;
     margin-bottom: 1rem;
-    color: theme('colors.indigo.800');
+    color: theme("colors.indigo.800");
   }
 
   .prose p {
@@ -191,12 +200,12 @@ const relatedArticles = await Promise.all(
   }
 
   .prose a {
-    color: theme('colors.indigo.600');
+    color: theme("colors.indigo.600");
     text-decoration: underline;
     transition: color 0.3s ease;
   }
 
   .prose a:hover {
-    color: theme('colors.purple.700');
+    color: theme("colors.purple.700");
   }
 </style>

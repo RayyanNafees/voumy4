@@ -1,21 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import {src} from '@/utils/img'
+import { src } from "@/utils/img";
 const posts = await getCollection("posts");
 
 // Sort posts by date and get top 3 for featured and popular posts
 const sortedPosts = posts.sort(
-  (a, b) => b.data.dateOfPublishing.getTime() - a.data.dateOfPublishing.getTime()
+  (a, b) =>
+    b.data.dateOfPublishing.getTime() - a.data.dateOfPublishing.getTime(),
 );
-const featuredPosts = sortedPosts.filter(post => post.data.featured)
-const popularPosts = sortedPosts.filter(post=> post.data.popular) 
+const featuredPosts = sortedPosts.filter((post) => post.data.featured);
+const popularPosts = sortedPosts.filter((post) => post.data.popular);
 ---
+
 <div class="bg-gradient-to-br from-indigo-50 to-purple-50">
   <!--Footer content-->
-  <div
-    class="py-12 border-b border-dashed border-indigo-200 text-gray-800"
-  >
+  <div class="py-12 border-b border-dashed border-indigo-200 text-gray-800">
     <div class="container px-4 mx-auto xl:max-w-6xl">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
         <!-- About Us Widget -->
@@ -26,8 +26,8 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
             About Us
           </h3>
           <p class="text-gray-600 leading-relaxed">
-            At Voumy, we believe in the power of sharing ideas and experiences. 
-            We prioritize quality content crafted by passionate writers, 
+            At Voumy, we believe in the power of sharing ideas and experiences.
+            We prioritize quality content crafted by passionate writers,
             committed to delivering reliable and inspiring information.
           </p>
           <div class="flex items-center gap-3 mt-2">
@@ -48,7 +48,9 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
           >
             Featured Posts
           </h3>
-          <div class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip">
+          <div
+            class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip"
+          >
             {
               featuredPosts.map((post) => (
                 <a
@@ -56,21 +58,20 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
                   class="flex gap-4 group transition-all duration-300 hover:bg-white/50 rounded-lg p-3 -mx-3"
                 >
                   <img
-                    src={src(post)}
-                    alt={post.data.title}
                     class="size-16 rounded-md object-cover group-hover:scale-105 transition-transform"
-                    height={64}
-                    width={64}
+                    {...post.data.coverImage}
+                    transition:name={post.slug}
+                    loading="lazy"
                   />
                   <div class="flex flex-col justify-center">
                     <h4 class="text-sm font-medium text-gray-800 group-hover:text-indigo-700 transition-colors">
                       {post.data.title}
                     </h4>
                     <span class="text-xs text-gray-500 mt-1">
-                      {post.data.dateOfPublishing.toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
+                      {post.data.dateOfPublishing.toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </span>
                   </div>
@@ -87,7 +88,9 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
           >
             Popular Posts
           </h3>
-          <div class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip">
+          <div
+            class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip"
+          >
             {
               popularPosts.map((post) => (
                 <a
@@ -99,10 +102,10 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
                       {post.data.title}
                     </h4>
                     <span class="text-xs text-gray-500 mt-1">
-                      {post.data.dateOfPublishing.toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
+                      {post.data.dateOfPublishing.toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </span>
                   </div>
@@ -120,18 +123,20 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
     <div class="container px-4 mx-auto xl:max-w-6xl">
       <div class="flex gap-6 items-center max-sm:flex-col sm:justify-between">
         <!-- Footer Left Menu -->
-        <ul class="flex items-center max-sm:flex-wrap max-sm:justify-center space-x-4">
+        <ul
+          class="flex items-center max-sm:flex-wrap max-sm:justify-center space-x-4"
+        >
           <li>
-            <a 
-              href="/" 
+            <a
+              href="/"
               class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
             >
               Home
             </a>
           </li>
           <li>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
             >
               About
@@ -142,8 +147,7 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
         <!-- Footer Copyright -->
         <div class="text-gray-600">
           <p>
-            Copyright {new Date().getFullYear()} Voumy | 
-            A Gift by <a
+            Copyright {new Date().getFullYear()} Voumy | A Gift by <a
               href="https://rayyannafees.github.io"
               target="_blank"
               class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
@@ -161,7 +165,7 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
   /* Custom scrollbar for post lists */
   div > div {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.indigo.200') theme('colors.indigo.50');
+    scrollbar-color: theme("colors.indigo.200") theme("colors.indigo.50");
   }
 
   div > div::-webkit-scrollbar {
@@ -169,11 +173,11 @@ const popularPosts = sortedPosts.filter(post=> post.data.popular)
   }
 
   div > div::-webkit-scrollbar-track {
-    background: theme('colors.indigo.50');
+    background: theme("colors.indigo.50");
   }
 
   div > div::-webkit-scrollbar-thumb {
-    background-color: theme('colors.indigo.200');
+    background-color: theme("colors.indigo.200");
     border-radius: 20px;
   }
 </style>
