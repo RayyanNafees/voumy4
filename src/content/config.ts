@@ -11,6 +11,8 @@ const posts = defineCollection({
 		author: z.string(),
 		tags: z.union([z.array(z.string()), z.string()]), // or array of stringsz.string(),
 		excerpt: z.string().optional(),
+		popular: z.boolean().optional(),
+		featured: z.boolean().optional(),
 	}),
 });
 

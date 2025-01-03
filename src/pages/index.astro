@@ -14,7 +14,7 @@ const posts = await getCollection("posts");
 <Layout>
   <Header />
   <!-- content -->
-  <main class="relative">
+  <main class="relative bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen">
     <!-- container -->
     <div
       class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
@@ -22,80 +22,89 @@ const posts = await getCollection("posts");
       <!-- hero -->
       <div class="flex relative flex-col gap-4 pt-4 lg:pt-6 lg:gap-6">
         <div
-          class="relative overflow-hidden bg-neutral-200 w-full aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] flex justify-center items-center"
+          class="relative overflow-hidden bg-white shadow-lg rounded-2xl w-full aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] flex justify-center items-center transition-all duration-300 hover:shadow-xl"
         >
           <img
             src="/img/blogs/hero.jpg"
             alt="tailwind blog template"
-            class="absolute inset-x-0 bottom-0 w-full"
+            class="absolute inset-x-0 bottom-0 w-full object-cover filter brightness-75 hover:brightness-90 transition-all duration-300"
           />
           <!-- card inside -->
           <div
-            class="relative bg-white bg-opacity-80 rounded-md max-w-[80%] lg:max-w-[60%] md:min-w-[60%] aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] p-4 sm:p-6 text-center"
+            class="relative bg-white bg-opacity-90 rounded-xl max-w-[80%] lg:max-w-[60%] md:min-w-[60%] aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] p-4 sm:p-6 text-center shadow-md hover:shadow-lg transition-shadow"
           >
             <div
               class="flex overflow-hidden flex-col gap-2 items-center h-full sm:gap-3"
             >
-              <span class="text-sm uppercase text-neutral-500">&nbsp;</span>
-              <h1 class="text-2xl font-medium sm:text-3xl md:text-4xl">
+              <span class="text-sm uppercase text-indigo-600 font-semibold tracking-wider">&nbsp;</span>
+              <h1 class="text-2xl font-bold sm:text-3xl md:text-4xl text-gray-900 bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent">
                 The Voumy Blog
               </h1>
-              <p class="px-10 py-5 mb-2 text-neutral-700">
+              <p class="px-10 py-5 mb-2 text-gray-600 leading-relaxed">
                 Explore a world of insightful articles and thoughtful commentary
                 that ignites inspiration and fosters meaningful connections
                 through discussion...
               </p>
               <a
                 href="#posts"
-                class="inline-flex px-4 py-2 rounded-md border border-dashed shadow transition-shadow bg-neutral-100 hover:bg-neutral-200/80 hover:shadow-md border-neutral-200"
+                class="inline-flex px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-lg"
                 >Read More</a
               >
             </div>
           </div>
         </div>
 
-        <!-- grids -->
+        <!-- category grids -->
         <div class="hidden grid-cols-1 gap-4 md:grid md:grid-cols-3 lg:gap-6">
           <!-- card item -->
           <div
-            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/3.jpg"
-              class="absolute inset-x-0 top-0 w-full"
-              alt="image"
+              class="absolute inset-x-0 top-0 w-full object-cover filter brightness-75 hover:brightness-90 transition-all duration-300"
+              alt="Lifestyle & Travel"
             />
             <!-- category -->
-            <a href="#" class="flex relative px-4 py-2 bg-white/80">
+            <a 
+              href="#" 
+              class="flex relative px-4 py-2 bg-white/90 rounded-md text-indigo-700 font-semibold hover:bg-indigo-100 transition-colors duration-300"
+            >
               Lifestyle & Travel
             </a>
           </div>
           <!-- card item -->
           <div
-            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/8.jpg"
-              class="absolute inset-x-0 top-0 w-full"
-              alt="image"
+              class="absolute inset-x-0 top-0 w-full object-cover filter brightness-75 hover:brightness-90 transition-all duration-300"
+              alt="Journal"
             />
             <!-- category -->
-            <a href="#" class="flex relative px-4 py-2 bg-white/80">
+            <a 
+              href="#" 
+              class="flex relative px-4 py-2 bg-white/90 rounded-md text-purple-700 font-semibold hover:bg-purple-100 transition-colors duration-300"
+            >
               Journal
             </a>
           </div>
 
           <!-- card item -->
           <div
-            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/6.jpg"
-              class="absolute inset-x-0 top-0 w-full"
-              alt="image"
+              class="absolute inset-x-0 top-0 w-full object-cover filter brightness-75 hover:brightness-90 transition-all duration-300"
+              alt="Reality"
             />
             <!-- category -->
-            <a href="#" class="flex relative px-4 py-2 bg-white/80">
+            <a 
+              href="#" 
+              class="flex relative px-4 py-2 bg-white/90 rounded-md text-pink-700 font-semibold hover:bg-pink-100 transition-colors duration-300"
+            >
               Reality
             </a>
           </div>
@@ -120,12 +129,12 @@ const posts = await getCollection("posts");
         <div class="max-lg:order-1 max-lg:mb-12 lg:col-span-2">
           <h2
             id="posts"
-            class="pb-2 text-lg font-medium uppercase border-b border-dashed border-neutral-200"
+            class="pb-2 text-lg font-bold uppercase border-b-2 border-indigo-300 text-gray-800 tracking-wider"
           >
             Latest Post
           </h2>
           <!-- loop post -->
-          <div class="flex flex-col">
+          <div class="flex flex-col space-y-4 mt-4">
             <!-- post item -->
             {
               posts
@@ -135,16 +144,20 @@ const posts = await getCollection("posts");
                     a.data.dateOfPublishing.getTime()
                 )
                 .slice(0, 3)
-                .map((post) => <Post {post} />)
+                .map((post) => (
+                  <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                    <Post {post} />
+                  </div>
+                ))
             }
           </div>
 
           <!-- navigation -->
           {
             posts.length > 3 && (
-              <div class="gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200">
+              <div class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-indigo-200">
                 <a
-                  class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
+                  class="flex gap-2 items-center text-sm uppercase text-indigo-600 hover:text-purple-700 font-semibold transition-colors duration-300"
                   href="#"
                 >
                   Older Posts <i class="bi bi-arrow-right" />
@@ -158,3 +171,19 @@ const posts = await getCollection("posts");
   </main>
   <script src="@/scripts/smooth-scroll.ts"></script>
 </Layout>
+
+<style>
+  /* Add custom global styles */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #f0f4ff; /* Lighter blueish background */
+  }
+
+  /* Smooth transitions for interactive elements */
+  a, button {
+    transition: all 0.3s ease;
+  }
+</style>

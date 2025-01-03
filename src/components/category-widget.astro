@@ -9,24 +9,40 @@ for (const post of posts) {
   if (category in categoryMap) categoryMap[category] += 1;
   else categoryMap[category] = 1;
 }
+
+// Sort categories by post count in descending order
+const sortedCategories = Object.entries(categoryMap)
+  .sort((a, b) => b[1] - a[1]);
 ---
 
 <!-- widget -->
-<div class="border border-dashed bg-neutral-50 border-neutral-200">
-  <h3 class="px-6 py-3 w-full border-b border-dashed border-neutral-200">
-    Category
+<div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+  <h3 class="px-6 py-4 w-full border-b-2 border-indigo-200  bg-purple-50 text-gray-800 font-bold uppercase tracking-wider text-lg">
+    Categories
   </h3>
-  <div class="px-6 py-3">
-    <ul class="flex overflow-y-scroll flex-col max-h-60">
+  <div class="px-6 py-4">
+    <ul class="flex flex-col space-y-2 max-h-60 overflow-y-auto">
       {
-        Object.entries(categoryMap).map(([category, count]) => (
-          <li class="relative">
+        sortedCategories.map(([category, count]) => (
+          <li class="group">
             <a
               href={`/categories/${category}`}
-              class="flex gap-3 justify-between items-center py-1.5 hover:text-black"
+              class="flex gap-3 justify-between items-center py-2 px-3 rounded-lg 
+                     text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 
+                     transition-all duration-300 ease-in-out"
             >
-              <span class="capitalize">{category}</span>
-              <span class="px-4 py-px rounded-2xl bg-neutral-200/50">{count}</span>
+              <span class="capitalize font-medium group-hover:translate-x-1 transition-transform">
+                {category}
+              </span>
+              <span 
+                class="px-3 py-1 rounded-full 
+                       bg-indigo-100 text-indigo-700 
+                       text-xs font-semibold 
+                       group-hover:bg-indigo-200 
+                       transition-colors duration-300"
+              >
+                {count}
+              </span>
             </a>
           </li>
         ))
@@ -34,3 +50,24 @@ for (const post of posts) {
     </ul>
   </div>
 </div>
+
+<style>
+  /* Custom scrollbar for category list */
+  ul {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.indigo.200') theme('colors.indigo.50');
+  }
+
+  ul::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ul::-webkit-scrollbar-track {
+    background: theme('colors.indigo.50');
+  }
+
+  ul::-webkit-scrollbar-thumb {
+    background-color: theme('colors.indigo.200');
+    border-radius: 20px;
+  }
+</style>
