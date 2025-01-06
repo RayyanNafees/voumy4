@@ -7,34 +7,32 @@ import alpinejs from "@astrojs/alpinejs";
 
 import react from "@astrojs/react";
 
-import netlify from "@astrojs/netlify";
-
 import keystaticAdmin from "./src/integrations/keystatic-admin";
+
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		react(),
-		markdoc({
-			allowHTML:true,
-			// ignoreIndentation:
-		}),
-		keystatic(),
-		tailwind(),
-		alpinejs(),
-		keystaticAdmin(),
-	],
+    integrations: [
+        react(),
+        markdoc({
+            allowHTML:true,
+            // ignoreIndentation:
+        }),
+        keystatic(),
+        tailwind(),
+        alpinejs(),
+        keystaticAdmin(),
+    ],
 
-	// prefetch: {
-	// 	prefetchAll: true,
-	// },
-	output: "hybrid",
+    // prefetch: {
+    // 	prefetchAll: true,
+    // },
+    output: "hybrid",
 
-	adapter: netlify({
-		// imageCDN: true,
-	}),
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: "viewport",
-	},
+    adapter: vercel(),
+    prefetch: {
+        prefetchAll: true,
+        defaultStrategy: "viewport",
+    },
 });
