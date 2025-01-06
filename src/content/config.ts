@@ -1,5 +1,5 @@
-// @ts-ignore
 import { defineCollection, z, type CollectionEntry } from "astro:content";
+import { stringTagsToArray } from "@/utils/transforms";
 
 const posts = defineCollection({
 	// Type-check frontmatter using a schema
@@ -14,14 +14,7 @@ const posts = defineCollection({
 		}),
 		category: z.string(),
 		author: z.string(),
-		tags: z.string().transform((s) => [
-			...new Set(
-				s
-					.split(" ")
-					.filter((i) => i.trim())
-					.map((i) => i.toLowerCase()),
-			).keys(),
-		]), // or array of strings,
+		tags: z.string().transform(stringTagsToArray), // or array of strings,
 		excerpt: z.string(),
 		popular: z.boolean(),
 		featured: z.boolean(),
