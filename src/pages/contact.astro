@@ -83,7 +83,12 @@ import Layout from "../layouts/Layout.astro";
               <i class="text-indigo-600 bi bi-envelope me-3"></i>Get in Touch
             </h2>
 
-            <form class="space-y-6" name="contact" method="POST" data-netlify="true">
+            <form
+              class="space-y-6"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+            >
               <input type="hidden" name="form-name" value="contact" />
               <div class="grid gap-6 md:grid-cols-2">
                 <div>
@@ -187,3 +192,25 @@ import Layout from "../layouts/Layout.astro";
     background: #555;
   }
 </style>
+<script>
+  const form = document.querySelector("form") as HTMLFormElement;
+  
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const myForm = event.target as HTMLFormElement;
+    const formData = new FormData(myForm);
+    const formObj = Object.fromEntries(formData.entries()) as Record<
+      string,
+      string
+    >;
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formObj).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+  });
+</script>
