@@ -8,7 +8,7 @@ const posts = defineCollection({
 		dateOfPublishing: z.date(),
 		coverImage: z.object({
 			src: z.string(),
-			alt: z.string(),
+			alt: z.string().optional(),
 			height: z.number(),
 			width: z.number(),
 		}),
