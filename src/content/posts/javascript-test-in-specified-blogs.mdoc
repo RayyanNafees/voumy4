@@ -36,7 +36,7 @@ Testing if the following button will show content or not on clicking
 
 Press the following button and check if clicking it toggles the content
 
-<div x-data="{ open: false }"> <button @click="open = !open" class="bg-neutral-800 px-4 py-2 rounded">Click Me!</button>
+<div x-data="{ open: false }"> <button @click="open = !open" class="bg-neutral-800 px-4 py-2 rounded text-white">Click Me!</button>
 
 <span x-show="open">
 Content...
@@ -47,10 +47,10 @@ Content...
 
 The following same usage is being served through an iframe to see if it'd work:
 
-##### without alpinejs cdn import:
+##### **without alpinejs cdn import:**
 
 <iframe src="https://alpine-without-script.surge.sh" title="Alpine example without script tag" width="100" height="50"></iframe>
 
-##### with alpinejs cdn import:
+##### **with alpinejs cdn import:**
 
 <iframe src="https://alpine-with-script.surge.sh" title="Alpine example without script tag" width="100" height="50"></iframe>
