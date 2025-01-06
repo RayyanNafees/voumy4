@@ -23,17 +23,13 @@ export async function getStaticPaths() {
   return posts.map((post) => ({ params: { slug: post.slug } }));
 }
 
-const tags: string[] = Array.isArray(post.data.tags)
-  ? post.data.tags.filter((i) => i)
-  : post.data.tags.split(" ").filter((i) => i);
-
 const allSlugs = posts.map((post) => post.slug);
 
 const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
 const relatedArticles = await Promise.all(
   relatedSlugs.map(async (slug) => {
     return await getEntry("posts", slug);
-  }),
+  })
 );
 ---
 
@@ -114,7 +110,7 @@ const relatedArticles = await Promise.all(
                 <i class="bi bi-tags"></i> Tags:
               </li>
               {
-                tags.map((tag) => (
+                post.data.tags?.map?.((tag) => (
                   <li>
                     <a
                       href={`/tags/${tag}`}

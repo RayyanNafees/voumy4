@@ -14,7 +14,14 @@ const posts = defineCollection({
 		}),
 		category: z.string(),
 		author: z.string(),
-		tags: z.union([z.array(z.string()), z.string()]), // or array of stringsz.string(),
+		tags: z.string().transform((s) => [
+			...new Set(
+				s
+					.split(" ")
+					.filter((i) => i.trim())
+					.map((i) => i.toLowerCase()),
+			).keys(),
+		]), // or array of strings,
 		excerpt: z.string(),
 		popular: z.boolean(),
 		featured: z.boolean(),
