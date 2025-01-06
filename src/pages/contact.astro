@@ -5,195 +5,185 @@ import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
 import Footer from "@/components/footer.astro";
 import Layout from "../layouts/Layout.astro";
-
-
 ---
 
 <Layout title="Contact Voumy - Get in Touch">
-    <Header />
+  <Header />
 
-    <main class="container px-4 py-12 mx-auto xl:max-w-6xl">
-        <div class="grid gap-8 lg:grid-cols-3">
-            {/* Sidebar */}
-            <aside class="space-y-6 lg:col-span-1">
-                <div
-                    class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
-                >
-                    <h3 class="mb-4 text-xl font-semibold text-neutral-800">
-                        <i class="text-indigo-600 bi bi-info-circle me-2"
-                        ></i>Contact Information
-                    </h3>
-                    <ul class="space-y-3 text-neutral-700">
-                        <li class="flex gap-3 items-center">
-                            <i class="text-indigo-600 bi bi-envelope"></i>
-                            support@voumy.com
-                        </li>
-                        <li class="flex gap-3 items-center">
-                            <i class="text-indigo-600 bi bi-phone"></i>
-                            +1 (555) 123-4567
-                        </li>
-                        <li class="flex gap-3 items-center">
-                            <i class="text-indigo-600 bi bi-geo-alt"></i>
-                            Silicon Valley, California
-                        </li>
-                    </ul>
-                </div>
-
-                <div
-                    class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
-                >
-                    <h3 class="mb-4 text-xl font-semibold text-neutral-800">
-                        <i class="text-indigo-600 bi bi-clock me-2"></i>Response
-                        Times
-                    </h3>
-                    <p class="text-neutral-700">
-                        We typically respond within 1-2 business days. For
-                        urgent matters, please use our support email.
-                    </p>
-                </div>
-
-                <div class="hidden gap-10 md:grid">
-                    <CategoryWidget />
-                    <PopularPosts />
-                    <TagList />
-                </div>
-            </aside>
-
-            {/* Main Content */}
-            <div class="space-y-8 lg:col-span-2">
-                {/* Hero Section */}
-                <div
-                    class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
-                >
-                    <div class="p-6 md:p-10">
-                        <h1 class="mb-6 text-4xl font-bold text-neutral-900">
-                            <i class="text-indigo-600 bi bi-chat-dots me-3"
-                            ></i>Contact Us
-                        </h1>
-                        <p class="mb-4 text-neutral-700">
-                            Have a question, suggestion, or just want to say
-                            hello? We'd love to hear from you! Fill out the form
-                            below, and our team will get back to you as soon as
-                            possible.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Contact Form */}
-                <div
-                    class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
-                >
-                    <div class="p-6 md:p-10">
-                        <h2
-                            class="mb-6 text-3xl font-semibold text-neutral-900"
-                        >
-                            <i class="text-indigo-600 bi bi-envelope me-3"
-                            ></i>Get in Touch
-                        </h2>
-
-                        <form class="space-y-6" netlify>
-                            <input
-                                type="hidden"
-                                name="form-name"
-                                value="contact"
-                            />
-                            <div class="grid gap-6 md:grid-cols-2">
-                                <div>
-                                    <label
-                                        for="firstName"
-                                        class="block mb-2 text-sm font-medium text-neutral-700"
-                                        >First Name</label
-                                    >
-                                    <input
-                                        type="text"
-                                        id="firstName"
-                                        name="firstName"
-                                        required
-                                        class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        for="lastName"
-                                        class="block mb-2 text-sm font-medium text-neutral-700"
-                                        >Last Name</label
-                                    >
-                                    <input
-                                        type="text"
-                                        id="lastName"
-                                        name="lastName"
-                                        required
-                                        class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <label
-                                    for="email"
-                                    class="block mb-2 text-sm font-medium text-neutral-700"
-                                    >Email Address</label
-                                >
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    required
-                                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    for="message"
-                                    class="block mb-2 text-sm font-medium text-neutral-700"
-                                    >Your Message</label
-                                >
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="4"
-                                    required
-                                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
-                                ></textarea>
-                            </div>
-                            <div>
-                                <button
-                                    type="submit"
-                                    class="px-4 py-3 w-full text-white bg-indigo-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                >
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <main class="container px-4 py-12 mx-auto xl:max-w-6xl">
+    <div class="grid gap-8 lg:grid-cols-3">
+      {/* Sidebar */}
+      <aside class="space-y-6 lg:col-span-1">
+        <div
+          class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
+        >
+          <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+            <i class="text-indigo-600 bi bi-info-circle me-2"></i>Contact
+            Information
+          </h3>
+          <ul class="space-y-3 text-neutral-700">
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-envelope"></i>
+              support@voumy.com
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-phone"></i>
+              +1 (555) 123-4567
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-geo-alt"></i>
+              Silicon Valley, California
+            </li>
+          </ul>
         </div>
-    </main>
 
-    <Footer />
+        <div
+          class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
+        >
+          <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+            <i class="text-indigo-600 bi bi-clock me-2"></i>Response Times
+          </h3>
+          <p class="text-neutral-700">
+            We typically respond within 1-2 business days. For urgent matters,
+            please use our support email.
+          </p>
+        </div>
+
+        <div class="hidden gap-10 md:grid">
+          <CategoryWidget />
+          <PopularPosts />
+          <TagList />
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div class="space-y-8 lg:col-span-2">
+        {/* Hero Section */}
+        <div
+          class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
+        >
+          <div class="p-6 md:p-10">
+            <h1 class="mb-6 text-4xl font-bold text-neutral-900">
+              <i class="text-indigo-600 bi bi-chat-dots me-3"></i>Contact Us
+            </h1>
+            <p class="mb-4 text-neutral-700">
+              Have a question, suggestion, or just want to say hello? We'd love
+              to hear from you! Fill out the form below, and our team will get
+              back to you as soon as possible.
+            </p>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div
+          class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
+        >
+          <div class="p-6 md:p-10">
+            <h2 class="mb-6 text-3xl font-semibold text-neutral-900">
+              <i class="text-indigo-600 bi bi-envelope me-3"></i>Get in Touch
+            </h2>
+
+            <form class="space-y-6" name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
+              <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label
+                    for="firstName"
+                    class="block mb-2 text-sm font-medium text-neutral-700"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    required
+                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="lastName"
+                    class="block mb-2 text-sm font-medium text-neutral-700"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    required
+                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block mb-2 text-sm font-medium text-neutral-700"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block mb-2 text-sm font-medium text-neutral-700"
+                  >Your Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                ></textarea>
+              </div>
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div>
+                <button
+                  type="submit"
+                  class="px-4 py-3 w-full text-white bg-indigo-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
 </Layout>
 
 <style>
-    /* Smooth scroll and custom scrollbar */
-    html {
-        scroll-behavior: smooth;
-    }
+  /* Smooth scroll and custom scrollbar */
+  html {
+    scroll-behavior: smooth;
+  }
 
-    /* Custom scrollbar for webkit browsers */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-    }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 </style>

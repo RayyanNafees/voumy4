@@ -10,8 +10,8 @@ interface ImportMeta {
 	readonly env: ImportMetaEnv;
 }
 
-declare namespace astroHTML.JSX {
-  interface FormHTMLAttributes {
-    'netlify'?: boolean;
-  }
-}
+// declare namespace astroHTML.JSX {
+//   interface FormHTMLAttributes {
+//     'netlify'?: boolean;
+//   }
+// }
