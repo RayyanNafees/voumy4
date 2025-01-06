@@ -26,7 +26,8 @@ export async function getStaticPaths() {
 const allSlugs = posts.map((post) => post.slug);
 
 const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
-const relatedArticles = await Promise.all(
+
+const relatedArticles =!relatedSlugs.length ? []: await Promise.all(
   relatedSlugs.map(async (slug) => {
     return await getEntry("posts", slug);
   })
@@ -38,35 +39,35 @@ const relatedArticles = await Promise.all(
 
   <!-- content -->
   <main
-    class="relative bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen"
+    class="relative min-h-screen text-gray-800 bg-gradient-to-br from-indigo-50 to-purple-50"
   >
     <!-- container -->
     <div
-      class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6 py-12"
+      class="container flex flex-col gap-4 px-4 py-12 mx-auto xl:max-w-6xl lg:gap-6"
     >
       <!-- layout -->
       <div
-        class="grid grid-cols-1 bg-white rounded-2xl shadow-xl overflow-hidden"
+        class="grid overflow-hidden grid-cols-1 bg-white rounded-2xl shadow-xl"
       >
         <div class="relative p-8 md:p-12">
           <!-- Post Header -->
-          <div class="text-center mb-8">
+          <div class="mb-8 text-center">
             <h1
-              class="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4"
+              class="mb-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 md:text-4xl lg:text-5xl"
             >
               {post.data.title}
             </h1>
 
             <!-- Metadata -->
             <div
-              class="flex flex-wrap gap-4 justify-center items-center text-sm text-gray-600 mb-6"
+              class="flex flex-wrap gap-4 justify-center items-center mb-6 text-sm text-gray-600"
             >
-              <div class="flex items-center gap-2">
-                <i class="bi bi-person text-indigo-600"></i>
+              <div class="flex gap-2 items-center">
+                <i class="text-indigo-600 bi bi-person"></i>
                 <span>by {post.data.author}</span>
               </div>
-              <div class="flex items-center gap-2">
-                <i class="bi bi-calendar text-purple-600"></i>
+              <div class="flex gap-2 items-center">
+                <i class="text-purple-600 bi bi-calendar"></i>
                 <time datetime={post.data.dateOfPublishing.toISOString()}>
                   {
                     post.data.dateOfPublishing.toLocaleDateString("en-US", {
@@ -77,8 +78,8 @@ const relatedArticles = await Promise.all(
                   }
                 </time>
               </div>
-              <div class="flex items-center gap-2">
-                <i class="bi bi-bookmark text-pink-600"></i>
+              <div class="flex gap-2 items-center">
+                <i class="text-pink-600 bi bi-bookmark"></i>
                 <a href="#" class="hover:text-pink-700">{post.data.category}</a>
               </div>
             </div>
@@ -86,27 +87,27 @@ const relatedArticles = await Promise.all(
 
           <!-- Cover Image -->
           <div
-            class="relative w-full aspect-video overflow-hidden rounded-xl shadow-lg mb-8 group"
+            class="overflow-hidden relative mb-8 w-full rounded-xl shadow-lg aspect-video group"
           >
             <img
               loading="lazy"
               {...post.data.coverImage}
               transition:name={post.slug}
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
             />
           </div>
 
           <!-- Post Content -->
-          <div class="prose lg:prose-xl text-gray-800 max-w-none">
+          <div class="max-w-none text-gray-800 prose lg:prose-xl">
             <Content />
           </div>
 
           <!-- Tags and Sharing -->
           <div
-            class="flex flex-col md:flex-row justify-between items-center border-t border-dashed border-indigo-200 pt-6 mt-8"
+            class="flex flex-col justify-between items-center pt-6 mt-8 border-t border-indigo-200 border-dashed md:flex-row"
           >
-            <ul class="flex flex-wrap gap-2 items-center text-sm mb-4 md:mb-0">
-              <li class="text-gray-600 mr-2">
+            <ul class="flex flex-wrap gap-2 items-center mb-4 text-sm md:mb-0">
+              <li class="mr-2 text-gray-600">
                 <i class="bi bi-tags"></i> Tags:
               </li>
               {
@@ -114,7 +115,7 @@ const relatedArticles = await Promise.all(
                   <li>
                     <a
                       href={`/tags/${tag}`}
-                      class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs hover:bg-indigo-100 transition-colors"
+                      class="px-3 py-1 text-xs text-indigo-700 bg-indigo-50 rounded-full transition-colors hover:bg-indigo-100"
                     >
                       {tag}
                     </a>
@@ -129,15 +130,15 @@ const relatedArticles = await Promise.all(
 
       <!-- Related Articles -->
       <div
-        class="bg-white rounded-2xl shadow-xl overflow-hidden p-8"
+        class="overflow-hidden p-8 bg-white rounded-2xl shadow-xl"
         hidden={!relatedSlugs.length}
       >
         <h3
-          class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-300 pb-2"
+          class="pb-2 mb-6 text-2xl font-bold text-gray-800 border-b-2 border-indigo-300"
         >
           Related Articles
         </h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid gap-6 md:grid-cols-3">
           {
             relatedArticles
               .filter((i) => i !== undefined)
@@ -145,22 +146,22 @@ const relatedArticles = await Promise.all(
               .map((post) => (
                 <a
                   href={`/posts/${post.slug}`}
-                  class="group block transition-all duration-300 hover:shadow-lg rounded-xl overflow-hidden"
+                  class="block overflow-hidden rounded-xl transition-all duration-300 group hover:shadow-lg"
                   data-astro-prefetch="hover"
                 >
-                  <div class="relative aspect-video overflow-hidden">
+                  <div class="overflow-hidden relative aspect-video">
                     <img
                       loading="lazy"
                       {...post.data.coverImage}
                       transition:name={post.slug}
-                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
                   <div class="p-4 bg-white">
-                    <h4 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">
+                    <h4 class="text-lg font-semibold text-gray-800 transition-colors group-hover:text-indigo-700">
                       {post.data.title}
                     </h4>
-                    <span class="text-sm text-gray-500 mt-2">
+                    <span class="mt-2 text-sm text-gray-500">
                       {post.data.dateOfPublishing.toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
