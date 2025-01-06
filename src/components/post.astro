@@ -14,19 +14,19 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
 ---
 
 <article
-  class="group grid grid-cols-1 gap-6 py-8 border-b border-solid md:grid-cols-2 border-neutral-200 last:border-b-0 transition-all duration-300 hover:bg-neutral-50/50"
+  class="grid grid-cols-1 gap-6 px-4 py-8 border-b border-solid transition-all duration-300 group md:grid-cols-2 border-neutral-200 last:border-b-0 hover:bg-neutral-50/50"
 >
   {/* Thumbnail */}
   <div class="relative overflow-hidden rounded-lg aspect-[3/2]">
     <a href={`/posts/${post.slug}`} class="block">
       <img
         loading="lazy"
-        class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        class="object-cover object-center w-full h-full transition-transform duration-500 group-hover:scale-105"
         transition:name={post.slug}
         {...post.data.coverImage}
       />
       <div
-        class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        class="absolute inset-0 opacity-0 transition-opacity duration-300 bg-black/20 group-hover:opacity-100"
       >
       </div>
     </a>
@@ -37,7 +37,7 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
     {/* Title and Metadata */}
     <div>
       <h3
-        class="text-2xl font-semibold mb-3 text-neutral-800 group-hover:text-black transition-colors"
+        class="mb-3 text-2xl font-semibold transition-colors text-neutral-800 group-hover:text-black"
       >
         <a
           href={`/posts/${post.slug}`}
@@ -47,7 +47,7 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
         </a>
       </h3>
 
-      <div class="flex items-center gap-3 text-sm text-neutral-500 mb-4">
+      <div class="flex gap-3 items-center mb-4 text-sm text-neutral-500">
         <time datetime={post.data.dateOfPublishing.toISOString()}>
           <i class="bi bi-calendar me-1"></i>
           {
@@ -66,7 +66,7 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
     </div>
 
     {/* Description */}
-    <p class="text-neutral-600 mb-4 line-clamp-3">
+    <p class="mb-4 text-neutral-600 line-clamp-3">
       {post.data.excerpt || post.data.title}
     </p>
 
@@ -74,14 +74,11 @@ const readingTime = Math.ceil(wordCount / wordsPerMinute);
     <div>
       <a
         href={`/posts/${post.slug}`}
-        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium
-               text-neutral-800 bg-neutral-100 border border-neutral-200
-               rounded-lg hover:bg-neutral-200/80 hover:border-neutral-300
-               transition-all duration-300 group/cta"
+        class="inline-flex justify-center items-center px-6 py-2.5 text-sm font-medium rounded-lg border transition-all duration-300 text-neutral-800 bg-neutral-100 border-neutral-200 hover:bg-neutral-200/80 hover:border-neutral-300 group/cta"
       >
         Read More
         <i
-          class="bi bi-arrow-right ml-2 transition-transform group-hover/cta:translate-x-1"
+          class="ml-2 transition-transform bi bi-arrow-right group-hover/cta:translate-x-1"
         ></i>
       </a>
     </div>

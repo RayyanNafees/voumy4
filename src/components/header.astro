@@ -9,6 +9,13 @@ const searchPosts = posts.map((post) => ({
   title: post.data.title,
   slug: `/posts/${post.slug}`,
 }));
+
+const navs = {
+  home: "/",
+  about: "/about",
+  contact: "/contact",
+  privacy: "/privacy",
+};
 ---
 
 <!-- header -->
@@ -19,19 +26,18 @@ const searchPosts = posts.map((post) => ({
   <!-- top -->
   <div class="border-b border-dashed border-neutral-200">
     <div
-      class="container flex gap-3 justify-between items-center px-4 mx-auto xl:max-w-6xl"
+      class="container flex gap-3 justify-between items-center px-4 py-2 mx-auto xl:max-w-6xl"
     >
       <ul class="flex items-center text-sm max-sm:grow max-sm:overflow-hidden">
-        <li class="relative">
-          <a href="/" class="px-3 py-1.5 hover:text-neutral-900">Home</a>
-        </li>
-        <li class="relative">
-          <a href="/contact" class="px-3 py-1.5 hover:text-neutral-900">About</a
-          >
-        </li>
-        <!-- <li class="relative">
-          <a href="docs" class="px-3 py-1.5 hover:text-neutral-900">Docs</a>
-        </li> -->
+        {
+          Object.entries(navs).map(([name, href]) => (
+            <li class="relative">
+              <a {href} class="px-3 py-1.5 capitalize hover:text-neutral-900">
+                {name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
 
       <AccountShare />
@@ -61,8 +67,12 @@ const searchPosts = posts.map((post) => ({
         </button>
 
         <a href="/" class="py-4 md:py-6 lg:py-12">
-          <h2 class="text-4xl font-medium md:text-5xl font-voumy text-center">Voumy!</h2>
-          <h3 class="text-sm font-slogan italic text-center text-neutral-500">Where words become alive</h3>
+          <h2 class="text-4xl font-medium text-center md:text-5xl font-voumy">
+            Voumy!
+          </h2>
+          <h3 class="text-sm italic text-center font-slogan text-neutral-500">
+            Where words become alive
+          </h3>
           <!-- <img loading="lazy"    src="..//img/logo.png"> -->
         </a>
         <!-- <img src="logo.svg" class="max-h-60"/> -->
@@ -92,6 +102,14 @@ const searchPosts = posts.map((post) => ({
       >
         <!-- dropdown -->
 
+        <li class="relative">
+          <a
+            href={"/"}
+            class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+          >
+            Homepage
+          </a>
+        </li>
         {
           categories.map((category) => (
             <li class="relative">
@@ -104,8 +122,6 @@ const searchPosts = posts.map((post) => ({
             </li>
           ))
         }
-
-        <PagesDropdown />
 
         <li class="relative max-md:hidden">
           <button
@@ -170,7 +186,7 @@ const searchPosts = posts.map((post) => ({
                 <span class="text-base leading-none bi bi-search"> </span>
               </button>
             </div>
-            <ul class="max-h-80 overflow-y-scroll">
+            <ul class="overflow-y-scroll max-h-80">
               <template x-for="searchPost in searchPosts">
                 <li
                   class="relative"
@@ -179,7 +195,7 @@ const searchPosts = posts.map((post) => ({
                   <a
                     x-bind:href="searchPost.slug"
                     data-astro-prefetch="hover"
-                    class="block py-2 px-4 text-sm text-neutral-800 hover:bg-neutral-100 hover:text-black"
+                    class="block px-4 py-2 text-sm text-neutral-800 hover:bg-neutral-100 hover:text-black"
                     x-html="searchPost.title.replace(new RegExp('(searchTerm)', 'i'), `<span class='font-bold text-black bg-yellow-300'>$1</span>)`) "
                   ></a>
                 </li></template

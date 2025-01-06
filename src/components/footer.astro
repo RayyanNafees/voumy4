@@ -11,30 +11,37 @@ const sortedPosts = posts.sort(
 );
 const featuredPosts = sortedPosts.filter((post) => post.data.featured);
 const popularPosts = sortedPosts.filter((post) => post.data.popular);
+
+const navs = {
+  home: "/",
+  about: "/about",
+  contact: "/contact",
+  privacy: "/privacy",
+};
 ---
 
 <div class="bg-gradient-to-br from-indigo-50 to-purple-50">
   <!--Footer content-->
-  <div class="py-12 border-b border-dashed border-indigo-200 text-gray-800">
+  <div class="py-12 text-gray-800 border-b border-indigo-200 border-dashed">
     <div class="container px-4 mx-auto xl:max-w-6xl">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
         <!-- About Us Widget -->
         <div class="flex relative flex-col gap-4">
           <h3
-            class="pb-3 text-xl font-bold uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 border-b-2 border-indigo-200"
+            class="pb-3 text-xl font-bold tracking-wider text-transparent uppercase bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 border-b-2 border-indigo-200"
           >
             About Us
           </h3>
-          <p class="text-gray-600 leading-relaxed">
+          <p class="leading-relaxed text-gray-600">
             At Voumy, we believe in the power of sharing ideas and experiences.
             We prioritize quality content crafted by passionate writers,
             committed to delivering reliable and inspiring information.
           </p>
-          <div class="flex items-center gap-3 mt-2">
-            <i class="bi bi-envelope text-indigo-600"></i>
+          <div class="flex gap-3 items-center mt-2">
+            <i class="text-indigo-600 bi bi-envelope"></i>
             <a
               href="mailto:voumyblog@gmail.com"
-              class="text-indigo-700 hover:text-purple-800 transition-colors"
+              class="text-indigo-700 transition-colors hover:text-purple-800"
             >
               voumyblog@gmail.com
             </a>
@@ -44,30 +51,30 @@ const popularPosts = sortedPosts.filter((post) => post.data.popular);
         <!-- Featured Posts Widget -->
         <div class="flex relative flex-col gap-4">
           <h3
-            class="pb-3 text-xl font-bold uppercase tracking-wider text-black border-b-2 border-indigo-200"
+            class="pb-3 text-xl font-bold tracking-wider text-black uppercase border-b-2 border-indigo-200"
           >
             Featured Posts
           </h3>
           <div
-            class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip"
+            class="flex overflow-y-scroll flex-col space-y-4 max-h-60 overflow-x-clip"
           >
             {
               featuredPosts.map((post) => (
                 <a
                   href={`/posts/${post.slug}`}
-                  class="flex gap-4 group transition-all duration-300 hover:bg-white/50 rounded-lg p-3 -mx-3"
+                  class="flex gap-4 p-3 -mx-3 rounded-lg transition-all duration-300 group hover:bg-white/50"
                 >
                   <img
-                    class="size-16 rounded-md object-cover group-hover:scale-105 transition-transform"
+                    class="object-cover rounded-md transition-transform size-16 group-hover:scale-105"
                     {...post.data.coverImage}
                     transition:name={post.slug}
                     loading="lazy"
                   />
                   <div class="flex flex-col justify-center">
-                    <h4 class="text-sm font-medium text-gray-800 group-hover:text-indigo-700 transition-colors">
+                    <h4 class="text-sm font-medium text-gray-800 transition-colors group-hover:text-indigo-700">
                       {post.data.title}
                     </h4>
-                    <span class="text-xs text-gray-500 mt-1">
+                    <span class="mt-1 text-xs text-gray-500">
                       {post.data.dateOfPublishing.toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -84,24 +91,24 @@ const popularPosts = sortedPosts.filter((post) => post.data.popular);
         <!-- Popular Posts Widget -->
         <div class="flex relative flex-col gap-4">
           <h3
-            class="pb-3 text-xl font-bold uppercase tracking-wider text-black border-indigo-200"
+            class="pb-3 text-xl font-bold tracking-wider text-black uppercase border-indigo-200"
           >
             Popular Posts
           </h3>
           <div
-            class="flex flex-col space-y-4 max-h-60 overflow-y-scroll overflow-x-clip"
+            class="flex overflow-y-scroll flex-col space-y-4 max-h-60 overflow-x-clip"
           >
             {
               popularPosts.map((post) => (
                 <a
                   href={`/posts/${post.slug}`}
-                  class="group transition-all duration-300 hover:bg-white/50 rounded-lg p-3 -mx-3"
+                  class="p-3 -mx-3 rounded-lg transition-all duration-300 group hover:bg-white/50"
                 >
                   <div class="flex flex-col">
-                    <h4 class="text-sm font-medium text-gray-800 group-hover:text-indigo-700 transition-colors">
+                    <h4 class="text-sm font-medium text-gray-800 transition-colors group-hover:text-indigo-700">
                       {post.data.title}
                     </h4>
-                    <span class="text-xs text-gray-500 mt-1">
+                    <span class="mt-1 text-xs text-gray-500">
                       {post.data.dateOfPublishing.toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -119,29 +126,25 @@ const popularPosts = sortedPosts.filter((post) => post.data.popular);
   </div>
 
   <!-- Footer Copyright Menu -->
-  <div class="py-6 bg-white/50 text-sm text-gray-700">
+  <div class="py-6 text-sm text-gray-700 bg-white/50">
     <div class="container px-4 mx-auto xl:max-w-6xl">
       <div class="flex gap-6 items-center max-sm:flex-col sm:justify-between">
         <!-- Footer Left Menu -->
         <ul
-          class="flex items-center max-sm:flex-wrap max-sm:justify-center space-x-4"
+          class="flex items-center space-x-4 max-sm:flex-wrap max-sm:justify-center"
         >
-          <li>
-            <a
-              href="/"
-              class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact"
-              class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
-            >
-              About
-            </a>
-          </li>
+          {
+            Object.entries(navs).map(([name, href]) => (
+              <li>
+                <a
+                  {href}
+                  class="font-medium text-indigo-600 transition-colors hover:text-purple-700"
+                >
+                  {name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
 
         <!-- Footer Copyright -->
@@ -150,7 +153,7 @@ const popularPosts = sortedPosts.filter((post) => post.data.popular);
             Copyright {new Date().getFullYear()} Voumy | A Gift by <a
               href="https://rayyannafees.github.io"
               target="_blank"
-              class="text-indigo-600 hover:text-purple-700 transition-colors font-medium"
+              class="font-medium text-indigo-600 transition-colors hover:text-purple-700"
             >
               Rayyan Nafees
             </a>

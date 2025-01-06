@@ -3,180 +3,197 @@ import Header from "@/components/header.astro";
 import CategoryWidget from "@/components/category-widget.astro";
 import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
+import Footer from "@/components/footer.astro";
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+
+
 ---
 
-<Layout title="About Voumy - Empowering Voices, Inspiring Minds">
-  <Header />
-  
-  <main class="container mx-auto px-4 py-12 xl:max-w-6xl">
-    <div class="grid lg:grid-cols-3 gap-8">
-      {/* Sidebar */}
-      <aside class="lg:col-span-1 space-y-6">
-        <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200 shadow-sm">
-          <h3 class="text-xl font-semibold mb-4 text-neutral-800">
-            <i class="bi bi-info-circle me-2 text-indigo-600"></i>Quick Facts
-          </h3>
-          <ul class="space-y-3 text-neutral-700">
-            <li class="flex items-center gap-3">
-              <i class="bi bi-calendar-check text-indigo-600"></i>
-              Founded in 2023
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="bi bi-globe text-indigo-600"></i>
-              Global Digital Platform
-            </li>
-            <!-- <li class="flex items-center gap-3">
-              <i class="bi bi-people text-indigo-600"></i>
-              1+ Contributing Writers
-            </li> -->
-            <!-- <li class="flex items-center gap-3">
-              <i class="bi bi-book text-indigo-600"></i>
-              500+ Published Articles
-            </li> -->
-          </ul>
-        </div>
+<Layout title="Contact Voumy - Get in Touch">
+    <Header />
 
-        <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200 shadow-sm">
-          <h3 class="text-xl font-semibold mb-4 text-neutral-800">
-            <i class="bi bi-compass me-2 text-indigo-600"></i>Our Mission
-          </h3>
-          <p class="text-neutral-700 italic">
-            We believe in the power of stories. Our goal is to break down barriers, share unique perspectives, and inspire continuous learning through meaningful content based on reality.          </p>
-        </div>
-
-        <div class="hidden md:grid gap-10">
-          <CategoryWidget />
-          <PopularPosts />
-          <TagList />
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <div class="lg:col-span-2 space-y-8">
-        {/* Hero Section */}
-        <div class="bg-white rounded-xl border border-neutral-200 shadow-lg overflow-hidden">
-          <div class="p-6 md:p-10">
-            <h1 class="text-4xl font-bold mb-6 text-neutral-900">
-              Welcome to Voumy: Where Words Come Alive
-            </h1>
-            <div class="space-y-6 text-neutral-700 leading-relaxed">
-              <p>
-                Voumy is more than just a blog—it's a vibrant digital ecosystem where ideas transcend boundaries, perspectives converge, and intellectual curiosity thrives. Founded by a collective of passionate writers, journalists, and thought leaders, our platform is dedicated to creating a dynamic space for meaningful discourse.
-              </p>
-              <p>
-                In a world saturated with superficial content, we stand committed to depth, nuance, and authentic storytelling. Our diverse team of contributors spans continents, disciplines, and backgrounds, ensuring a rich tapestry of perspectives that challenge, inspire, and illuminate.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Our Story Section */}
-        <div class="bg-white rounded-xl border border-neutral-200 shadow-lg overflow-hidden">
-          <div class="p-6 md:p-10">
-            <h2 class="text-3xl font-semibold mb-6 text-neutral-900">
-              <i class="bi bi-journal-text me-3 text-indigo-600"></i>Our Story
-            </h2>
-            <div class="space-y-6 text-neutral-700 leading-relaxed">
-              <p>
-                Voumy emerged from a simple yet profound realization: in the digital age, genuine storytelling is an art form that requires nurturing. What began as a small collaborative project among friends has blossomed into a global platform that celebrates the power of written expression.
-              </p>
-              <p>
-                Our journey is defined by an unwavering belief that every individual has a unique narrative worth sharing. We provide a meticulously curated space where emerging and established voices can find resonance, where complex ideas are explored with empathy and intellectual rigor.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Core Values Section */}
-        <div class="bg-white rounded-xl border border-neutral-200 shadow-lg overflow-hidden">
-          <div class="p-6 md:p-10">
-            <h2 class="text-3xl font-semibold mb-6 text-neutral-900">
-              <i class="bi bi-star me-3 text-indigo-600"></i>Our Core Values
-            </h2>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-neutral-50 p-5 rounded-lg border border-neutral-200">
-                <h3 class="text-xl font-semibold mb-3 text-neutral-800">
-                  <i class="bi bi-shield-check me-2 text-green-600"></i>Integrity
-                </h3>
-                <p class="text-neutral-700">
-                  We are committed to truthful, unbiased reporting and transparent communication.
-                </p>
-              </div>
-              <div class="bg-neutral-50 p-5 rounded-lg border border-neutral-200">
-                <h3 class="text-xl font-semibold mb-3 text-neutral-800">
-                  <i class="bi bi-people me-2 text-blue-600"></i>Inclusivity
-                </h3>
-                <p class="text-neutral-700">
-                  We amplify voices from all backgrounds, creating a platform that celebrates diversity.
-                </p>
-              </div>
-              <div class="bg-neutral-50 p-5 rounded-lg border border-neutral-200">
-                <h3 class="text-xl font-semibold mb-3 text-neutral-800">
-                  <i class="bi bi-lightbulb me-2 text-yellow-600"></i>Innovation
-                </h3>
-                <p class="text-neutral-700">
-                  We continuously explore new storytelling formats and digital narratives.
-                </p>
-              </div>
-              <div class="bg-neutral-50 p-5 rounded-lg border border-neutral-200">
-                <h3 class="text-xl font-semibold mb-3 text-neutral-800">
-                  <i class="bi bi-heart me-2 text-red-600"></i>Compassion
-                </h3>
-                <p class="text-neutral-700">
-                  We approach every story with empathy, understanding, and human connection.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact Section */}
-        <div class="bg-white rounded-xl border border-neutral-200 shadow-lg overflow-hidden">
-          <div class="p-6 md:p-10">
-            <h2 class="text-3xl font-semibold mb-6 text-neutral-900">
-              <i class="bi bi-envelope me-3 text-indigo-600"></i>Get in Touch
-            </h2>
-            <div class="space-y-4">
-              <p class="text-neutral-700">
-                Interested in contributing, collaborating, or just saying hello? We'd love to hear from you!
-              </p>
-              <div class="flex flex-wrap gap-4 items-center">
-                <a 
-                  href="mailto:voumyblog@gmail.com" 
-                  class="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors"
+    <main class="container px-4 py-12 mx-auto xl:max-w-6xl">
+        <div class="grid gap-8 lg:grid-cols-3">
+            {/* Sidebar */}
+            <aside class="space-y-6 lg:col-span-1">
+                <div
+                    class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
                 >
-                  <i class="bi bi-envelope-fill"></i> Email Us
-                </a>
-                <a 
-                  href="https://instagram.com/voumy5" 
-                  target="_blank" 
-                  class="flex items-center gap-2 px-4 py-2 bg-pink-50 text-pink-700 rounded-lg hover:bg-pink-100 transition-colors"
+                    <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+                        <i class="text-indigo-600 bi bi-info-circle me-2"
+                        ></i>Contact Information
+                    </h3>
+                    <ul class="space-y-3 text-neutral-700">
+                        <li class="flex gap-3 items-center">
+                            <i class="text-indigo-600 bi bi-envelope"></i>
+                            support@voumy.com
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="text-indigo-600 bi bi-phone"></i>
+                            +1 (555) 123-4567
+                        </li>
+                        <li class="flex gap-3 items-center">
+                            <i class="text-indigo-600 bi bi-geo-alt"></i>
+                            Silicon Valley, California
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200"
                 >
-                  <i class="bi bi-instagram"></i> Instagram
-                </a>
-              </div>
+                    <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+                        <i class="text-indigo-600 bi bi-clock me-2"></i>Response
+                        Times
+                    </h3>
+                    <p class="text-neutral-700">
+                        We typically respond within 1-2 business days. For
+                        urgent matters, please use our support email.
+                    </p>
+                </div>
+
+                <div class="hidden gap-10 md:grid">
+                    <CategoryWidget />
+                    <PopularPosts />
+                    <TagList />
+                </div>
+            </aside>
+
+            {/* Main Content */}
+            <div class="space-y-8 lg:col-span-2">
+                {/* Hero Section */}
+                <div
+                    class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
+                >
+                    <div class="p-6 md:p-10">
+                        <h1 class="mb-6 text-4xl font-bold text-neutral-900">
+                            <i class="text-indigo-600 bi bi-chat-dots me-3"
+                            ></i>Contact Us
+                        </h1>
+                        <p class="mb-4 text-neutral-700">
+                            Have a question, suggestion, or just want to say
+                            hello? We'd love to hear from you! Fill out the form
+                            below, and our team will get back to you as soon as
+                            possible.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Contact Form */}
+                <div
+                    class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200"
+                >
+                    <div class="p-6 md:p-10">
+                        <h2
+                            class="mb-6 text-3xl font-semibold text-neutral-900"
+                        >
+                            <i class="text-indigo-600 bi bi-envelope me-3"
+                            ></i>Get in Touch
+                        </h2>
+
+                        <form class="space-y-6" netlify>
+                            <input
+                                type="hidden"
+                                name="form-name"
+                                value="contact"
+                            />
+                            <div class="grid gap-6 md:grid-cols-2">
+                                <div>
+                                    <label
+                                        for="firstName"
+                                        class="block mb-2 text-sm font-medium text-neutral-700"
+                                        >First Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        required
+                                        class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="lastName"
+                                        class="block mb-2 text-sm font-medium text-neutral-700"
+                                        >Last Name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        required
+                                        class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block mb-2 text-sm font-medium text-neutral-700"
+                                    >Email Address</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="message"
+                                    class="block mb-2 text-sm font-medium text-neutral-700"
+                                    >Your Message</label
+                                >
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    required
+                                    class="block w-full rounded-md shadow-sm border-neutral-300 focus:border-indigo-500 focus:ring-indigo-500 text-neutral-900"
+                                ></textarea>
+                            </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    class="px-4 py-3 w-full text-white bg-indigo-600 rounded-md transition-colors duration-300 ease-in-out hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                >
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </main>
+    </main>
+
+    <Footer />
 </Layout>
 
 <style>
-  /* Smooth scroll and custom scrollbar */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(99 102 241 / 0.5);
-    border-radius: 4px;
-  }
+    /* Smooth scroll and custom scrollbar */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 </style>

@@ -1,0 +1,129 @@
+---
+import Header from "@/components/header.astro";
+import CategoryWidget from "@/components/category-widget.astro";
+import PopularPosts from "@/components/popular-posts.astro";
+import TagList from "@/components/tag-list.astro";
+import Footer from "@/components/footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Disclaimer - Voumy">
+  <Header />
+  
+  <main class="container px-4 py-12 mx-auto xl:max-w-6xl">
+    <div class="grid gap-8 lg:grid-cols-3">
+      {/* Sidebar */}
+      <aside class="space-y-6 lg:col-span-1">
+        <div class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200">
+          <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+            <i class="text-indigo-600 bi bi-shield-exclamation me-2"></i>Quick Links
+          </h3>
+          <ul class="space-y-3 text-neutral-700">
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-link-45deg"></i>
+              <a href="/terms" class="transition-colors hover:text-indigo-600">Terms of Service</a>
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-lock"></i>
+              <a href="/privacy" class="transition-colors hover:text-indigo-600">Privacy Policy</a>
+            </li>
+            <li class="flex gap-3 items-center">
+              <i class="text-indigo-600 bi bi-info-circle"></i>
+              <a href="/about" class="transition-colors hover:text-indigo-600">About Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-xl border shadow-sm bg-neutral-50 border-neutral-200">
+          <h3 class="mb-4 text-xl font-semibold text-neutral-800">
+            <i class="text-indigo-600 bi bi-info-circle me-2"></i>Important Notice
+          </h3>
+          <p class="text-sm text-neutral-700">
+            This disclaimer is subject to change. Please review periodically for updates.
+          </p>
+        </div>
+
+        <div class="hidden gap-10 md:grid">
+          <CategoryWidget />
+          <PopularPosts />
+          <TagList />
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <div class="space-y-8 lg:col-span-2">
+        {/* Hero Section */}
+        <div class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200">
+          <div class="p-6 md:p-10">
+            <h1 class="mb-6 text-4xl font-bold text-neutral-900">
+              <i class="text-indigo-600 bi bi-shield-exclamation me-3"></i>Disclaimer
+            </h1>
+            <p class="mb-4 text-neutral-700">
+              Please read this disclaimer carefully before using our website and services.
+            </p>
+          </div>
+        </div>
+
+        {/* Disclaimer Content */}
+        <div class="overflow-hidden bg-white rounded-xl border shadow-lg border-neutral-200">
+          <div class="p-6 space-y-6 md:p-10 text-neutral-700">
+            <section>
+              <h2 class="mb-4 text-2xl font-semibold text-neutral-900">1. Content Accuracy</h2>
+              <p>
+                While we strive to provide accurate and up-to-date information, Voumy makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="mb-4 text-2xl font-semibold text-neutral-900">2. External Links</h2>
+              <p>
+                Our website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external sites.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="mb-4 text-2xl font-semibold text-neutral-900">3. Professional Advice</h2>
+              <p>
+                The content on Voumy is for informational and educational purposes only. It should not be construed as professional advice. Always consult with qualified professionals for specific guidance tailored to your situation.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="mb-4 text-2xl font-semibold text-neutral-900">4. Limitation of Liability</h2>
+              <p>
+                In no event will Voumy be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Smooth scroll and custom scrollbar */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
