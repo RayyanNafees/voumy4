@@ -13,8 +13,8 @@ const searchPosts = posts.map((post) => ({
 const navs = {
   home: "/",
   about: "/about",
-  contact: "/contact",
-  privacy: "/privacy",
+  // contact: "/contact",
+  // privacy: "/privacy",
 };
 ---
 
@@ -102,7 +102,7 @@ const navs = {
       >
         <!-- dropdown -->
 
-        <li class="relative">
+        <li class="relative border-b-2 border-neutral-100 pb-2">
           <a
             href={"/"}
             class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
@@ -112,16 +112,57 @@ const navs = {
         </li>
         {
           categories.map((category) => (
-            <li class="relative">
+            <li class="relative flex gap-0.5 justify-start  items-center first:pb-2">
+             
               <a
                 href={"/categories/" + category}
                 class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
               >
+                 {category === "journal" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-5 text-neutral-700"
+                  viewBox="0 0 16 16"
+                >
+                  <g fill="currentColor">
+                    <path d="M7.5 3.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0m-.861 1.542l1.33.886l1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5" />
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
+                  </g>
+                </svg>
+              )}
+              {category==="travel" && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-neutral-700" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 5.5q-.825 0-1.413-.588Q15.5 4.325 15.5 3.5t.587-1.413Q16.675 1.5 17.5 1.5q.825 0 1.413.587q.587.588.587 1.413q0 .825-.587 1.412q-.588.588-1.413.588ZM11 23l2.8-14.1l-1.8.7V13h-.7l-6.75 7.925q-.025-.025-.287-.225q-.263-.2-.763-.2q-.25 0-.662.15q-.413.15-.688.7l-1.1-.95q-.15-.125-.238-.3q-.087-.175-.112-.375q-.025-.2.038-.388Q.8 19.15.925 19l3.25-3.8q.125-.175.3-.25q.175-.075.375-.1q.2-.025.388.05q.187.075.337.2L7.1 16.4L10 13V8.3l5.05-2.15q.725-.325 1.475-.075q.75.25 1.175.925l1 1.6q.6 1.05 1.738 1.725Q21.575 11 23 11v2q-1.65 0-3.087-.688q-1.438-.687-2.413-1.812l-.6 3l2.1 2V23h-2v-6l-2.1-2l-1.8 8Zm-8.5-1q0-.425.288-.712Q3.075 21 3.5 21t.713.288q.287.287.287.712t-.287.712Q3.925 23 3.5 23t-.712-.288Q2.5 22.425 2.5 22Z"/></svg>
+              )}
                 {category}
               </a>
             </li>
           ))
         }
+        <li class="relative border-t-2 border-neutral-100 pt-2">
+          <a
+            href={"/about"}
+            class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+          >
+            about
+          </a>
+        </li>
+        <li class="relative">
+          <a
+            href={"/contact"}
+            class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+          >
+            Contact
+          </a>
+        </li>
+        <li class="relative">
+          <a
+            href={"/privacy"}
+            class="uppercase py-2 px-4 flex max-md:justify-between gap-2 [&.active]:text-black [&.active]:bg-neutral-100 hover:text-black hover:bg-neutral-100"
+          >
+            Privacy Policy
+          </a>
+        </li>
 
         <li class="relative max-md:hidden">
           <button

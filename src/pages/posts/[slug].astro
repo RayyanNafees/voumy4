@@ -5,8 +5,7 @@ import { Image } from "astro:assets";
 import AccountShare from "@/components/accounts/share.astro";
 import { getCollection, getEntry } from "astro:content";
 import { getRelatedSlugs } from "@/utils/related-articles";
-import type { Post } from "@/content/config";
-import { src } from "@/utils/img";
+import tts from "@/utils/tts";
 
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/404");
@@ -27,11 +26,15 @@ const allSlugs = posts.map((post) => post.slug);
 
 const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
 
-const relatedArticles =!relatedSlugs.length ? []: await Promise.all(
-  relatedSlugs.map(async (slug) => {
-    return await getEntry("posts", slug);
-  })
-);
+const relatedArticles = !relatedSlugs.length
+  ? []
+  : await Promise.all(
+      relatedSlugs.map(async (slug) => {
+        return await getEntry("posts", slug);
+      })
+    );
+
+const audioURL = await tts(post.body.slice(0, 200));
 ---
 
 <Layout title={post.data.title}>
@@ -96,7 +99,9 @@ const relatedArticles =!relatedSlugs.length ? []: await Promise.all(
               class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
             />
           </div>
-
+          <audio controls>
+            {audioURL.map((url) => <source src={url} type="audio/mpeg" />)}
+          </audio>
           <!-- Post Content -->
           <div class="max-w-none text-gray-800 prose lg:prose-xl">
             <Content />
