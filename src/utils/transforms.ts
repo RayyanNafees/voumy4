@@ -3,6 +3,6 @@ export const stringTagsToArray = (s: string) => [
 		s
 			.split(" ")
 			.filter((i) => i.trim())
-			.map((i) => i.toLowerCase()),
+			.map((i) => i.toLowerCase().replace('#', '')),
 	).keys(),
 ];
