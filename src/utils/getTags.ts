@@ -4,5 +4,5 @@ export const getTags = (text: string | string[]) => {
 		: text
 				.split(" ")
 				.filter((i) => i)
-				.map((i) => i.toLowerCase());
+				.map((i) => i.toLowerCase().replace('#', ""));
 };
