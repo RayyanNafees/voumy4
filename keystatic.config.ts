@@ -6,7 +6,7 @@ export default config({
     kind: "cloud",
   },
   cloud: {
-    project: "voumy/voumy4",
+    project: ["voumy/voumy4"],
   },
   ui: {
     brand: {
