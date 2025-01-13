@@ -9,8 +9,8 @@ const posts = defineCollection({
 		coverImage: z.object({
 			src: z.string(),
 			alt: z.string().optional(),
-			height: z.number(),
-			width: z.number(),
+			height: z.number().optional(),
+			width: z.number().optional(),
 		}),
 		category: z.string(),
 		author: z.string(),
