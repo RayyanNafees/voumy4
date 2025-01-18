@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import type { GetStaticPaths } from "astro";
 import Header from "@/components/header.astro";
 import Layout from "@/layouts/Layout.astro";
@@ -8,15 +9,47 @@ import CategoryWidget from "@/components/category-widget.astro";
 import PopularPosts from "@/components/popular-posts.astro";
 import TagList from "@/components/tag-list.astro";
 import Post from "@/components/post.astro";
+import type { Post as PostType } from "@/content/config";
+import * as v from "valibot";
+
 const { category } = Astro.params;
 if (!category) return Astro.redirect("/404");
+// const categoryDescription = await getCollection('category')
+
+const sortOptions = v.union([
+  v.literal("latest"),
+  v.literal("oldest"),
+  v.literal("random"),
+]);
+
+type SortQuery = v.InferOutput<typeof sortOptions>;
+
+const sortQueryParse = v.safeParse(
+  sortOptions,
+  Astro.url.searchParams.get("sort")
+);
+const sortQuery = sortQueryParse.success ? sortQueryParse.output : undefined;
+
+const sortFuncs: Record<SortQuery, (a: PostType, b: PostType) => number> = {
+  latest(a, b) {
+    return (
+      a.data.dateOfPublishing.getTime() - b.data.dateOfPublishing.getTime()
+    );
+  },
+  oldest(a, b) {
+    return (
+      b.data.dateOfPublishing.getTime() - a.data.dateOfPublishing.getTime()
+    );
+  },
+  random() {
+    return [1, -1, 0][Math.floor(Math.random() * 3)];
+  },
+};
 
 const categoryPosts = await getCollection(
   "posts",
   (post) => post.data.category.toLowerCase() === category.toLowerCase()
 );
-
-// const categoryDescription = await getCollection('category')
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -82,24 +115,42 @@ export const getStaticPaths = (async () => {
             >
               <!-- Latest from {category} -->
             </h2>
-            <ul
-            x-data='{sort: 1}'
-              class="flex gap-2 [&>li]:bg-neutral-100 [&>li]:px-2 [&>li]:py-1 [&>li]:border-2 [&>li]:border-neutral-300 [&>li]:rounded"
-            >
-              <li class="bi bi-arrow-up" @click="sort = -1" x-show="sort === 1"></li>
-              <li class="bi bi-arrow-down" @click="sort = 1" x-show="sort === -1"></li>
-              <li class="bi bi-shuffle"></li>
+            <ul class="flex gap-2">
+              <a
+                href={`${Astro.url.pathname}?sort=${sortQuery === "oldest" ? "latest" : "oldest"}`}
+                class:list={[
+                  "bi block bg-neutral-100 px-2 py-1 border-2 border-neutral-300 rounded focus:bg-neutral-300 hover:bg-neutral-200",
+                  sortQuery === "oldest" ? "bi-arrow-up" : " bi-arrow-down",
+                ]}
+              >
+              </a>
+              <a
+                href={Astro.url.pathname + "?sort=random"}
+                class="block px-2 py-1 rounded border-2 bi bi-shuffle bg-neutral-100 border-neutral-300 focus:bg-neutral-300 hover:bg-neutral-200"
+              ></a>
             </ul>
           </div>
 
           <!-- loop post -->
           <div class="flex flex-col">
             {
-              categoryPosts.map((post) => (
-                /// <!-- post item -->
-                <Post {post} />
-                
-              ))
+              categoryPosts
+                .sort((a, b) => {
+                  switch (sortQuery) {
+                    case "latest":
+                      return sortFuncs.latest(a, b);
+                    case "oldest":
+                      return sortFuncs.oldest(a, b);
+                    case "random":
+                      return sortFuncs.random(a, b);
+                    default:
+                      return sortFuncs.latest(a, b);
+                  }
+                })
+                .map((post) => (
+                  /// <!-- post item -->
+                  <Post {post} />
+                ))
             }
           </div>
 
@@ -108,8 +159,13 @@ export const getStaticPaths = (async () => {
             class="flex gap-3 justify-end items-center py-4 border-t border-dashed border-neutral-200"
           >
             <a
-              class="flex gap-2 items-center text-sm uppercase text-neutral-500 hover:text-black"
-              href="#">Older Posts <i class="bi bi-arrow-right"></i></a
+              class="flex gap-2 items-center text-sm text-neutral-500 hover:text-black"
+              href="#"
+              x-data
+              x-text="new URL(location.href).searchParams.get('sort') === 'oldest' ? 'Latest Posts' : 'Oldest Posts'"
+              >Older Posts
+
+              <i class="bi bi-arrow-right"></i></a
             >
           </div>
         </div>

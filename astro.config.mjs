@@ -21,7 +21,9 @@ export default defineConfig({
 		}),
 		keystatic(),
 		tailwind(),
-		alpinejs(),
+		alpinejs({
+			entrypoint: '/src/alpine'
+		}),
 		keystaticAdmin(),
 	],
 
