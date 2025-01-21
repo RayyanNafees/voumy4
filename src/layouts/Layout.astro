@@ -2,31 +2,57 @@
 import Footer from "@/components/footer.astro";
 import ScrollToTop from "@/components/scroll-to-top.astro";
 import "../styles.css";
-import '@fontsource-variable/playpen-sans'
+import "@fontsource-variable/playpen-sans";
 import "@fontsource/inter";
 import { ViewTransitions } from "astro:transitions";
 export interface Props {
-  title?: string;
+	title?: string;
+	ogImage?: {
+		src: string;
+		width?: number;
+		height?: number;
+	};
+  description?: string;
 }
 
-const { title = "Voumy - Where Words Come Alive" } = Astro.props;
+const { title = "Voumy - Where Words Come Alive", ogImage, description="New blog post !" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="google-adsense-account" content="ca-pub-4140904948517840">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+    <!-- SEO -->
+     
+    {ogImage &&  (
+      <meta name="image" content={ogImage?.src ?? ""} />
+      <meta property="og:image" content={ogImage.src} />
+      <meta property="og:image:secure_url" content={ogImage.src} />
+      <meta property="og:image:width" content={String(ogImage.width) ?? "1200"} />
+      <meta property="og:image:height" content={String(ogImage.width) ?? "630"}  />
+      <meta property="twitter:image" content={ogImage.src} />
+    )}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://www.voumy.blog/"/>
+
+
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:card" content={description} />
     <!-- local icons -->
     <link
       rel="stylesheet"
       id="icons"
       href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.min.css"
     />
+    <link rel="canonical" href='https://www.voumy.blog' />
+    
 
     <title>{title}</title>
     <ViewTransitions  />

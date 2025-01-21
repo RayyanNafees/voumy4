@@ -30,7 +30,11 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 ---
 
-<Layout>
+<Layout
+
+title={`#${tag} | Voumy`}
+  description={`Read Voumy blog posts featuring #${tag} !`}
+>
   <Header />
 
   <!-- content -->

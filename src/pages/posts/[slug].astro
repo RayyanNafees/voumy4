@@ -37,7 +37,15 @@ const relatedArticles = !relatedSlugs.length
 const audioURL = await tts(post.body.slice(0, 200));
 ---
 
-<Layout title={post.data.title}>
+<Layout
+  title={post.data.title}
+  description={post.data.excerpt}
+  ogImage={{
+    src: post.data.coverImage.src,
+    height: post.data.coverImage.height,
+    width: post.data.coverImage.width,
+  }}
+>
   <Header />
 
   <!-- content -->
