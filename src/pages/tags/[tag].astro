@@ -18,6 +18,8 @@ const tagPosts = await getCollection("posts", (post) =>
 );
 
 // const categoryDescription = await getCollection('category')
+const posts = await getCollection("posts");
+const tags = posts.flatMap((post) => getTags(post.data.tags)).filter(i=>i)
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
@@ -34,6 +36,7 @@ export const getStaticPaths = (async () => {
 
 title={`#${tag} | Voumy`}
   description={`Read Voumy blog posts featuring #${tag} !`}
+  tags={tags.join(', ')}
 >
   <Header />
 

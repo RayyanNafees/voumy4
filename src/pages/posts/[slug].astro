@@ -45,6 +45,7 @@ const audioURL = await tts(post.body.slice(0, 200));
     height: post.data.coverImage.height,
     width: post.data.coverImage.width,
   }}
+  tags = {tags.join(', ')}
 >
   <Header />
 

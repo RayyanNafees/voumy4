@@ -11,6 +11,7 @@ import TagList from "@/components/tag-list.astro";
 import Post from "@/components/post.astro";
 import type { Post as PostType } from "@/content/config";
 import * as v from "valibot";
+import { getTags } from "@/utils/getTags";
 
 const { category } = Astro.params;
 if (!category) return Astro.redirect("/404");
@@ -51,6 +52,10 @@ const categoryPosts = await getCollection(
   (post) => post.data.category.toLowerCase() === category.toLowerCase()
 );
 
+const tags = categoryPosts
+  .flatMap((post) => getTags(post.data.tags))
+  .filter((i) => i);
+
 export const getStaticPaths = (async () => {
   const posts = await getCollection("posts");
   const categories = posts.map((post) => post.data.category.toLowerCase());
@@ -65,6 +70,7 @@ export const getStaticPaths = (async () => {
 <Layout
   title={`${category} | Voumy`}
   description={`Read Voumy blog posts on ${category} !`}
+  tags={tags.join(", ")}
 >
   <Header />
 

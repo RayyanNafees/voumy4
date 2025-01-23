@@ -13,9 +13,10 @@ export interface Props {
 		height?: number;
 	};
   description?: string;
+  tags?: string;
 }
 
-const { title = "Voumy - Where Words Come Alive", ogImage, description="New blog post !" } = Astro.props;
+const { title = "Voumy - Where Words Come Alive", ogImage, description="New blog post !" , tags = ''} = Astro.props;
 ---
 
 <!doctype html>
@@ -45,6 +46,8 @@ const { title = "Voumy - Where Words Come Alive", ogImage, description="New blog
 
     <meta property="twitter:title" content={title} />
     <meta property="twitter:card" content={description} />
+
+    <meta name="keywords" content={"voumy, blog, website, site, web, voumyblog, " + tags}>
     <!-- local icons -->
     <link
       rel="stylesheet"
@@ -55,6 +58,16 @@ const { title = "Voumy - Where Words Come Alive", ogImage, description="New blog
     
 
     <title>{title}</title>
+
+
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-658ZQ0JV5J"></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-658ZQ0JV5J');
+</script>
     <ViewTransitions  />
   </head>
   <body class="font-sans text-neutral-700">

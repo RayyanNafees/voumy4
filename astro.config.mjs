@@ -11,20 +11,26 @@ import netlify from "@astrojs/netlify";
 
 import keystaticAdmin from "./src/integrations/keystatic-admin";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
 		react(),
 		markdoc({
-			allowHTML:true,
+			allowHTML: true,
 			// ignoreIndentation:
 		}),
 		keystatic(),
 		tailwind(),
 		alpinejs({
-			entrypoint: '/src/alpine'
+			entrypoint: "/src/alpine",
 		}),
 		keystaticAdmin(),
+		partytown({
+			forward: ["dataLayer.push", "fbq"],
+            config: { debug: true },
+		}),
 	],
 
 	// prefetch: {
