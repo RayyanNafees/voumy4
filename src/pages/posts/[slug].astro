@@ -6,8 +6,7 @@ import AccountShare from "@/components/accounts/share.astro";
 import { getCollection, getEntry } from "astro:content";
 import { getRelatedSlugs } from "@/utils/related-articles";
 import tts from "@/utils/tts";
-import JamComments from '@jam-comments/astro';
-
+import { DiscussionEmbed } from "disqus-react";
 
 const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/404");
@@ -47,7 +46,7 @@ const audioURL = await tts(post.body.slice(0, 200));
     height: post.data.coverImage.height,
     width: post.data.coverImage.width,
   }}
-  tags = {post.data.tags.join(', ')}
+  tags={post.data.tags.join(", ")}
 >
   <Header />
 
@@ -117,7 +116,7 @@ const audioURL = await tts(post.body.slice(0, 200));
           <div class="max-w-none text-gray-800 prose lg:prose-xl">
             <Content />
           </div>
-          
+
           <!-- Tags and Sharing -->
           <div
             class="flex flex-col justify-between items-center pt-6 mt-8 border-t border-indigo-200 border-dashed md:flex-row"
@@ -191,7 +190,15 @@ const audioURL = await tts(post.body.slice(0, 200));
         </div>
       </div>
 
-<JamComments />
+      <DiscussionEmbed
+        shortname="voumy"
+        config={{
+          url: import.meta.env.DEV ? 'http://localhost:4321':'https://www.voumy.blog',
+          identifier: slug,
+          title: post.data.title,
+          language: "en_US",
+        }}
+      />
     </div>
   </main>
 </Layout>
