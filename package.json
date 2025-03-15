@@ -14,6 +14,7 @@
     "@jam-comments/astro": "^2.8.3",
     "@keystatic/astro": "^5.0.3",
     "@keystatic/core": "^0.5.42",
+    "@tailwindcss/vite": "^4.0.14",
     "alpinejs": "^3.14.8",
     "astro": "^4.0.3",
     "disqus-react": "^1.1.5",
@@ -39,6 +40,6 @@
     "@types/alpinejs": "^3.13.11",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.0.14"
   }
 }

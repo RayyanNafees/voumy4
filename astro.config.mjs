@@ -22,25 +22,18 @@ export default defineConfig({
 			// ignoreIndentation:
 		}),
 		keystatic(),
-		tailwind(),
 		alpinejs({
 			entrypoint: "/src/alpine",
 		}),
 		keystaticAdmin(),
 		partytown({
 			forward: ["dataLayer.push", "fbq"],
-            config: { debug: true },
+			config: { debug: true },
 		}),
 	],
 
-	// prefetch: {
-	// 	prefetchAll: true,
-	// },
-	output: "hybrid",
-
-	adapter: netlify({
-		// imageCDN: true,
-	}),
+	output: "static",
+	adapter: netlify(),
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
