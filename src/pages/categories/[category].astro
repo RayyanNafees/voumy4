@@ -128,14 +128,14 @@ export const getStaticPaths = (async () => {
               <a
                 href={`${Astro.url.pathname}?sort=${sortQuery === "oldest" ? "latest" : "oldest"}`}
                 class:list={[
-                  "bi block bg-neutral-100 px-2 py-1 border-2 border-neutral-300 rounded focus:bg-neutral-300 hover:bg-neutral-200",
+                  "bi block bg-neutral-100 px-2 py-1 border-2 border-neutral-300 rounded-sm focus:bg-neutral-300 hover:bg-neutral-200",
                   sortQuery === "oldest" ? "bi-arrow-up" : " bi-arrow-down",
                 ]}
               >
               </a>
               <a
                 href={Astro.url.pathname + "?sort=random"}
-                class="block px-2 py-1 rounded border-2 bi bi-shuffle bg-neutral-100 border-neutral-300 focus:bg-neutral-300 hover:bg-neutral-200"
+                class="block px-2 py-1 rounded-sm border-2 bi bi-shuffle bg-neutral-100 border-neutral-300 focus:bg-neutral-300 hover:bg-neutral-200"
               ></a>
             </ul>
           </div>

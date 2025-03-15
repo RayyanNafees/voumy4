@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import alpinejs from "@astrojs/alpinejs";
 
 import react from "@astrojs/react";
@@ -22,21 +22,20 @@ export default defineConfig({
 			// ignoreIndentation:
 		}),
 		keystatic(),
-		tailwind(),
 		alpinejs({
 			entrypoint: "/src/alpine",
 		}),
 		keystaticAdmin(),
 		partytown({
 			forward: ["dataLayer.push", "fbq"],
-            config: { debug: true },
+			config: { debug: true },
 		}),
 	],
 
 	// prefetch: {
 	// 	prefetchAll: true,
 	// },
-	output: "hybrid",
+	output: "static",
 
 	adapter: netlify({
 		// imageCDN: true,
@@ -44,5 +43,8 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
+	},
+	vite: {
+		plugins: [tailwindcss({})],
 	},
 });
