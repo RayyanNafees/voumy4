@@ -14,7 +14,7 @@ const posts = await getCollection("posts");
 <Layout>
   <Header />
   <!-- content -->
-  <main class="relative bg-linear-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen">
+  <main class="relative bg-gradient-to-br from-indigo-50 to-purple-50 text-gray-800 min-h-screen">
     <!-- container -->
     <div
       class="container flex flex-col gap-4 px-4 mx-auto xl:max-w-6xl lg:gap-6"
@@ -22,7 +22,7 @@ const posts = await getCollection("posts");
       <!-- hero -->
       <div class="flex relative flex-col gap-4 pt-4 lg:pt-6 lg:gap-6">
         <div
-          class="relative overflow-hidden bg-white shadow-lg rounded-2xl w-full aspect-1/1 sm:aspect-3/2 md:aspect-2/1 flex justify-center items-center transition-all duration-300 hover:shadow-xl"
+          class="relative overflow-hidden bg-white shadow-lg rounded-2xl w-full aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] flex justify-center items-center transition-all duration-300 hover:shadow-xl"
         >
           <img
             src="/img/blogs/hero.jpg"
@@ -31,13 +31,13 @@ const posts = await getCollection("posts");
           />
           <!-- card inside -->
           <div
-            class="relative bg-white bg-opacity-90 rounded-xl max-w-[80%] lg:max-w-[60%] md:min-w-[60%] aspect-1/1 sm:aspect-3/2 md:aspect-2/1 p-4 sm:p-6 text-center shadow-md hover:shadow-lg transition-shadow"
+            class="relative bg-white bg-opacity-90 rounded-xl max-w-[80%] lg:max-w-[60%] md:min-w-[60%] aspect-[1/1] sm:aspect-[3/2] md:aspect-[2/1] p-4 sm:p-6 text-center shadow-md hover:shadow-lg transition-shadow"
           >
             <div
               class="flex overflow-hidden flex-col gap-2 items-center h-full sm:gap-3"
             >
               <span class="text-sm uppercase text-indigo-600 font-semibold tracking-wider">&nbsp;</span>
-              <h1 class="text-2xl font-bold sm:text-3xl md:text-4xl text-gray-900 bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600 text-transparent">
+              <h1 class="text-2xl font-bold sm:text-3xl md:text-4xl text-gray-900 bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent">
                 The Voumy Blog
               </h1>
               <p class="px-10 py-5 mb-2 text-gray-600 leading-relaxed">
@@ -47,7 +47,7 @@ const posts = await getCollection("posts");
               </p>
               <a
                 href="#posts"
-                class="inline-flex px-6 py-3 rounded-full text-white font-semibold bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-lg"
+                class="inline-flex px-6 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-md hover:shadow-lg"
                 >Read More</a
               >
             </div>
@@ -58,7 +58,7 @@ const posts = await getCollection("posts");
         <div class="hidden grid-cols-1 gap-4 md:grid md:grid-cols-3 lg:gap-6">
           <!-- card item -->
           <div
-            class="relative aspect-2/1 overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/3.jpg"
@@ -75,7 +75,7 @@ const posts = await getCollection("posts");
           </div>
           <!-- card item -->
           <div
-            class="relative aspect-2/1 overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/8.jpg"
@@ -93,7 +93,7 @@ const posts = await getCollection("posts");
 
           <!-- card item -->
           <div
-            class="relative aspect-2/1 overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+            class="relative aspect-[2/1] overflow-hidden flex justify-center items-center rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
           >
             <img
               src="/img/blogs/6.jpg"

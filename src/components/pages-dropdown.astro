@@ -1,7 +1,7 @@
 <li
           x-show="!location.href.includes('voumy')"
           x-data="{ dropdown: false }"
-          class="relative md:hover:[&_>button]:bg-neutral-100"
+          class="relative md:[&_>button]:hover:bg-neutral-100"
         >
           <button
             @click="dropdown = ! dropdown"
@@ -20,7 +20,7 @@
             x-transition.duration.500ms
             :class="! dropdown ? '' : 'show'"
             @click.outside="dropdown = false"
-            class="[&.show]:opacity-100! [&.show]:visible! max-md:[&.show]:h-auto! max-md:h-0 opacity-0 invisible dropdown-menu md:z-50 relative md:absolute capitalize md:top-full end-0 md:-end-1/4 min-w-40 bg-white border border-dashed border-neutral-200"
+            class="[&.show]:!opacity-100 [&.show]:!visible max-md:[&.show]:!h-auto max-md:h-0 opacity-0 invisible dropdown-menu md:z-50 relative md:absolute capitalize md:top-full end-0 md:-end-1/4 min-w-40 bg-white border border-dashed border-neutral-200"
           >
             <li>
               <a href="category" class="flex px-4 py-1.5 hover:bg-neutral-100"
