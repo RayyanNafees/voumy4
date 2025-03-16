@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import markdoc from "@astrojs/markdoc";
 import keystatic from "@keystatic/astro";
 
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import alpinejs from "@astrojs/alpinejs";
 
 import react from "@astrojs/react";
@@ -37,5 +37,8 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
+	},
+	vite: {
+		plugins: [tailwindcss()],
 	},
 });
