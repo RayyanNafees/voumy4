@@ -9,22 +9,22 @@
     "@astrojs/partytown": "2.1.4",
     "@astrojs/react": "4.2.1",
     "@astrojs/tailwind": "6.0.0",
-    "@fontsource-variable/playpen-sans": "^5.1.1",
-    "@fontsource/inter": "^5.1.1",
-    "@jam-comments/astro": "^2.8.3",
-    "@keystatic/astro": "^5.0.3",
-    "@keystatic/core": "^0.5.42",
+    "@fontsource-variable/playpen-sans": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "@jam-comments/astro": "^2.8.5",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.46",
     "@tailwindcss/vite": "^4.0.14",
-    "alpinejs": "^3.14.8",
+    "alpinejs": "^3.14.9",
     "astro": "5.5.2",
-    "disqus-react": "^1.1.5",
+    "disqus-react": "^1.1.6",
     "google-tts-api": "^2.0.2",
-    "groq-sdk": "^0.9.1",
+    "groq-sdk": "^0.16.0",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.33.5",
-    "valibot": "^1.0.0-beta.12"
+    "valibot": "^1.0.0-rc.4"
   },
   "scripts": {
     "dev": "astro dev",
@@ -34,12 +34,12 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@egoist/tailwindcss-icons": "^1.8.2",
+    "@egoist/tailwindcss-icons": "^1.9.0",
     "@iconify-json/bi": "^1.2.2",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/alpinejs": "^3.13.11",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "tailwindcss": "^4.0.14"
   }
 }
