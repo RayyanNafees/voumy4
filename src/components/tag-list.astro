@@ -13,7 +13,7 @@ const sortedTags = [...tags].sort();
   class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
 >
   <h3
-    class="px-6 py-4 w-full border-b-2 border-indigo-200 bg-gradient-to-r from-indigo-50 to-purple-50 text-gray-800 font-bold uppercase tracking-wider text-lg"
+    class="px-6 py-4 w-full border-b-2 border-indigo-200 bg-linear-to-r from-indigo-50 to-purple-50 text-gray-800 font-bold uppercase tracking-wider text-lg"
   >
     Tags
   </h3>
@@ -45,7 +45,7 @@ const sortedTags = [...tags].sort();
   /* Custom scrollbar for tags list */
   ul {
     scrollbar-width: thin;
-    scrollbar-color: theme("colors.indigo.200") theme("colors.indigo.50");
+    scrollbar-color: var(--colors-indigo-200) var(--colors-indigo-50);
   }
 
   ul::-webkit-scrollbar {
@@ -53,11 +53,11 @@ const sortedTags = [...tags].sort();
   }
 
   ul::-webkit-scrollbar-track {
-    background: theme("colors.indigo.50");
+    background: var(--colors-indigo-50);
   }
 
   ul::-webkit-scrollbar-thumb {
-    background-color: theme("colors.indigo.200");
+    background-color: var(--colors-indigo-200);
     border-radius: 20px;
   }
 </style>

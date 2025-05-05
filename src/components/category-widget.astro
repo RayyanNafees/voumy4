@@ -55,7 +55,7 @@ const sortedCategories = Object.entries(categoryMap)
   /* Custom scrollbar for category list */
   ul {
     scrollbar-width: thin;
-    scrollbar-color: theme('colors.indigo.200') theme('colors.indigo.50');
+    scrollbar-color: var(--colors-indigo-200) var(--colors-indigo-50);
   }
 
   ul::-webkit-scrollbar {
@@ -63,11 +63,11 @@ const sortedCategories = Object.entries(categoryMap)
   }
 
   ul::-webkit-scrollbar-track {
-    background: theme('colors.indigo.50');
+    background: var(--colors-indigo-50);
   }
 
   ul::-webkit-scrollbar-thumb {
-    background-color: theme('colors.indigo.200');
+    background-color: var(--colors-indigo-200);
     border-radius: 20px;
   }
 </style>

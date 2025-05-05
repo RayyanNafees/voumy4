@@ -204,11 +204,11 @@ const navs = {
     <!-- modal search -->
     <div
       x-show="searchtoggle"
-      class="z-[60] overflow-auto inset-0 w-full h-full fixed py-6"
+      class="z-60 overflow-auto inset-0 w-full h-full fixed py-6"
     >
       <div
         @click.away="searchtoggle = false"
-        class="z-[60] relative p-3 mx-auto my-0 max-w-full sm:max-w-[500px] opacity-0 [&.show]:opacity-100"
+        class="z-60 relative p-3 mx-auto my-0 max-w-full sm:max-w-[500px] opacity-0 [&.show]:opacity-100"
         :class="! searchtoggle ? '' : 'show'"
         x-show="searchtoggle"
         x-transition.duration.500ms
