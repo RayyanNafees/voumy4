@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import AccountShare from "@/components/accounts/share.astro";
 import { getCollection, getEntry } from "astro:content";
-import { getRelatedSlugs } from "@/utils/related-articles";
+// import { getRelatedSlugs } from "@/utils/related-articles";
 import tts from "@/utils/tts";
 import { DiscussionEmbed } from "disqus-react";
 
@@ -25,15 +25,15 @@ export async function getStaticPaths() {
 
 const allSlugs = posts.map((post) => post.slug);
 
-const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
+// const relatedSlugs = await getRelatedSlugs(allSlugs, slug);
 
-const relatedArticles = !relatedSlugs.length
-  ? []
-  : await Promise.all(
-      relatedSlugs.map(async (slug) => {
-        return await getEntry("posts", slug);
-      })
-    );
+// const relatedArticles = !relatedSlugs.length
+//   ? []
+//   : await Promise.all(
+//       relatedSlugs.map(async (slug) => {
+//         return await getEntry("posts", slug);
+//       })
+//     );
 
 const audioURL = await tts(post.body.slice(0, 200));
 ---
@@ -144,7 +144,7 @@ const audioURL = await tts(post.body.slice(0, 200));
       </div>
 
       <!-- Related Articles -->
-      <div
+      <!-- <div
         class="overflow-hidden p-8 bg-white rounded-2xl shadow-xl"
         hidden={!relatedSlugs.length}
       >
@@ -188,7 +188,7 @@ const audioURL = await tts(post.body.slice(0, 200));
               ))
           }
         </div>
-      </div>
+      </div> -->
 
       <DiscussionEmbed
         shortname="voumy"
